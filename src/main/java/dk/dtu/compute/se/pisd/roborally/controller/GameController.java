@@ -59,6 +59,7 @@ public class GameController {
     Player currentPlayer = board.getCurrentPlayer();
     space.setPlayer(currentPlayer);
     board.setMoveCounter(board.getMoveCounter()+1);
+    board.getStatusMessage();
         if (board.getPlayerNumber(currentPlayer)==board.getPlayersNumber()-1){
             currentPlayer = board.getPlayer(0);
             board.setCurrentPlayer(currentPlayer);
