@@ -58,10 +58,16 @@ public class Board extends Subject {
     private boolean stepMode;
 
     private int moveCounter = 0;
-
+    /**
+     * Vi opretter en privat variabel som er vores counter
+     * Vi sætter den til 0
+     * Vi opretter en getter og en setter for variablen
+     * Setteren bruger notifyChange() til at orientere tilobserver at der er sket en ændring i programmet
+    */
     public int getMoveCounter() {
         return moveCounter;
     }
+    //
 
     public void setMoveCounter(int moveCounter) {
         this.moveCounter = moveCounter;
@@ -220,11 +226,12 @@ public class Board extends Subject {
         // XXX: V2 changed the status so that it shows the phase, the current player and the number of steps
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName()+
-                "antalSlag =" + getMoveCounter();
+                ", AntalSlag =" + getMoveCounter();
 
     }
-
-
-
+    /**
+     * Her har vi tilføjet antal slag til statuslinjen
+     * Vi bruger getMoveCounter() til at vise hvor mange slag der er sket i spillet
+     */
 
 }
