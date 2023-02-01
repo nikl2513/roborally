@@ -53,7 +53,9 @@ public class GameController {
         //   - the counter of moves in the game should be increased by one
         //     if and when the player is moved (the counter and the status line
         //     message needs to be implemented at another place)
+    if (space.getPlayer() == null) {
 
+    }
     }
 
     // XXX: V2
