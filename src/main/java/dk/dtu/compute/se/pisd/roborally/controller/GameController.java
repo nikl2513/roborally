@@ -45,6 +45,7 @@ public class GameController {
      * @param space the space to which the current player should move
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
+
         // TODO Assignment V1: method should be implemented by the students:
         //   - the current player should be moved to the given space
         //     (if it is free()
@@ -56,16 +57,15 @@ public class GameController {
     if (space.getPlayer() == null) {
     Player currentPlayer = board.getCurrentPlayer();
     space.setPlayer(currentPlayer);
-    if (board.getPlayerNumber(currentPlayer)==board.getPlayersNumber()-1){
-        currentPlayer = board.getPlayer(0);
-        board.setCurrentPlayer(currentPlayer);
-    }
-    else {
-        Player nextCurrentPlayer = currentPlayer;
-        currentPlayer = board.getPlayer(board.getPlayerNumber(nextCurrentPlayer)+1);
-        board.setCurrentPlayer(currentPlayer);
-
-    }
+        if (board.getPlayerNumber(currentPlayer)==board.getPlayersNumber()-1){
+            currentPlayer = board.getPlayer(0);
+            board.setCurrentPlayer(currentPlayer);
+        }
+        else {
+            Player nextCurrentPlayer = currentPlayer;
+            currentPlayer = board.getPlayer(board.getPlayerNumber(nextCurrentPlayer)+1);
+            board.setCurrentPlayer(currentPlayer);
+        }
     }
 
 
