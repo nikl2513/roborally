@@ -46,6 +46,20 @@ public class GameController {
      */
 
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
+        /*
+        i denne metode kan man rykker en spiller. vi modtager den space som player har trykket på.
+        vi siger først at man kun kan rykke ens spiller hvis der ikke er nogen spiller i forvejen på feltet.
+        vi opretter selv en nye player i den klasse som hedder currentplayer.
+        så sætter vi spilleren ind på det felt som spilleren har trykket på.
+        derefter tæller vi en ekstra oveni vores antal træk counter.
+        derefter printer vi hvor mange træk der har været så man kan se det på GUI'en.
+        nu har vi rykket spilleren. Det næste er at vi skal gå videre til næste spiller.
+        hvis spilleren vi er på er den sidste spiller går den ind i if-loopet.
+        inde i dette loop sætter vi spilleren til 0 da den forrige spiller var den sidste.
+        vi sætter også den nye currentplayer inde i boardet.
+        hvis det ikke er den sidste spiller går vi ind i else statementet.
+        herinde addere vi bare en ekstra ovenpå den spiller vi havde før. så vi går f.eks. fra spiller 1 til spiller 2.
+         */
 
         // TODO Assignment V1: method should be implemented by the students:
         //   - the current player should be moved to the given space
