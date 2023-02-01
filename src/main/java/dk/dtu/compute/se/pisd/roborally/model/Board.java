@@ -128,6 +128,7 @@ public class Board extends Subject {
         }
     }
 
+
     public Phase getPhase() {
         return phase;
     }
