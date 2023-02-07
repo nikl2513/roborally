@@ -220,21 +220,39 @@ public class GameController {
 
     // TODO Assignment V2
     public void moveForward(@NotNull Player player) {
+        Space space = player.getSpace();
+        if (space != null){
+            Heading heading = player.getHeading();
+            Space space1 = board.getNeighbour(space, heading);
+            if(space1 != null) {
+                player.setSpace(space1);
+            }
+        }
 
     }
 
     // TODO Assignment V2
     public void fastForward(@NotNull Player player) {
+        Space space = player.getSpace();
+        if (space != null){
+            Heading heading = player.getHeading();
+            Space space1 = board.getNeighbour(space, heading);
+
+        }
 
     }
 
     // TODO Assignment V2
     public void turnRight(@NotNull Player player) {
+        Heading heading = player.getHeading();
+        player.setHeading(heading.next());
 
     }
 
     // TODO Assignment V2
     public void turnLeft(@NotNull Player player) {
+        Heading heading = player.getHeading();
+        player.setHeading(heading.prev());
 
     }
 
