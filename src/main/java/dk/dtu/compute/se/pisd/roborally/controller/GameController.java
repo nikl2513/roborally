@@ -55,25 +55,24 @@ public class GameController {
         //   - the counter of moves in the game should be increased by one
         //     if and when the player is moved (the counter and the status line
         //     message needs to be implemented at another place)
-    if (space.getPlayer() == null) {
-    Player currentPlayer = board.getCurrentPlayer();
-    space.setPlayer(currentPlayer);
-    board.setMoveCounter(board.getMoveCounter()+1);
-    board.getStatusMessage();
-        /**
-         * Ovenfor har brugt metoden setMoveCounter til at sætte den nuværende moveCounter til +1
-         * Og derefter hentet den opdaterede statuslinje med getStatusMessage()
-         */
-        if (board.getPlayerNumber(currentPlayer)==board.getPlayersNumber()-1){
-            currentPlayer = board.getPlayer(0);
-            board.setCurrentPlayer(currentPlayer);
+        if (space.getPlayer() == null) {
+            Player currentPlayer = board.getCurrentPlayer();
+            space.setPlayer(currentPlayer);
+            board.setMoveCounter(board.getMoveCounter()+1);
+            board.getStatusMessage();
+            /**
+             * Ovenfor har brugt metoden setMoveCounter til at sætte den nuværende moveCounter til +1
+             * Og derefter hentet den opdaterede statuslinje med getStatusMessage()
+             */
+            if (board.getPlayerNumber(currentPlayer)==board.getPlayersNumber()-1){
+                currentPlayer = board.getPlayer(0);
+                board.setCurrentPlayer(currentPlayer);
+            } else {
+                Player nextCurrentPlayer = currentPlayer;
+                currentPlayer = board.getPlayer(board.getPlayerNumber(nextCurrentPlayer)+1);
+                board.setCurrentPlayer(currentPlayer);
+            }
         }
-        else {
-            Player nextCurrentPlayer = currentPlayer;
-            currentPlayer = board.getPlayer(board.getPlayerNumber(nextCurrentPlayer)+1);
-            board.setCurrentPlayer(currentPlayer);
-        }
-    }
 
 
     }
@@ -234,10 +233,12 @@ public class GameController {
     // TODO Assignment V2
     public void fastForward(@NotNull Player player) {
         Space space = player.getSpace();
-        if (space != null){
-            Heading heading = player.getHeading();
-            Space space1 = board.getNeighbour(space, heading);
-
+        Heading heading = player.getHeading();
+        Space space1 = board.getNeighbour(space,heading);
+        Space space2 = board.getNeighbour(space1,heading);
+        Space space3 = board.getNeighbour(space2,heading);
+        if (space != null && space1 != null && space2!= null && space3 != null){
+            player.setSpace(space3);
         }
 
     }

@@ -216,7 +216,10 @@ public class Board extends Subject {
 
         return getSpace(x, y);
     }
-
+    /**
+     * Her har vi tilføjet antal slag til statuslinjen
+     * Vi bruger getMoveCounter() til at vise hvor mange slag der er sket i spillet
+     */
     public String getStatusMessage() {
         // this is actually a view aspect, but for making assignment V1 easy for
         // the students, this method gives a string representation of the current
@@ -226,12 +229,8 @@ public class Board extends Subject {
         // XXX: V2 changed the status so that it shows the phase, the current player and the number of steps
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName()+
-                ", AntalSlag =" + getMoveCounter();
+                ", AntalSlag = " + getMoveCounter();
 
     }
-    /**
-     * Her har vi tilføjet antal slag til statuslinjen
-     * Vi bruger getMoveCounter() til at vise hvor mange slag der er sket i spillet
-     */
 
 }
