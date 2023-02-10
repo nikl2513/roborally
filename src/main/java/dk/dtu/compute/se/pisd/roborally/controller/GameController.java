@@ -256,6 +256,7 @@ public class GameController {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
 
+
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
