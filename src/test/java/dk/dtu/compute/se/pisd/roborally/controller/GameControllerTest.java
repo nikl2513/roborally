@@ -80,6 +80,13 @@ class GameControllerTest {
 
     @Test
     void fastForward() {
+        Board board = gameController.board;
+        Player current = board.getCurrentPlayer();
+
+        gameController.fastForward(current);
+
+        Assertions.assertEquals(current, board.getSpace(0, 3).getPlayer(), "Player " + current.getName() + " should beSpace (0,1)!");
+        Assertions.assertEquals(Heading.SOUTH, current.getHeading(), "Player 0 should be heading SOUTH!");
     }
 
     @Test
