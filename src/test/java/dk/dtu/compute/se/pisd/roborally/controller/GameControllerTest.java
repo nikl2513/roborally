@@ -48,6 +48,8 @@ class GameControllerTest {
     }
 
 
+        //The following tests should be used later for assignment V2
+
 
 
     @Test
@@ -76,5 +78,17 @@ class GameControllerTest {
     }
 
 
+    @Test
+    void fastForward() {
+    }
 
+    @Test
+    void turnRight() {
+        Board board = gameController.board;
+        Player current = board.getCurrentPlayer();
+    }
+
+    @Test
+    void turnLeft() {
+    }
 }
