@@ -47,8 +47,8 @@ class GameControllerTest {
         Assertions.assertEquals(player, board.getSpace(0, 4).getPlayer(), "Player " + player.getName() + " should beSpace (0,4)!");
     }
 
-    /*
-        The following tests should be used later for assignment V2
+
+
 
     @Test
     void moveCurrentPlayerToSpace() {
@@ -75,6 +75,6 @@ class GameControllerTest {
         Assertions.assertNull(board.getSpace(0, 0).getPlayer(), "Space (0,0) should be empty!");
     }
 
-     */
+
 
 }
