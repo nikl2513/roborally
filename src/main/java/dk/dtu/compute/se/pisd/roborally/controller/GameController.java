@@ -216,21 +216,21 @@ public class GameController {
             }
         }
     }
-
+    //vi skal tjekke om der er nogen spillere i forvejen på felt
     // TODO Assignment V2
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
         if (space != null){
             Heading heading = player.getHeading();
             Space space1 = board.getNeighbour(space, heading);
-            if(space1 != null) {
+            if(space1 != null && space1.getPlayer() == null) {
                 player.setSpace(space1);
             }
         }
 
 
     }
-
+    //skal også tjekke. hvis der ikke er nogen på det første felt men det andet felt skal det rykkes den ene frem
     // TODO Assignment V2
     public void fastForward(@NotNull Player player) {
         Space space = player.getSpace();
