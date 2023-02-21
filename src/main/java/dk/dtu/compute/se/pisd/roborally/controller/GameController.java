@@ -260,6 +260,11 @@ public class GameController {
     }
 
     // TODO Assignment V2
+
+    /**
+     * The robots direction turns to the right
+     * @param player is the current players robot
+     */
     public void turnRight(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.next());
@@ -267,6 +272,10 @@ public class GameController {
     }
 
     // TODO Assignment V2
+    /**
+     * The robots direction turns to the left
+     * @param player is the current players robot
+     */
     public void turnLeft(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
