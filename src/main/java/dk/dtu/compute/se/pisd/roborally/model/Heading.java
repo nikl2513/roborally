@@ -31,6 +31,10 @@ public enum Heading {
 
     SOUTH, WEST, NORTH, EAST;
 
+    /**
+     * Gets the hedning fowlling a clocke
+     * @return
+     */
     public Heading next() {
         return values()[(this.ordinal() + 1) % values().length];
     }
