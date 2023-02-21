@@ -232,6 +232,13 @@ public class GameController {
     }
     //skal også tjekke. hvis der ikke er nogen på det første felt men det andet felt skal det rykkes den ene frem
     // TODO Assignment V2
+
+    /**
+     * s224567:
+     * The method moves the current robot 3 spaces forward in the robots current direction.
+     * Before moving the robot the method checks if every space is free.
+     * @param player
+     */
     public void fastForward(@NotNull Player player) {
         Space space = player.getSpace();
         Heading heading = player.getHeading();
