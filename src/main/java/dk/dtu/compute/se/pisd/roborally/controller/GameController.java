@@ -220,15 +220,16 @@ public class GameController {
     // TODO Assignment V2
 
     /**
+     *
      * Moves the current players robot one space i the robots current direction
-     * @param player The player Which Robot is getting moved one space in the current direction
+     * @param player The player which Robot is getting moved one space in the current direction
      */
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
         if (space != null){
             Heading heading = player.getHeading();
             Space space1 = board.getNeighbour(space, heading);
-            if(space1 != null) {
+            if(space1 != null && player.getSpace()==null) {
                 player.setSpace(space1);
             }
         }
