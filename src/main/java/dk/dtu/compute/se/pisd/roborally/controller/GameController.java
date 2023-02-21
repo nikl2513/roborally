@@ -263,6 +263,7 @@ public class GameController {
     // TODO Assignment V2
 
     /**
+     * s224576
      * The robots direction turns to the right
      * @param player is the current players robot
      */
@@ -274,6 +275,7 @@ public class GameController {
 
     // TODO Assignment V2
     /**
+     * s224576
      * The robots direction turns to the left
      * @param player is the current players robot
      */
