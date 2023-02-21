@@ -218,29 +218,37 @@ public class GameController {
     }
 
     // TODO Assignment V2
+
+    /**
+     * Moves the current players robot one space i the robots current direction
+     * @param player The player Which Robot is getting moved one space in the current direction
+     */
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
         if (space != null){
             Heading heading = player.getHeading();
             Space space1 = board.getNeighbour(space, heading);
-            if(space1 != null) {
+
+            if(space1 != null && space1.getPlayer() == null) {
                 player.setSpace(space1);
             }
         }
-
 
     }
 
     // TODO Assignment V2
     public void fastForward(@NotNull Player player) {
-        Space space = player.getSpace();
-        Heading heading = player.getHeading();
-        Space space1 = board.getNeighbour(space,heading);
-        Space space2 = board.getNeighbour(space1,heading);
-        Space space3 = board.getNeighbour(space2,heading);
-        if (space != null && space1 != null && space2!= null && space3 != null){
-            player.setSpace(space3);
-        }
+        this.moveForward(player);
+        this.moveForward(player);
+        this.moveForward(player);
+        // Space space = player.getSpace();
+        //Heading heading = player.getHeading();
+        //Space space1 = board.getNeighbour(space,heading);
+        //Space space2 = board.getNeighbour(space1,heading);
+        //Space space3 = board.getNeighbour(space2,heading);
+        //if (space != null && space1 != null && space2!= null && space3 != null){
+          //  player.setSpace(space3);
+        // }
 
     }
 
@@ -250,6 +258,7 @@ public class GameController {
         player.setHeading(heading.next());
 
     }
+
 
     // TODO Assignment V2
     public void turnLeft(@NotNull Player player) {
