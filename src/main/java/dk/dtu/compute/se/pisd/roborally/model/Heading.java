@@ -32,13 +32,17 @@ public enum Heading {
     SOUTH, WEST, NORTH, EAST;
 
     /**
-     * Gets the hedning fowlling a clocke
-     * @return
+     * Gets the next direction in a clockwise direction
+     * @return the  next direction in a clockwise direction
      */
     public Heading next() {
         return values()[(this.ordinal() + 1) % values().length];
     }
 
+    /**
+     * Gets the next direction in a counterclockwise direction
+     * @return Gets the next direction in a counterclockwise direction
+     */
     public Heading prev() {
         return values()[(this.ordinal() + values().length - 1) % values().length];
     }

@@ -229,9 +229,8 @@ public class GameController {
         if (space != null){
             Heading heading = player.getHeading();
             Space space1 = board.getNeighbour(space, heading);
-            if(space1 != null && player.getSpace()==null) {
+            if(space1 != null && space1.getPlayer()== null) {
                 player.setSpace(space1);
-
             }
         }
 
