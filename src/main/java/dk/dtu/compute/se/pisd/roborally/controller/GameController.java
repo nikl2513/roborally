@@ -228,15 +228,22 @@ public class GameController {
         if (space != null){
             Heading heading = player.getHeading();
             Space space1 = board.getNeighbour(space, heading);
-
-            if(space1 != null && space1.getPlayer() == null) {
+            if(space1 != null) {
                 player.setSpace(space1);
             }
         }
 
+
     }
 
     // TODO Assignment V2
+
+    /**
+     * s224567:
+     * The method moves the current robot 3 spaces forward in the robots current direction.
+     * Before moving the robot the method checks if every space is free.
+     * @param player
+     */
     public void fastForward(@NotNull Player player) {
         this.moveForward(player);
         this.moveForward(player);
@@ -258,7 +265,6 @@ public class GameController {
         player.setHeading(heading.next());
 
     }
-
 
     // TODO Assignment V2
     public void turnLeft(@NotNull Player player) {

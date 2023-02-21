@@ -84,7 +84,7 @@ class GameControllerTest {
         Player current = board.getCurrentPlayer();
 
         gameController.fastForward(current);
-
+        //tjekke også her om man kan rykke en frem eller 2 eller 3
         Assertions.assertEquals(current, board.getSpace(0, 3).getPlayer(), "Player " + current.getName() + " should beSpace (0,3)!");
         Assertions.assertEquals(Heading.SOUTH, current.getHeading(), "Player 0 should be heading SOUTH!");
         Assertions.assertNull(board.getSpace(0, 0).getPlayer(), "Space (0,0) should be empty!");
