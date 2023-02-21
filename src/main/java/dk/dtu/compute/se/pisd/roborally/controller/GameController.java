@@ -218,6 +218,11 @@ public class GameController {
     }
 
     // TODO Assignment V2
+
+    /**
+     * Moves the current players robot one space i the robots current direction
+     * @param player The player Which Robot is getting moved one space in the current direction
+     */
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
         if (space != null){
@@ -233,25 +238,28 @@ public class GameController {
 
     // TODO Assignment V2
 
-
+    /**
+     * s224567:
+     * The method moves the current robot 3 spaces forward in the robots current direction.
+     * Before moving the robot the method checks if every space is free.
+     * @param player
+     */
     public void fastForward(@NotNull Player player) {
-        Space space = player.getSpace();
-        Heading heading = player.getHeading();
-        Space space1 = board.getNeighbour(space,heading);
-        Space space2 = board.getNeighbour(space1,heading);
-        Space space3 = board.getNeighbour(space2,heading);
-        if (space != null && space1 != null && space2!= null && space3 != null){
-            player.setSpace(space3);
-        }
+        this.moveForward(player);
+        this.moveForward(player);
+        this.moveForward(player);
+        // Space space = player.getSpace();
+        //Heading heading = player.getHeading();
+        //Space space1 = board.getNeighbour(space,heading);
+        //Space space2 = board.getNeighbour(space1,heading);
+        //Space space3 = board.getNeighbour(space2,heading);
+        //if (space != null && space1 != null && space2!= null && space3 != null){
+          //  player.setSpace(space3);
+        // }
 
     }
 
     // TODO Assignment V2
-
-    /**
-     the current robot turns his direction to the right
-     *@param player The current players robot
-     */
     public void turnRight(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.next());
@@ -259,11 +267,6 @@ public class GameController {
     }
 
     // TODO Assignment V2
-
-    /**
-     * the current robot turns his direction to the left
-     *@param player The current players robot
-     */
     public void turnLeft(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
