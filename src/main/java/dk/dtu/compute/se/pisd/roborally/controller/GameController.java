@@ -232,6 +232,8 @@ public class GameController {
     }
 
     // TODO Assignment V2
+
+
     public void fastForward(@NotNull Player player) {
         Space space = player.getSpace();
         Heading heading = player.getHeading();
@@ -245,6 +247,11 @@ public class GameController {
     }
 
     // TODO Assignment V2
+
+    /**
+     the current robot turns his direction to the right
+     *@param player The current players robot
+     */
     public void turnRight(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.next());
@@ -252,6 +259,11 @@ public class GameController {
     }
 
     // TODO Assignment V2
+
+    /**
+     * the current robot turns his direction to the left
+     *@param player The current players robot
+     */
     public void turnLeft(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
