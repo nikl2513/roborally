@@ -216,31 +216,46 @@ public class GameController {
             }
         }
     }
-    //vi skal tjekke om der er nogen spillere i forvejen på felt
+
     // TODO Assignment V2
+
+    /**
+     * Moves the current players robot one space i the robots current direction
+     * @param player The player Which Robot is getting moved one space in the current direction
+     */
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
         if (space != null){
             Heading heading = player.getHeading();
             Space space1 = board.getNeighbour(space, heading);
-            if(space1 != null && space1.getPlayer() == null) {
+            if(space1 != null) {
                 player.setSpace(space1);
             }
         }
 
 
     }
-    //skal også tjekke. hvis der ikke er nogen på det første felt men det andet felt skal det rykkes den ene frem
+
     // TODO Assignment V2
+
+    /**
+     * s224567:
+     * The method moves the current robot 3 spaces forward in the robots current direction.
+     * Before moving the robot the method checks if every space is free.
+     * @param player
+     */
     public void fastForward(@NotNull Player player) {
-        Space space = player.getSpace();
-        Heading heading = player.getHeading();
-        Space space1 = board.getNeighbour(space,heading);
-        Space space2 = board.getNeighbour(space1,heading);
-        Space space3 = board.getNeighbour(space2,heading);
-        if (space != null && space1 != null && space2!= null && space3 != null){
-            player.setSpace(space3);
-        }
+        this.moveForward(player);
+        this.moveForward(player);
+        this.moveForward(player);
+        // Space space = player.getSpace();
+        //Heading heading = player.getHeading();
+        //Space space1 = board.getNeighbour(space,heading);
+        //Space space2 = board.getNeighbour(space1,heading);
+        //Space space3 = board.getNeighbour(space2,heading);
+        //if (space != null && space1 != null && space2!= null && space3 != null){
+          //  player.setSpace(space3);
+        // }
 
     }
 

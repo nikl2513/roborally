@@ -92,10 +92,18 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Gets current space of Robot
+     * @return  current space of Robot
+     */
     public Space getSpace() {
         return space;
     }
 
+    /**
+     * sets the current players robot in the space that taken in the parameter
+     * @param space the space you want to move the robot to.
+     */
     public void setSpace(Space space) {
         Space oldSpace = this.space;
         if (space != oldSpace &&
@@ -111,6 +119,10 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Returns the current direction of the robot
+     * @return the current direction of the robot
+     */
     public Heading getHeading() {
         return heading;
     }
