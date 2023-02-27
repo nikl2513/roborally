@@ -195,6 +195,22 @@ public class GameController {
         }
     }
 
+    public void executeCommandOptionAndContinue(@NotNull Command option){
+        Player currentPlayer = board.getCurrentPlayer();
+        if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null){
+            int step = board.getStep();
+            if (step >= 0 && step < Player.NO_REGISTERS) {
+                CommandCard card = currentPlayer.getProgramField(step).getCard();
+                if (card != null){
+                    Command command = card.command;
+                    if (command.isInteractive()){
+                        board.setPhase(Phase.PLAYER_INTERACTION);
+                        return;
+                    }
+                }
+            }
+        }
+    }
     // XXX: V2
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
