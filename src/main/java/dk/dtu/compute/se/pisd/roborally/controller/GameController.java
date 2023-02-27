@@ -158,6 +158,13 @@ public class GameController {
     }
 
     // XXX: V2
+
+    /**
+     * executes a commandcard and goes to the next player. if the board is not in activation phase, then it won't work.
+     * and there is a currentplayer from the board. the step has to be between those 5 cards. if the card is null,
+     * the it won't go through. after executing command, then it will go to the next player by setting currentplayer on board,
+     * to the next player
+     */
     private void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
         if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
