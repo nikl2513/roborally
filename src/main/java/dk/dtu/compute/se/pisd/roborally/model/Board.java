@@ -156,6 +156,10 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * This gives the current step of which programming card we are on with the individual player.
+     * @return the Current position in the programming cards
+     */
     public int getStep() {
         return step;
     }
