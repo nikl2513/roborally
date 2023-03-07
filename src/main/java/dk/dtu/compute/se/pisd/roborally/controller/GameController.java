@@ -178,12 +178,14 @@ public class GameController {
                         return;
                     }
                     executeCommand(currentPlayer, command);
+
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
                     step++;
+
                     if (step < Player.NO_REGISTERS) {
                         makeProgramFieldsVisible(step);
                         board.setStep(step);
@@ -202,20 +204,19 @@ public class GameController {
         }
     }
 
-    public void executeCommandOptionAndContinue(@NotNull Command option){
+    public void executeCommandOptionAndContinue(@NotNull Command option) {
         Player currentPlayer = board.getCurrentPlayer();
         if (board.getPhase() == Phase.PLAYER_INTERACTION && currentPlayer != null){
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
-                if (card != null){
+                if (card != null) {
                     Command command = card.command;
                     executeCommand(currentPlayer, option);
-                    if (command.isInteractive()){
+                    if (command.isInteractive()) {
                         board.setPhase(Phase.ACTIVATION);
                         //return;
                     }
-
                     int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                     if (nextPlayerNumber < board.getPlayersNumber()) {
                         board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
@@ -229,16 +230,21 @@ public class GameController {
                             startProgrammingPhase();
                         }
                     }
-                } else {
-                    // this should not happen
-                    assert false;
                 }
-            } else {
+            }else {
                 // this should not happen
                 assert false;
             }
+        } else {
+            // this should not happen
+            assert false;
+        }
+
+        if ( !board.isStepMode() && board.getPhase() == Phase.ACTIVATION ){
+            continuePrograms();
         }
     }
+
 
 
 
