@@ -280,15 +280,30 @@ public class GameController {
      *
      * Moves the current players robot one space i the robots current direction
      * @param player The player which Robot is getting moved one space in the current direction
+     * This method first insures that both the current space and the neigbouring space exist on the board
+     * It then checks if the neighbouring space is occupied by another player both either setting the players space to
+     * the neighbouring space or if the space is occupied it will run a method called moveToSpace which pushes the other
+     * player away before moving onto the space
      */
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
+        Heading heading = player.getHeading();
+
         if (space != null){
-            Heading heading = player.getHeading();
+
             Space space1 = board.getNeighbour(space, heading);
             if(space1 != null && space1.getPlayer()== null) {
                 player.setSpace(space1);
+            }else if (space1 != null && space1.getPlayer()!= null ){
+                try {
+                    moveToSpace(player,space,heading);
+                    player.setSpace(space1);
+                } catch (ImpossibleMoveException e) {
+                    throw new RuntimeException(e);
+                }
             }
+
+
         }
 
 
@@ -363,5 +378,32 @@ public class GameController {
         // XXX just for now to indicate that the actual method is not yet implemented
         assert false;
     }
+
+    /**
+     *
+      * @param player
+     * @param space
+     * @param heading
+     * @throws ImpossibleMoveException
+     *
+     */
+private void moveToSpace(
+        @NotNull Player player,
+        @NotNull Space space,
+        @NotNull Heading heading) throws ImpossibleMoveException  {
+
+        Player other = space.getPlayer();
+        if(other != null){
+            Space target = board.getNeighbour(space,heading);
+            if (target != null) {
+                moveToSpace(other, target, heading);
+            }else {
+                throw new ImpossibleMoveException(player, space, heading);
+            }
+        }
+    player.setSpace(space);
+}
+
+
 
 }
