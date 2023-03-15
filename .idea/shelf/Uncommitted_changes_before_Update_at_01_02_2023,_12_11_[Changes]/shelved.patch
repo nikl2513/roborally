@@ -1,0 +1,20 @@
+Index: src/main/java/dk/dtu/compute/se/pisd/roborally/controller/GameController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/dk/dtu/compute/se/pisd/roborally/controller/GameController.java b/src/main/java/dk/dtu/compute/se/pisd/roborally/controller/GameController.java
+--- a/src/main/java/dk/dtu/compute/se/pisd/roborally/controller/GameController.java	
++++ b/src/main/java/dk/dtu/compute/se/pisd/roborally/controller/GameController.java	
+@@ -53,9 +53,9 @@
+         //   - the counter of moves in the game should be increased by one
+         //     if and when the player is moved (the counter and the status line
+         //     message needs to be implemented at another place)
+-    if (space.getPlayer() == null) {
++        if (space.getPlayer() == null) {
+ 
+-    }
++        }
+     }
+ 
+     // XXX: V2

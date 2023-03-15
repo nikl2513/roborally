@@ -328,7 +328,6 @@ public class GameController {
     /**
      * s224567:
      * The method moves the current robot 3 spaces forward in the robots current direction.
-     * Before moving the robot the method checks if every space is free.
      * @param player
      */
     public void fastForward(@NotNull Player player) {
