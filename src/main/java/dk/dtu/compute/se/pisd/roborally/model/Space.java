@@ -38,9 +38,7 @@ public class Space extends Subject {
     private Player player;
     private Wall wall;
     private boolean wallbool;
-
-    private Checkpoints checkpoint;
-
+    Checkpoint checkpoint;
     private boolean CheckpointBool;
 
 
@@ -64,10 +62,7 @@ public class Space extends Subject {
             return false;
         }
     }
-    public void addCheckpoint(Space space){
-        space.checkpoint.setSpace(space);
-        CheckpointBool = true;
-    }
+
 
     public boolean ifCheckpoint(Space space){
         if(space.CheckpointBool == true){

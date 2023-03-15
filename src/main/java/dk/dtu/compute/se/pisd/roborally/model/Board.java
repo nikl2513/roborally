@@ -51,6 +51,8 @@ public class Board extends Subject {
 
     private final List<Wall> walls = new ArrayList<>();
 
+    private final List<Checkpoint> checkpoints = new ArrayList<>();
+
     private Player current;
 
     private Phase phase = INITIALISATION;
@@ -61,13 +63,16 @@ public class Board extends Subject {
 
     private int moveCounter = 0;
 
+    private Checkpoint checkpoint;
+
+    private boolean checkpointBool;
 
     /**
      * Vi opretter en privat variabel som er vores counter
      * Vi sætter den til 0
      * Vi opretter en getter og en setter for variablen
      * Setteren bruger notifyChange() til at orientere tilobserver at der er sket en ændring i programmet
-    */
+     */
     public int getMoveCounter() {
         return moveCounter;
     }
@@ -84,7 +89,7 @@ public class Board extends Subject {
         this.height = height;
         spaces = new Space[width][height];
         for (int x = 0; x < width; x++) {
-            for(int y = 0; y < height; y++) {
+            for (int y = 0; y < height; y++) {
                 Space space = new Space(this, x, y);
                 spaces[x][y] = space;
             }
@@ -162,6 +167,7 @@ public class Board extends Subject {
 
     /**
      * This gives the current step of which programming card we are on with the individual player.
+     *
      * @return the Current position in the programming cards
      */
     public int getStep() {
@@ -200,7 +206,7 @@ public class Board extends Subject {
      * (no walls or obstacles in either of the involved spaces); otherwise,
      * null will be returned.
      *
-     * @param space the space for which the neighbour should be computed
+     * @param space   the space for which the neighbour should be computed
      * @param heading the heading of the neighbour
      * @return the space in the given direction; null if there is no (reachable) neighbour
      */
@@ -224,6 +230,7 @@ public class Board extends Subject {
 
         return getSpace(x, y);
     }
+
     /**
      * Her har vi tilføjet antal slag til statuslinjen
      * Vi bruger getMoveCounter() til at vise hvor mange slag der er sket i spillet
@@ -236,16 +243,21 @@ public class Board extends Subject {
         // XXX: V1 add the move count to the status message
         // XXX: V2 changed the status so that it shows the phase, the current player and the number of steps
         return "Phase: " + getPhase().name() +
-                ", Player = " + getCurrentPlayer().getName()+
+                ", Player = " + getCurrentPlayer().getName() +
                 ", AntalSlag = " + getMoveCounter();
 
     }
-    public void addwall(@NotNull Wall wall){
-        if(Wall.Space == this && !walls.contains(wall)){
+
+    public void addwall(@NotNull Wall wall) {
+        if (Wall.Space == this && !walls.contains(wall)) {
             walls.add(wall);
             notifyChange();
         }
 
     }
 
+    public void addCheckpoint(Space space) {
+        space.checkpoint.setSpace(space);
+        boolean checkpointBool = true;
+    }
 }

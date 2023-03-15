@@ -1,6 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
-public class Checkpoints {
+public class Checkpoint {
 
     private Space space;
 
