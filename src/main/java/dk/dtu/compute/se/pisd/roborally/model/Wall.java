@@ -13,7 +13,7 @@ public class Wall {
     private Heading heading;
 
     private  Space space;
-
+    private boolean ifWall;
 
     public Heading getHeading() {
         return heading;
@@ -35,7 +35,17 @@ public class Wall {
     public void wall() {
         heading = null;
         space = null;
+    }
+    public boolean iswall(Space space, Space neighbourghSpace, Heading heading){
+        if (space.){
 
+        }
+        )
+    }
+    public void setWall(Space space, Heading heading){
+        this.space = space;
+        this.heading = heading;
+        ifWall = true;
     }
 }
 

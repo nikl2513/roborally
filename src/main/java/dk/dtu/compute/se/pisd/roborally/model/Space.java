@@ -35,11 +35,10 @@ public class Space extends Subject {
 
     public final int x;
     public final int y;
-
     private Player player;
-
+    private Wall ifWall;
     private Wall wall;
-
+    public Wall isWall(Space space, Space neighbourspace, Heading heading) {return isWall(Space space, Space neighbourspace, Heading heading)}
     public Wall getWall() {
         return wall;
     }
