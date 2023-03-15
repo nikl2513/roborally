@@ -17,7 +17,4 @@ public class Checkpoints {
         boolean complete = false;
     }
 
-    public void setCheckpoint(){
-        this.space =
-    }
 }

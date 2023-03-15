@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3049c16e-dcb1-4152-81e9-c25271de8cc6" name="Changes" comment="Fastforward javadoc">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dk/dtu/compute/se/pisd/roborally/model/Checkpoints.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/dtu/compute/se/pisd/roborally/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/dtu/compute/se/pisd/roborally/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dk/dtu/compute/se/pisd/roborally/model/Space.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dk/dtu/compute/se/pisd/roborally/model/Space.java" afterDir="false" />
-    </list>
+    <list default="true" id="3049c16e-dcb1-4152-81e9-c25271de8cc6" name="Changes" comment="lidt forskelligt med checkpoints" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,6 +111,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ShelveChangesManager" show_recycled="true" />
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -130,7 +127,7 @@
       <workItem from="1676906108979" duration="3054000" />
       <workItem from="1677509675953" duration="7832000" />
       <workItem from="1678806562651" duration="3842000" />
-      <workItem from="1678881945229" duration="4376000" />
+      <workItem from="1678881945229" duration="4637000" />
     </task>
     <task id="LOCAL-00001" summary="Tilføjet en counter pr. træk">
       <created>1675250472743</created>
@@ -188,7 +185,28 @@
       <option name="project" value="LOCAL" />
       <updated>1676993106099</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="lidt forskelligt med checkpoints">
+      <created>1678886508373</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678886508373</updated>
+    </task>
+    <task id="LOCAL-00010" summary="lidt forskelligt med checkpoints">
+      <created>1678886570953</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1678886570953</updated>
+    </task>
+    <task id="LOCAL-00011" summary="lidt forskelligt med checkpoints">
+      <created>1678886617634</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678886617634</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +243,7 @@
     <MESSAGE value="turn right, left forward" />
     <MESSAGE value="Fastforward" />
     <MESSAGE value="Fastforward javadoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fastforward javadoc" />
+    <MESSAGE value="lidt forskelligt med checkpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="lidt forskelligt med checkpoints" />
   </component>
 </project>
