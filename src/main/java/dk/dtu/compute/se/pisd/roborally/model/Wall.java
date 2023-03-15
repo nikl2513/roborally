@@ -1,5 +1,4 @@
 package dk.dtu.compute.se.pisd.roborally.model;
-
 /**
  *
  * @Author s215698
