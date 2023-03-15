@@ -43,9 +43,23 @@ public class Space extends Subject {
     public void addWall(Space space, Heading heading){
         space.wall.setSpace(space);
         space.wall.setHeading(heading);
-
+        wallbool = true;
     }
 
+    public boolean ifWall(Space space, Space neighbourSpace, Heading heading, Heading neighbourHeading){
+        Heading heading2 = heading;
+        heading2.next();
+        heading2.next();
+        if (space.wallbool == true && space.wall.getHeading() == heading){
+            return true;
+            }
+        if(neighbourSpace.wallbool == true && neighbourSpace.wall.getHeading() == heading2){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public Space(Board board, int x, int y) {
         this.board = board;
@@ -53,7 +67,7 @@ public class Space extends Subject {
         this.y = y;
         player = null;
         wall = null;
-
+        wallbool = false;
 
     }
 
