@@ -10,6 +10,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 public class Wall {
 
 
+    public static Board Space;
     private Heading heading;
 
     private  Space space;
@@ -30,8 +31,8 @@ public class Wall {
         this.space = space;
     }
 
-    public void wall() {
-        heading = null;
+    public Wall(Heading heading) {
+        this.heading = null;
         space = null;
     }
 }

@@ -49,6 +49,8 @@ public class Board extends Subject {
 
     private final List<Player> players = new ArrayList<>();
 
+    private final List<Wall> walls = new ArrayList<>();
+
     private Player current;
 
     private Phase phase = INITIALISATION;
@@ -58,6 +60,8 @@ public class Board extends Subject {
     private boolean stepMode;
 
     private int moveCounter = 0;
+
+
     /**
      * Vi opretter en privat variabel som er vores counter
      * Vi sætter den til 0
@@ -234,6 +238,13 @@ public class Board extends Subject {
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName()+
                 ", AntalSlag = " + getMoveCounter();
+
+    }
+    public void addwall(@NotNull Wall wall){
+        if(Wall.Space == this && !walls.contains(wall)){
+            walls.add(wall);
+            notifyChange();
+        }
 
     }
 

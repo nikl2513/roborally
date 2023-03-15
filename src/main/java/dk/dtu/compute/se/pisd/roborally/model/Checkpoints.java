@@ -4,6 +4,8 @@ public class Checkpoints {
 
     private Space space;
 
+   private boolean complete;
+
     public Space getSpace() {
         return space;
     }
@@ -12,8 +14,17 @@ public class Checkpoints {
         this.space = space;
     }
 
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
     public void Checkpoint(){
         space = null;
-        boolean complete = false;
+        complete = false;
     }
+
 }
