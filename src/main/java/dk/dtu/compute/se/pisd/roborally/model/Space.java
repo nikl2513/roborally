@@ -43,9 +43,12 @@ public class Space extends Subject {
         return wall;
     }
 
-    public void setWall(Wall wall) {
-        this.wall = wall;
+    public void addWall(Space space, Heading heading){
+        space.wall.setSpace(space);
+        space.wall.setHeading(heading);
+
     }
+
 
     public Space(Board board, int x, int y) {
         this.board = board;
