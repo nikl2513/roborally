@@ -29,6 +29,7 @@ import dk.dtu.compute.se.pisd.roborally.RoboRally;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 
+import dk.dtu.compute.se.pisd.roborally.model.Wall;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -39,6 +40,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import static dk.dtu.compute.se.pisd.roborally.model.Heading.*;
 
 /**
  * ...
@@ -85,6 +88,16 @@ AppController implements Observer {
                 board.addPlayer(player);
                 player.setSpace(board.getSpace(i % board.width, i));
             }
+
+
+                Wall wall1 = new Wall(SOUTH);
+                Wall wall2 = new Wall(NORTH);
+
+                board.addwall(wall1);
+                board.addwall(wall2);
+
+                wall1.setSpace(board.getSpace(12,2));
+                wall2.setSpace(board.getSpace(9,2));
 
             // XXX: V2
             // board.setCurrentPlayer(board.getPlayer(0));
