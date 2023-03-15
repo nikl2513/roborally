@@ -37,6 +37,7 @@ public class Space extends Subject {
     public final int y;
     private Player player;
     private Wall wall;
+    private boolean wallbool;
 
 
     public void addWall(Space space, Heading heading){
