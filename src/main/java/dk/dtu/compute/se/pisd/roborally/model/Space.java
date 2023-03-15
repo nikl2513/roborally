@@ -42,26 +42,7 @@ public class Space extends Subject {
     private boolean CheckpointBool;
 
 
-    public void addWall(Space space, Heading heading){
-        space.wall.setSpace(space);
-        space.wall.setHeading(heading);
-        wallbool = true;
-    }
 
-    public boolean ifWall(Space space, Space neighbourSpace, Heading heading, Heading neighbourHeading){
-        Heading heading2 = heading;
-        heading2.next();
-        heading2.next();
-        if (space.wallbool == true && space.wall.getHeading() == heading){
-            return true;
-            }
-        if(neighbourSpace.wallbool == true && neighbourSpace.wall.getHeading() == heading2){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
 
 
     public boolean ifCheckpoint(Space space){
@@ -71,6 +52,14 @@ public class Space extends Subject {
         else{
             return false;
         }
+    }
+
+    public Wall getWall() {
+        return wall;
+    }
+
+    public void setWall(Wall wall) {
+        this.wall = wall;
     }
 
     public Space(Board board, int x, int y) {

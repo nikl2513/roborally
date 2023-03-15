@@ -302,10 +302,13 @@ public class GameController {
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
         Heading heading = player.getHeading();
+        Wall wallcurrentspace = space.getWall();
 
         if (space != null){
 
             Space space1 = board.getNeighbour(space, heading);
+            Wall wallspacetarget = space.getWall();
+            if(wallcurrentspace == null && wallcurrentspace ==null)
             if(space1 != null && space1.getPlayer()== null) {
                 player.setSpace(space1);
             }else if (space1 != null && space1.getPlayer()!= null ){
