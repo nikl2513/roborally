@@ -268,6 +268,20 @@ public class GameController {
                 case FAST_FORWARD:
                     this.fastForward(player);
                     break;
+                case Move2:
+                    this.Move2(player);
+                    break;
+                case Uturn:
+                    this.Uturn(player);
+                    break;
+
+                case Moveback:
+                    this.turnRight(player);
+                    this.turnRight(player);
+                    this.moveForward(player);
+                    this.turnRight(player);
+                    this.turnRight(player);
+                    break;
                 default:
                     // DO NOTHING (for now)
             }
@@ -356,6 +370,26 @@ public class GameController {
         player.setHeading(heading.prev());
 
 
+    }
+
+    /**
+     * @auther Amskov
+     * The robots direction turns around
+     * @param player is the current players robot
+     *
+     */
+    public void Uturn(@NotNull Player player){
+        int i;
+        for (i = 0; i < 2; ++i){
+            Heading heading = player.getHeading();
+            player.setHeading(heading.prev());
+        }
+    }
+
+
+    public void Move2(@NotNull Player player) {
+        this.moveForward(player);
+        this.moveForward(player);
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {

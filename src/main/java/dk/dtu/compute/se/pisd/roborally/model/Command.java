@@ -31,14 +31,24 @@ import java.util.List;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
+
+/**
+ * Add the move 2, Uturn, Moveback.
+ * @author Amskov
+ */
 public enum Command {
 
     // This is a very simplistic way of realizing different commands.
 
-    FORWARD("Fwd"),
+    FORWARD("Move 1"),
     RIGHT("Turn Right"),
     LEFT("Turn Left"),
-    FAST_FORWARD("Fast Fwd"),
+
+    Move2("Move 2"),
+
+    Uturn("U turn"),
+    Moveback("Move back"),
+    FAST_FORWARD("Move 3"),
 
     // XXX Assignment V3 (step 1)
     OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
