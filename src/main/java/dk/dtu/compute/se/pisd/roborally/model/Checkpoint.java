@@ -2,6 +2,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 public class Checkpoint {
 
+    public static Board Space;
     private Space space;
 
    private boolean complete;

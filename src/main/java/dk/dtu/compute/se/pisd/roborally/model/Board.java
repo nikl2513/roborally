@@ -256,8 +256,9 @@ public class Board extends Subject {
 
     }
 
-    public void addCheckpoint(Space space) {
-        space.checkpoint.setSpace(space);
-        boolean checkpointBool = true;
+    public void addCheckpoint(Checkpoint checkpoint) {
+        if (checkpoint.Space == this && !checkpoints.contains(checkpoint))
+        checkpoints.add(checkpoint);
+        notifyChange();
     }
 }
