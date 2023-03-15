@@ -31,11 +31,12 @@ import org.jetbrains.annotations.NotNull;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class ConveyorBelt extends FieldAction {
 
     private Heading heading;
+
+    private Space space;
 
     public Heading getHeading() {
         return heading;
@@ -45,10 +46,33 @@ public class ConveyorBelt extends FieldAction {
         this.heading = heading;
     }
 
+    public Space getSpace() {
+        return space;
+    }
+
+    public void setSpace(Space space) {
+        this.space = space;
+    }
+
+    public ConveyorBelt(Heading heading) {
+        this.heading = heading;
+        space = null;
+    }
+
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        // TODO needs to be implemented
+        if (space.getconveyerbelt != null) {
+            return true;
+        } else {
+            return false;
+        }
         return false;
     }
 
-}
+    public void movePlayer(Space space, GameController gameController, Board board) {
+        Space space1 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
+        if (space1.getWall() != null) {
+            gameController.moveToSpace(space.getPlayer(), space, space.getConveyerbelt().getHeading())
+        }
+
+    }

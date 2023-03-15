@@ -7,8 +7,6 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 
 public class Wall {
-
-
     public static Board Space;
     private Heading heading;
 

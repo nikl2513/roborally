@@ -37,6 +37,7 @@ public class Space extends Subject {
     public final int y;
     private Player player;
     private Wall wall;
+    private Conveyerbelt conveyerbelt;
     private boolean wallbool;
     Checkpoint checkpoint;
     private boolean CheckpointBool;
@@ -56,6 +57,10 @@ public class Space extends Subject {
 
     public Wall getWall() {
         return wall;
+    }
+
+    public Conveyerbelt getConveyerbelt() {
+        return conveyerbelt;
     }
 
     public void setWall(Wall wall) {

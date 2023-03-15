@@ -1,6 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 public class Conveyerbelt {
+    public static Board Space;
     private Space space;
     private Heading heading;
     public void conveyerbelt(){
@@ -23,4 +24,5 @@ public class Conveyerbelt {
     public Space getSpace() {
         return space;
     }
+
 }

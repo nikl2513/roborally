@@ -53,6 +53,8 @@ public class Board extends Subject {
 
     private final List<Checkpoint> checkpoints = new ArrayList<>();
 
+    private final List<Conveyerbelt> conveyerbelts = new ArrayList<>();
+
     private Player current;
 
     private Phase phase = INITIALISATION;
@@ -254,6 +256,12 @@ public class Board extends Subject {
             notifyChange();
         }
 
+    }
+    public void addConveyerbelt(@NotNull Conveyerbelt conveyerbelt){
+        if(Conveyerbelt.Space == this && !conveyerbelts.contains(conveyerbelt)){
+            conveyerbelts.add(conveyerbelt);
+            notifyChange();
+        }
     }
 
     public void addCheckpoint(Checkpoint checkpoint) {
