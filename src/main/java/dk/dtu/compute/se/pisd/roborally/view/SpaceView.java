@@ -113,11 +113,12 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
     public void addCheckpoints() {
-        Circle circle = new Circle(10, 10, 10);
         Checkpoint checkpoint = space.getCheckpoint();
-        circle.setStroke(Color.RED);
-        this.getChildren().add(circle);
-
+        if (checkpoint != null) {
+            Circle circle = new Circle(10, 10, 10);
+            circle.setStroke(Color.RED);
+            this.getChildren().add(circle);
+        }
 
     }
 
