@@ -77,7 +77,9 @@ public class Space extends Subject {
     public Player getPlayer() {
         return player;
     }
-
+    public Checkpoint getCheckpoint() {
+        return checkpoint;
+    }
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
         if (player != oldPlayer &&

@@ -101,9 +101,10 @@ AppController implements Observer {
                 wall2.setSpace(board.getSpace(7,2));
 
                 Checkpoint checkpoint1 = new Checkpoint();
+            board.addCheckpoint(checkpoint1);
                 checkpoint1.setSpace(board.getSpace(3,7));
 
-                board.addCheckpoint(checkpoint1);
+
 
             // XXX: V2
             // board.setCurrentPlayer(board.getPlayer(0));
