@@ -16,7 +16,6 @@ public class Checkpoints {
         space = null;
         boolean complete = false;
     }
-    fkasfk
 
     public void setCheckpoint(){
         this.space =
