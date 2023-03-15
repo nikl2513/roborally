@@ -16,6 +16,4 @@ public class Checkpoints {
         space = null;
         boolean complete = false;
     }
-    public void setCheckpoint(){
-    }
 }
