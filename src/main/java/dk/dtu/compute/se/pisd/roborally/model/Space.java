@@ -40,6 +40,14 @@ public class Space extends Subject {
 
     private Wall wall;
 
+    public Wall getWall() {
+        return wall;
+    }
+
+    public void setWall(Wall wall) {
+        this.wall = wall;
+    }
+
     public Space(Board board, int x, int y) {
         this.board = board;
         this.x = x;
