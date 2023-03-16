@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 
 /**
  * ...
@@ -58,7 +59,9 @@ public class Space extends Subject {
     public Wall getWall() {
         return wall;
     }
+    public void movePlayer(Space space, GameController gameController, Board board){
 
+    }
     public Conveyerbelt getConveyerbelt() {
         return conveyerbelt;
     }

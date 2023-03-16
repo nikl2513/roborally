@@ -61,23 +61,22 @@ public class ConveyorBelt extends FieldAction {
 
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        if (space.getconveyerbelt != null) {
+        if (space.getConveyerbelt() != null) {
             return true;
         } else {
             return false;
         }
-        return false;
     }
 
-    public void movePlayer(Space space, GameController gameController, Board board) {
+   /* public void movePlayer(Space space, GameController gameController, Board board) {
         Space space1 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
         if (space1.getWall() != null) {
             try {
-                gameController.moveToSpace(space.getPlayer(), space, space.getConveyerbelt().getHeading())
-            }
-            catch (ImpossibleMoveException e){
+                gameController.moveToSpace(space.getPlayer(), space, space.getConveyerbelt().getHeading());
+            } catch (ImpossibleMoveException e) {
                 throw new RuntimeException(e);
             }
         }
 
-    }
+    }*/
+}
