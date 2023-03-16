@@ -47,8 +47,13 @@ public class Player extends Subject {
 
     private boolean checkpoint1Complete;
 
-    public boolean getCheckpoint1Complete() {return checkpoint1Complete;}
-    public void setCheckpoint1Complete(boolean checkpoint1Bool) {this.checkpoint1Complete = checkpoint1Bool;}
+    private int checkpointValue;
+    public int getCheckpointValue() {
+        return checkpointValue;
+    }
+    public void setCheckpointValue(int checkpointValue) {
+        this.checkpointValue = checkpointValue;
+    }
 
     private CommandCardField[] program;
     private CommandCardField[] cards;
@@ -57,6 +62,8 @@ public class Player extends Subject {
         this.board = board;
         this.name = name;
         this.color = color;
+
+        checkpointValue = 0;
 
         this.space = null;
         checkpoint1Complete = false;
