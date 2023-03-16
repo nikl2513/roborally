@@ -99,6 +99,7 @@ AppController implements Observer {
             wall1.setSpace(board.getSpace(3,2));
             wall2.setSpace(board.getSpace(7,2));
             wall3.setSpace(board.getSpace(5,3));
+
             Space space1 = board.getSpace(3,2);
             Space space2 = board.getSpace(7,2);
             Space space3 = board.getSpace(5,3);

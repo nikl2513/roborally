@@ -61,12 +61,7 @@ public class Space extends Subject {
         return conveyerbelt;
     }
 
-    public void setWall(Wall wall) {
-        wall.setSpace(this);
 
-
-
-    }
 
     public void setConveyerbelt(Conveyerbelt conveyerbelt) {
         this.conveyerbelt = conveyerbelt;
@@ -76,6 +71,24 @@ public class Space extends Subject {
         this.checkpoint = checkpoint;
     }
 
+
+    public void setWall(Wall wall) {
+        Wall oldwall = this.wall;
+
+        if (wall != oldwall &&
+                wall == null)  {
+            this.wall = wall;
+            if (oldwall != null) {
+                // this should actually not happen
+                oldwall.setSpace(null);
+            }
+            if (wall != null) {
+                wall.setSpace(this);
+            }
+            notifyChange();
+        }
+
+    }
 
     public Space(Board board, int x, int y) {
         this.board = board;
