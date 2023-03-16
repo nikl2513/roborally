@@ -7,6 +7,15 @@ public class Checkpoint {
 
    private boolean complete;
 
+    private int value;
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     public Space getSpace() {
         return space;
     }
@@ -24,6 +33,7 @@ public class Checkpoint {
     }
 
     public void Checkpoint(){
+        value = 1;
         space = null;
         complete = false;
     }
