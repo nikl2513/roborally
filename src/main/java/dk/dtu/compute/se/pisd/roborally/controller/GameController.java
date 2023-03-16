@@ -28,7 +28,6 @@ import org.jetbrains.annotations.NotNull;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class GameController {
 
@@ -45,7 +44,7 @@ public class GameController {
      * @param space the space to which the current player should move
      */
 
-    public void moveCurrentPlayerToSpace(@NotNull Space space)  {
+    public void moveCurrentPlayerToSpace(@NotNull Space space) {
 
         // TODO Assignment V1: method should be implemented by the students:
         //   - the current player should be moved to the given space
@@ -58,18 +57,18 @@ public class GameController {
         if (space.getPlayer() == null) {
             Player currentPlayer = board.getCurrentPlayer();
             space.setPlayer(currentPlayer);
-            board.setMoveCounter(board.getMoveCounter()+1);
+            board.setMoveCounter(board.getMoveCounter() + 1);
             board.getStatusMessage();
             /**
              * Ovenfor har brugt metoden setMoveCounter til at sætte den nuværende moveCounter til +1
              * Og derefter hentet den opdaterede statuslinje med getStatusMessage()
              */
-            if (board.getPlayerNumber(currentPlayer)==board.getPlayersNumber()-1){
+            if (board.getPlayerNumber(currentPlayer) == board.getPlayersNumber() - 1) {
                 currentPlayer = board.getPlayer(0);
                 board.setCurrentPlayer(currentPlayer);
             } else {
                 Player nextCurrentPlayer = currentPlayer;
-                currentPlayer = board.getPlayer(board.getPlayerNumber(nextCurrentPlayer)+1);
+                currentPlayer = board.getPlayer(board.getPlayerNumber(nextCurrentPlayer) + 1);
                 board.setCurrentPlayer(currentPlayer);
             }
         }
@@ -173,7 +172,7 @@ public class GameController {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
                 if (card != null) {
                     Command command = card.command;
-                    if (command.isInteractive()){
+                    if (command.isInteractive()) {
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
                     }
@@ -206,7 +205,7 @@ public class GameController {
 
     public void executeCommandOptionAndContinue(@NotNull Command option) {
         Player currentPlayer = board.getCurrentPlayer();
-        if (board.getPhase() == Phase.PLAYER_INTERACTION && currentPlayer != null){
+        if (board.getPhase() == Phase.PLAYER_INTERACTION && currentPlayer != null) {
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
@@ -231,7 +230,7 @@ public class GameController {
                         }
                     }
                 }
-            }else {
+            } else {
                 // this should not happen
                 assert false;
             }
@@ -240,12 +239,10 @@ public class GameController {
             assert false;
         }
 
-        if ( !board.isStepMode() && board.getPhase() == Phase.ACTIVATION ){
+        if (!board.isStepMode() && board.getPhase() == Phase.ACTIVATION) {
             continuePrograms();
         }
     }
-
-
 
 
     // XXX: V2
@@ -291,39 +288,36 @@ public class GameController {
     // TODO Assignment V2
 
     /**
-     *
      * Moves the current players robot one space i the robots current direction
+     *
      * @param player The player which Robot is getting moved one space in the current direction
-     * This method first insures that both the current space and the neigbouring space exist on the board
-     * It then checks if the neighbouring space is occupied by another player both either setting the players space to
-     * the neighbouring space or if the space is occupied it will run a method called moveToSpace which pushes the other
-     * player away before moving onto the space
+     *               This method first insures that both the current space and the neigbouring space exist on the board
+     *               It then checks if the neighbouring space is occupied by another player both either setting the players space to
+     *               the neighbouring space or if the space is occupied it will run a method called moveToSpace which pushes the other
+     *               player away before moving onto the space
      */
     public void moveForward(@NotNull Player player) {
         Space space = player.getSpace();
         Heading heading = player.getHeading();
         Wall wallcurrentspace = space.getWall();
 
-        if (space != null){
+        if (space != null) {
 
             Space space1 = board.getNeighbour(space, heading);
             Wall wallspacetarget = space.getWall();
-            if(wallcurrentspace == null && wallcurrentspace ==null)
-            if(space1 != null && space1.getPlayer()== null) {
-                player.setSpace(space1);
-            }else if (space1 != null && space1.getPlayer()!= null ){
-                try {
-                    moveToSpace(player,space,heading);
+            if (wallcurrentspace == null && wallcurrentspace == null) {
+                if (space1 != null && space1.getPlayer() == null) {
                     player.setSpace(space1);
-                } catch (ImpossibleMoveException e) {
-                    throw new RuntimeException(e);
+                } else if (space1 != null && space1.getPlayer() != null) {
+                    try {
+                        moveToSpace(player, space, heading);
+                        player.setSpace(space1);
+                    } catch (ImpossibleMoveException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
-
-
         }
-
-
     }
 
     // TODO Assignment V2
@@ -332,6 +326,7 @@ public class GameController {
      * s224567:
      * The method moves the current robot 3 spaces forward in the robots current direction.
      * Before moving the robot the method checks if every space is free.
+     *
      * @param player
      */
     public void fastForward(@NotNull Player player) {
@@ -344,7 +339,7 @@ public class GameController {
         //Space space2 = board.getNeighbour(space1,heading);
         //Space space3 = board.getNeighbour(space2,heading);
         //if (space != null && space1 != null && space2!= null && space3 != null){
-          //  player.setSpace(space3);
+        //  player.setSpace(space3);
         // }
 
     }
@@ -354,6 +349,7 @@ public class GameController {
     /**
      * s224576
      * The robots direction turns to the right
+     *
      * @param player is the current players robot
      */
     public void turnRight(@NotNull Player player) {
@@ -363,9 +359,11 @@ public class GameController {
     }
 
     // TODO Assignment V2
+
     /**
      * s224576
      * The robots direction turns to the left
+     *
      * @param player is the current players robot
      */
     public void turnLeft(@NotNull Player player) {
@@ -376,14 +374,13 @@ public class GameController {
     }
 
     /**
+     * @param player is the current players robot
      * @auther Amskov
      * The robots direction turns around
-     * @param player is the current players robot
-     *
      */
-    public void Uturn(@NotNull Player player){
+    public void Uturn(@NotNull Player player) {
         int i;
-        for (i = 0; i < 2; ++i){
+        for (i = 0; i < 2; ++i) {
             Heading heading = player.getHeading();
             player.setHeading(heading.prev());
         }
@@ -417,30 +414,27 @@ public class GameController {
     }
 
     /**
-     *
-      * @param player
+     * @param player
      * @param space
      * @param heading
      * @throws ImpossibleMoveException
-     *
      */
-public void moveToSpace(
-        @NotNull Player player,
-        @NotNull Space space,
-        @NotNull Heading heading) throws ImpossibleMoveException  {
+    public void moveToSpace(
+            @NotNull Player player,
+            @NotNull Space space,
+            @NotNull Heading heading) throws ImpossibleMoveException {
 
         Player other = space.getPlayer();
-        if(other != null){
-            Space target = board.getNeighbour(space,heading);
+        if (other != null) {
+            Space target = board.getNeighbour(space, heading);
             if (target != null) {
                 moveToSpace(other, target, heading);
-            }else {
+            } else {
                 throw new ImpossibleMoveException(player, space, heading);
             }
         }
-    player.setSpace(space);
-}
-
+        player.setSpace(space);
+    }
 
 
 }
