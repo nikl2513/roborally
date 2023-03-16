@@ -123,8 +123,6 @@ AppController implements Observer {
 
 
 
-
-
             Checkpoint checkpoint1 = new Checkpoint();
             Checkpoint checkpoint2 = new Checkpoint();
             Checkpoint checkpoint3 = new Checkpoint();
