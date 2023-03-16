@@ -91,7 +91,6 @@ AppController implements Observer {
 
                 Wall wall1 = new Wall(SOUTH, board);
 
-
                 Wall wall2 = new Wall(NORTH, board);
                 Wall wall3 = new Wall(EAST, board);
 
