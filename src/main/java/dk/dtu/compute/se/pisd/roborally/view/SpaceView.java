@@ -144,7 +144,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         Checkpoint checkpoint = space.getCheckpoint();
         if (checkpoint != null) {
             Circle circle = new Circle(10, 10, 10);
-            circle.setStroke(Color.YELLOW);
+            circle.setStroke(Color.RED);
             this.getChildren().add(circle);
         }
 
