@@ -106,6 +106,7 @@ AppController implements Observer {
             space2.setWall(wall1);
             space3.setWall(wall1);
 
+
             Conveyerbelt conveyerbelt1 = new Conveyerbelt();
             board.addConveyerbelt(conveyerbelt1);
             conveyerbelt1.setHeading(EAST);
@@ -115,10 +116,35 @@ AppController implements Observer {
 
 
             Checkpoint checkpoint1 = new Checkpoint();
+            Checkpoint checkpoint2 = new Checkpoint();
+            Checkpoint checkpoint3 = new Checkpoint();
+            Checkpoint checkpoint4 = new Checkpoint();
+            Checkpoint checkpoint5 = new Checkpoint();
+            Checkpoint checkpoint6 = new Checkpoint();
             board.addCheckpoint(checkpoint1);
+            board.addCheckpoint(checkpoint2);
+            board.addCheckpoint(checkpoint3);
+            board.addCheckpoint(checkpoint4);
+            board.addCheckpoint(checkpoint5);
+            board.addCheckpoint(checkpoint6);
             checkpoint1.setSpace(board.getSpace(4,3));
+            checkpoint2.setSpace(board.getSpace(2,5));
+            checkpoint3.setSpace(board.getSpace(7,7));
+            checkpoint4.setSpace(board.getSpace(0,1));
+            checkpoint5.setSpace(board.getSpace(0,6));
+            checkpoint6.setSpace(board.getSpace(2,7));
             Space space1c = board.getSpace(4,3);
+            Space space2c = board.getSpace(2,5);
+            Space space3c = board.getSpace(7,7);
+            Space space4c = board.getSpace(0,1);
+            Space space5c = board.getSpace(0,6);
+            Space space6c = board.getSpace(2,7);
             space1c.setCheckpoint(checkpoint1);
+            space2c.setCheckpoint(checkpoint1);
+            space3c.setCheckpoint(checkpoint1);
+            space4c.setCheckpoint(checkpoint1);
+            space5c.setCheckpoint(checkpoint1);
+            space6c.setCheckpoint(checkpoint1);
 
 
 
