@@ -103,7 +103,6 @@ public class SpaceView extends StackPane implements ViewObserver {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         if (wall != null ) {
 
-
             // syd
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(5);
