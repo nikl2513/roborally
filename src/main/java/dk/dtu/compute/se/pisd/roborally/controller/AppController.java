@@ -85,10 +85,13 @@ AppController implements Observer {
                 Player player = new Player(board, PLAYER_COLORS.get(i), "Player " + (i + 1));
                 board.addPlayer(player);
                 player.setSpace(board.getSpace(i % board.width, i));
+
             }
 
 
                 Wall wall1 = new Wall(SOUTH, board);
+
+
                 Wall wall2 = new Wall(NORTH, board);
                 Wall wall3 = new Wall(EAST, board);
 
@@ -96,19 +99,12 @@ AppController implements Observer {
                 board.addwall(wall2);
                 board.addwall(wall3);
 
+
             wall1.setSpace(board.getSpace(3,2));
             wall2.setSpace(board.getSpace(7,2));
             wall3.setSpace(board.getSpace(5,3));
 
-        /*
-            Space space1 = board.getSpace(3,2);
-            Space space2 = board.getSpace(7,2);
-            Space space3 = board.getSpace(5,3);
-            space1.setWall(wall1);
-            space2.setWall(wall2);
-            space3.setWall(wall3);
 
-         */
 
 
             Conveyerbelt conveyerbelt1 = new Conveyerbelt();

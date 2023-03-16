@@ -31,15 +31,11 @@ public class Wall extends Subject {
     }
 
     public void setSpace(Space space) {
-        Space oldspace = this.space;
 
-        if (space != oldspace &&
-                (space == null || space.board == this.board)) {
+
+        if (space == null || space.board == this.board) {
             this.space = space;
-            if (oldspace != null) {
-                // this should actually not happen
-                oldspace.setWall(null);
-            }
+
             if (space != null) {
 
                 space.setWall(this);
@@ -53,12 +49,10 @@ public class Wall extends Subject {
 
 
 
-
-
     public Wall(Heading heading, Board board) {
         this.board = board;
-        this.heading = null;
-        space = null;
+        this.heading = heading;
+        this.space = null;
     }
 }
 

@@ -92,7 +92,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == this.space) {
             updatePlayer();
-
+            addwall(this.space);
 
             // addCheckpoints();
             // addConveyerbelt();
@@ -100,14 +100,15 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
     public void addwall(Space space) {
-        System.out.println("!");
+
 
         Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
+
         if (space.getWall() != null) {
 
-            System.out.println("TEST");
+
             switch (space.getWall().getHeading()) {
 
 
@@ -116,7 +117,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
-                    System.out.println("North");
+
 
                     //nord
                 case EAST:
@@ -124,7 +125,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
-                    System.out.println("EAST");
+
 
                     //øst
                 case WEST:
@@ -132,7 +133,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
-                    System.out.println("West");
+
 
                     //vest
 
@@ -141,7 +142,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
-                    System.out.println("South");
+
             }
             this.getChildren().add(canvas);
 
