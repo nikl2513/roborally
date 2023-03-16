@@ -67,6 +67,10 @@ public class Space extends Subject {
         this.wall = wall;
     }
 
+    public void setCheckpoint(Checkpoint checkpoint) {
+        this.checkpoint = checkpoint;
+    }
+
     public Space(Board board, int x, int y) {
         this.board = board;
         this.x = x;

@@ -73,11 +73,12 @@ public class ConveyorBelt extends FieldAction {
         Space space1 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
         if (space1.getWall() != null) {
             try {
-                gameController.moveToSpace(space.getPlayer(), space, space.getConveyerbelt().getHeading())
-            }
-            catch (ImpossibleMoveException e){
+                gameController.moveToSpace(space.getPlayer(), space, space.getConveyerbelt().getHeading());
+            } catch (ImpossibleMoveException e) {
                 throw new RuntimeException(e);
             }
         }
 
     }
+}
+

@@ -26,11 +26,8 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 import dk.dtu.compute.se.pisd.roborally.RoboRally;
 
-import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 
-import dk.dtu.compute.se.pisd.roborally.model.Wall;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -93,17 +90,40 @@ AppController implements Observer {
 
                 Wall wall1 = new Wall(SOUTH);
                 Wall wall2 = new Wall(NORTH);
+                Wall wall3 = new Wall(EAST);
 
                 board.addwall(wall1);
                 board.addwall(wall2);
+                board.addwall(wall3);
 
-                wall1.setSpace(board.getSpace(3,2));
-                wall2.setSpace(board.getSpace(7,2));
+            wall1.setSpace(board.getSpace(3,2));
+            wall2.setSpace(board.getSpace(7,2));
+            wall3.setSpace(board.getSpace(5,3));
+            Space space1 = board.getSpace(3,2);
+            Space space2 = board.getSpace(7,2);
+            Space space3 = board.getSpace(5,3);
+            space1.setWall(wall1);
+            space2.setWall(wall1);
+            space3.setWall(wall1);
 
-                Checkpoint checkpoint1;
-            checkpoint1 = new Checkpoint();
+
+                Checkpoint checkpoint1 = new Checkpoint();
+            Checkpoint checkpoint2 = new Checkpoint();
+            Checkpoint checkpoint3 = new Checkpoint();
             board.addCheckpoint(checkpoint1);
-                checkpoint1.setSpace(board.getSpace(10,15));
+            board.addCheckpoint(checkpoint2);
+            board.addCheckpoint(checkpoint3);
+            checkpoint1.setSpace(board.getSpace(4,3));
+            checkpoint2.setSpace(board.getSpace(5,1));
+            checkpoint3.setSpace(board.getSpace(2,3));
+            Space space1c = board.getSpace(4,3);
+            Space space2c = board.getSpace(5,1);
+            Space space3c = board.getSpace(2,3);
+            space1c.setCheckpoint(checkpoint1);
+            space2c.setCheckpoint(checkpoint2);
+            space3c.setCheckpoint(checkpoint3);
+
+
 
 
 
