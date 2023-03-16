@@ -73,13 +73,13 @@ public class Space extends Subject {
 
 
     public void setWall(Wall wall) {
-        this.wall=wall;
-        /*Wall oldwall = this.wall;
+        Wall oldwall = this.wall;
 
         if (wall != oldwall &&
                 wall == null)  {
             this.wall = wall;
-            if (oldwall != null) {
+            if (oldwall != null &&
+                    (wall == null || board == wall.board)) {
                 // this should actually not happen
                 oldwall.setSpace(null);
             }
@@ -88,7 +88,7 @@ public class Space extends Subject {
             }
             notifyChange();
         }
-*/
+
     }
 
     public Space(Board board, int x, int y) {

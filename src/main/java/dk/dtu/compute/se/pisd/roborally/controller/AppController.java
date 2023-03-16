@@ -88,9 +88,9 @@ AppController implements Observer {
             }
 
 
-                Wall wall1 = new Wall(SOUTH);
-                Wall wall2 = new Wall(NORTH);
-                Wall wall3 = new Wall(EAST);
+                Wall wall1 = new Wall(SOUTH, board);
+                Wall wall2 = new Wall(NORTH, board);
+                Wall wall3 = new Wall(EAST, board);
 
                 board.addwall(wall1);
                 board.addwall(wall2);
@@ -99,12 +99,16 @@ AppController implements Observer {
             wall1.setSpace(board.getSpace(3,2));
             wall2.setSpace(board.getSpace(7,2));
             wall3.setSpace(board.getSpace(5,3));
+
+        /*
             Space space1 = board.getSpace(3,2);
             Space space2 = board.getSpace(7,2);
             Space space3 = board.getSpace(5,3);
             space1.setWall(wall1);
             space2.setWall(wall2);
             space3.setWall(wall3);
+
+         */
 
 
             Conveyerbelt conveyerbelt1 = new Conveyerbelt();

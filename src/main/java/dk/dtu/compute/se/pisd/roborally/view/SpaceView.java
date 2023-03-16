@@ -92,49 +92,59 @@ public class SpaceView extends StackPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == this.space) {
             updatePlayer();
-            addwall();
-            addCheckpoints();
-            addConveyerbelt();
+
+
+            // addCheckpoints();
+            // addConveyerbelt();
         }
     }
 
-    public void addwall() {
-        Wall wall = space.getWall();
+    public void addwall(Space space) {
+        System.out.println("!");
 
         Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        if (wall != null) {
-                gc.setStroke(Color.RED);
-                gc.setLineWidth(5);
-                gc.setLineCap(StrokeLineCap.ROUND);
-                gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
+        if (space.getWall() != null) {
+
+            System.out.println("TEST");
+            switch (space.getWall().getHeading()) {
 
 
-            //nord
+                case NORTH:
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
+                    gc.setLineCap(StrokeLineCap.ROUND);
+                    gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
+                    System.out.println("North");
 
-                gc.setStroke(Color.RED);
-                gc.setLineWidth(5);
-                gc.setLineCap(StrokeLineCap.ROUND);
-                gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+                    //nord
+                case EAST:
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
+                    gc.setLineCap(StrokeLineCap.ROUND);
+                    gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+                    System.out.println("EAST");
 
+                    //øst
+                case WEST:
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
+                    gc.setLineCap(StrokeLineCap.ROUND);
+                    gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
+                    System.out.println("West");
 
-            //øst
+                    //vest
 
-                gc.setStroke(Color.RED);
-                gc.setLineWidth(5);
-                gc.setLineCap(StrokeLineCap.ROUND);
-                gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
-
-
-            //vest
-
-                gc.setStroke(Color.RED);
-                gc.setLineWidth(5);
-                gc.setLineCap(StrokeLineCap.ROUND);
-                gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+                case SOUTH:
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
+                    gc.setLineCap(StrokeLineCap.ROUND);
+                    gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+                    System.out.println("South");
             }
             this.getChildren().add(canvas);
+
         }
 
 
@@ -143,7 +153,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
 
-
+/*
 
     public void addCheckpoints() {
         Checkpoint checkpoint = space.getCheckpoint();
@@ -154,7 +164,8 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
 
     }
-
+*/
+     /*
     public void addConveyerbelt() {
         Conveyerbelt conveyerbelt = space.getConveyerbelt();
         if (conveyerbelt != null) {
@@ -238,7 +249,9 @@ public class SpaceView extends StackPane implements ViewObserver {
             //this.getChildren().add(rectangle);
 
         }
+    }*/
     }
+
 }
 
 
