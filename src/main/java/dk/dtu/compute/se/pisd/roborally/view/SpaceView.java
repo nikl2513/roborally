@@ -27,10 +27,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -96,6 +93,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
             updatePlayer();
             addCheckpoints();
+            addConveyerbelt();
         }
     }
 
@@ -124,10 +122,15 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     }
 
+    public void addConveyerbelt() {
+        Conveyerbelt conveyerbelt = space.getConveyerbelt();
+        if (conveyerbelt != null&& conveyerbelt.getHeading() == Heading.EAST) {
+            Rectangle rectangle = new Rectangle(20, 25);
+            rectangle.setStroke(Color.YELLOW);
+            this.getChildren().add(rectangle);
 
 
-
-
+        }
+    }
 }
-
 
