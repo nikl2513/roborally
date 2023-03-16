@@ -25,8 +25,8 @@ public class Wall {
     }
 
     public void setSpace(Space space) {
-        this.space = space;
-        if (space == null) {
+
+        if (space != null) {
             space.setWall(this);
         }
     }

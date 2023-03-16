@@ -144,7 +144,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         Checkpoint checkpoint = space.getCheckpoint();
         if (checkpoint != null) {
             Circle circle = new Circle(10, 10, 10);
-            circle.setStroke(Color.YELLOW);
+            circle.setStroke(Color.RED);
             this.getChildren().add(circle);
         }
 
@@ -153,9 +153,10 @@ public class SpaceView extends StackPane implements ViewObserver {
     public void addConveyerbelt() {
         Conveyerbelt conveyerbelt = space.getConveyerbelt();
         if (conveyerbelt != null&& conveyerbelt.getHeading() == Heading.EAST) {
-            Rectangle rectangle = new Rectangle(20, 25);
-            rectangle.setStroke(Color.YELLOW);
-            this.getChildren().add(rectangle);
+            Polygon arroww = new Polygon(0.0, 0.0, 20.0, 40.0, 40.0, 0.0);
+            arroww.setStroke(Color.YELLOW);
+            arroww.setRotate(270);
+            this.getChildren().add(arroww);
 
 
         }
