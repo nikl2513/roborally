@@ -113,20 +113,11 @@ AppController implements Observer {
 
 
             Checkpoint checkpoint1 = new Checkpoint();
-            Checkpoint checkpoint2 = new Checkpoint();
-            Checkpoint checkpoint3 = new Checkpoint();
             board.addCheckpoint(checkpoint1);
-            board.addCheckpoint(checkpoint2);
-            board.addCheckpoint(checkpoint3);
             checkpoint1.setSpace(board.getSpace(4,3));
-            checkpoint2.setSpace(board.getSpace(5,1));
-            checkpoint3.setSpace(board.getSpace(2,3));
             Space space1c = board.getSpace(4,3);
-            Space space2c = board.getSpace(5,1);
-            Space space3c = board.getSpace(2,3);
             space1c.setCheckpoint(checkpoint1);
-            space2c.setCheckpoint(checkpoint2);
-            space3c.setCheckpoint(checkpoint3);
+
 
 
 

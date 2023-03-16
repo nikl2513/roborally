@@ -306,6 +306,8 @@ public class GameController {
             Space space1 = board.getNeighbour(space, heading);
             Wall wallspacetarget = space.getWall();
             if (wallcurrentspace == null && wallcurrentspace == null) {
+                if(space1.getCheckpoint()!= null)
+                    player.setCheckpoint1Complete(true);
                 if (space1 != null && space1.getPlayer() == null) {
                     player.setSpace(space1);
                     if (space1.getConveyerbelt() != null){

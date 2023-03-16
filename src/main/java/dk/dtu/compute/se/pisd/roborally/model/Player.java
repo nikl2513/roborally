@@ -45,6 +45,11 @@ public class Player extends Subject {
     private Space space;
     private Heading heading = SOUTH;
 
+    private boolean checkpoint1Complete;
+
+    public boolean getCheckpoint1Complete() {return checkpoint1Complete;}
+    public void setCheckpoint1Complete(boolean checkpoint1Bool) {this.checkpoint1Complete = checkpoint1Bool;}
+
     private CommandCardField[] program;
     private CommandCardField[] cards;
 
@@ -54,6 +59,8 @@ public class Player extends Subject {
         this.color = color;
 
         this.space = null;
+        checkpoint1Complete = false;
+
 
         program = new CommandCardField[NO_REGISTERS];
         for (int i = 0; i < program.length; i++) {

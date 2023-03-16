@@ -28,5 +28,4 @@ public class Checkpoint {
         complete = false;
     }
 
-
 }
