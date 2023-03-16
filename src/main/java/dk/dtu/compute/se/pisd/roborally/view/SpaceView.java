@@ -27,10 +27,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -96,20 +93,49 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
             updatePlayer();
             addCheckpoints();
+            addConveyerbelt();
         }
     }
 
     public void addwall() {
         Wall wall = space.getWall();
-        if (wall != null && wall.getHeading() == Heading.SOUTH) {
-            Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setStroke(Color.RED);
-            gc.setLineWidth(5);
-            gc.setLineCap(StrokeLineCap.ROUND);
+        Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        if (wall != null ) {
 
-            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
-            this.getChildren().add(canvas);
+            // syd
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
+                    gc.setLineCap(StrokeLineCap.ROUND);
+                    gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
+
+
+            //nord
+
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
+                    gc.setLineCap(StrokeLineCap.ROUND);
+                    gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+
+
+                    //øst
+
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
+                    gc.setLineCap(StrokeLineCap.ROUND);
+                    gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
+
+
+
+
+                    //vest
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(5);
+                    gc.setLineCap(StrokeLineCap.ROUND);
+                    gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+
+
+                    this.getChildren().add(canvas);
 
         }
     }
@@ -122,6 +148,17 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(circle);
         }
 
+    }
+
+    public void addConveyerbelt() {
+        Conveyerbelt conveyerbelt = space.getConveyerbelt();
+        if (conveyerbelt != null&& conveyerbelt.getHeading() == Heading.EAST) {
+            Rectangle rectangle = new Rectangle(20, 25);
+            rectangle.setStroke(Color.YELLOW);
+            this.getChildren().add(rectangle);
+
+
+        }
     }
 }
 

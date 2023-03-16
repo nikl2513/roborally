@@ -62,7 +62,14 @@ public class Space extends Subject {
     }
 
     public void setWall(Wall wall) {
-        this.wall = wall;
+        wall.setSpace(this);
+
+
+
+    }
+
+    public void setConveyerbelt(Conveyerbelt conveyerbelt) {
+        this.conveyerbelt = conveyerbelt;
     }
 
     public void setCheckpoint(Checkpoint checkpoint) {
