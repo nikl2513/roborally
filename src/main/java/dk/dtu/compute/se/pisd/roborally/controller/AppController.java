@@ -99,13 +99,12 @@ AppController implements Observer {
             wall1.setSpace(board.getSpace(3,2));
             wall2.setSpace(board.getSpace(7,2));
             wall3.setSpace(board.getSpace(5,3));
-
             Space space1 = board.getSpace(3,2);
             Space space2 = board.getSpace(7,2);
             Space space3 = board.getSpace(5,3);
             space1.setWall(wall1);
-            space2.setWall(wall1);
-            space3.setWall(wall1);
+            space2.setWall(wall2);
+            space3.setWall(wall3);
 
 
             Conveyerbelt conveyerbelt1 = new Conveyerbelt();
@@ -114,6 +113,16 @@ AppController implements Observer {
             conveyerbelt1.setSpace(board.getSpace(1,3));
             Space space4 = board.getSpace(1,3);
             space4.setConveyerbelt(conveyerbelt1);
+
+            Conveyerbelt conveyerbelt2 = new Conveyerbelt();
+            board.addConveyerbelt(conveyerbelt2);
+            conveyerbelt2.setHeading(NORTH);
+            conveyerbelt2.setSpace(board.getSpace(4,6));
+            Space space6 = board.getSpace(4,6);
+            space6.setConveyerbelt(conveyerbelt2);
+
+
+
 
 
             Checkpoint checkpoint1 = new Checkpoint();
