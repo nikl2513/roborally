@@ -108,7 +108,7 @@ AppController implements Observer {
 
             Conveyerbelt conveyerbelt1 = new Conveyerbelt();
             board.addConveyerbelt(conveyerbelt1);
-            conveyerbelt1.setHeading(EAST);
+            conveyerbelt1.setHeading(WEST);
             conveyerbelt1.setSpace(board.getSpace(1,3));
             Space space4 = board.getSpace(1,3);
             space4.setConveyerbelt(conveyerbelt1);
