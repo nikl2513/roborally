@@ -40,7 +40,7 @@ public class Space extends Subject {
     private Wall wall;
     private Conveyerbelt conveyerbelt;
     private boolean wallbool;
-    Checkpoint checkpoint;
+    private Checkpoint checkpoint;
     private boolean CheckpointBool;
 
 
@@ -73,6 +73,7 @@ public class Space extends Subject {
     public void setCheckpoint(Checkpoint checkpoint) {
         this.checkpoint = checkpoint;
     }
+
 
     public Space(Board board, int x, int y) {
         this.board = board;

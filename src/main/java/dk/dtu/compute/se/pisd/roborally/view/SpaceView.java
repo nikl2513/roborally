@@ -22,9 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.model.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
-import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
@@ -101,25 +99,30 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
     }
 
-    public void addwall(@NotNull Space space) {
-        Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setStroke(Color.RED);
-        gc.setLineWidth(5);
-        gc.setLineCap(StrokeLineCap.ROUND);
+    public void addwall() {
+        Wall wall = space.getWall();
+        if (wall != null && wall.getHeading() == Heading.SOUTH) {
+            Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.RED);
+            gc.setLineWidth(5);
+            gc.setLineCap(StrokeLineCap.ROUND);
 
-        gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
-        this.getChildren().add(canvas);
+            gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
+            this.getChildren().add(canvas);
+
+        }
     }
 
     public void addCheckpoints() {
-        Checkpoint checkpoint1 = space.getCheckpoint();
+        Checkpoint checkpoint = space.getCheckpoint();
+        if (checkpoint != null) {
             Circle circle = new Circle(10, 10, 10);
             circle.setStroke(Color.YELLOW);
             this.getChildren().add(circle);
         }
 
     }
-
+}
 
 
