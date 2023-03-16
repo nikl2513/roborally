@@ -26,6 +26,7 @@ public class Wall {
 
     public void setSpace(Space space) {
         this.space = space;
+        space.setWall(this);
     }
 
     public Wall(Heading heading) {
