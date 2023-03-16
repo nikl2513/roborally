@@ -26,11 +26,8 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 import dk.dtu.compute.se.pisd.roborally.RoboRally;
 
-import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 
-import dk.dtu.compute.se.pisd.roborally.model.Wall;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -93,12 +90,23 @@ AppController implements Observer {
 
                 Wall wall1 = new Wall(SOUTH);
                 Wall wall2 = new Wall(NORTH);
+                Wall wall3 = new Wall(WEST);
 
                 board.addwall(wall1);
                 board.addwall(wall2);
+                board.addwall(wall3);
 
                 wall1.setSpace(board.getSpace(3,2));
                 wall2.setSpace(board.getSpace(7,2));
+                wall3.setSpace(board.getSpace(5,3));
+          Space space1 = board.getSpace(3,2);
+            Space space2 = board.getSpace(7,2);
+            Space space3 = board.getSpace(5,3);
+          space1.setWall(wall1);
+            space2.setWall(wall1);
+            space3.setWall(wall1);
+
+
 
                 Checkpoint checkpoint1;
             checkpoint1 = new Checkpoint();
