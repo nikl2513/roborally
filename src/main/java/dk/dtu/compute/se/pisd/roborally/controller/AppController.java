@@ -93,15 +93,17 @@ AppController implements Observer {
 
                 Wall wall2 = new Wall(NORTH, board);
                 Wall wall3 = new Wall(EAST, board);
+                Wall wall4 = new Wall(WEST,board);
 
                 board.addwall(wall1);
                 board.addwall(wall2);
                 board.addwall(wall3);
-
+                board.addwall(wall4);
 
             wall1.setSpace(board.getSpace(3,2));
             wall2.setSpace(board.getSpace(7,2));
             wall3.setSpace(board.getSpace(5,3));
+            wall4.setSpace(board.getSpace(1,7));
 
 
 

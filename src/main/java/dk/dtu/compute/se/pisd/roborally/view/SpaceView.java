@@ -116,16 +116,17 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
-                    gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
+                    gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
                     System.out.println("North");
                     break;
                     //nord
                 case EAST:
+
+
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
-                    gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
-
+                    gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
                     System.out.println("East");
                     break;
 
@@ -140,10 +141,11 @@ public class SpaceView extends StackPane implements ViewObserver {
                     //vest
 
                 case SOUTH:
+
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
-                    gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+                    gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
                     System.out.println("South");
                     break;
 
