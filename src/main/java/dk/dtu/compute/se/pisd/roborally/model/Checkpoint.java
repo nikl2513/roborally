@@ -1,5 +1,8 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
+/*
+checkpoint klasse, s224567
+ */
 public class Checkpoint {
 
     public static Board Space;

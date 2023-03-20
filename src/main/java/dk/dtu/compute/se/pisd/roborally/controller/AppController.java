@@ -148,10 +148,10 @@ AppController implements Observer {
             checkpoint4.setSpace(board.getSpace(4,1));
             checkpoint5.setSpace(board.getSpace(0,6));
             checkpoint6.setSpace(board.getSpace(2,7));
-            Space space1c = board.getSpace(4,3);
+            Space space1c = board.getSpace(0,1);
             Space space2c = board.getSpace(2,5);
             Space space3c = board.getSpace(7,7);
-            Space space4c = board.getSpace(0,1);
+            Space space4c = board.getSpace(4,1);
             Space space5c = board.getSpace(0,6);
             Space space6c = board.getSpace(2,7);
             space1c.setCheckpoint(checkpoint1);

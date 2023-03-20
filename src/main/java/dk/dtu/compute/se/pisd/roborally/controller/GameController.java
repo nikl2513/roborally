@@ -288,6 +288,7 @@ public class GameController {
     // TODO Assignment V2
 
     /**
+     * s224567
      * Moves the current players robot one space i the robots current direction
      *
      * @param player The player which Robot is getting moved one space in the current direction
@@ -310,22 +311,34 @@ public class GameController {
                     int value = player.getCheckpointValue();
                     switch (value) {
                         case 0:
-                            player.setCheckpointValue(1);
+                            if(player.getCheckpointValue()==0 && space1.getCheckpoint().getCheckpointnumber()==1) {
+                                player.setCheckpointValue(1);
+                            }
                             break;
                         case 1:
-                            player.setCheckpointValue(2);
+                            if(player.getCheckpointValue()==1 && space1.getCheckpoint().getCheckpointnumber()==2) {
+                                player.setCheckpointValue(2);
+                            }
                             break;
                         case 2:
-                            player.setCheckpointValue(3);
+                            if(player.getCheckpointValue()==2 && space1.getCheckpoint().getCheckpointnumber()==3) {
+                                player.setCheckpointValue(3);
+                            }
                             break;
                         case 3:
-                            player.setCheckpointValue(4);
+                            if(player.getCheckpointValue()==3 && space1.getCheckpoint().getCheckpointnumber()==4) {
+                                player.setCheckpointValue(4);
+                            }
                             break;
                         case 4:
-                            player.setCheckpointValue(5);
+                            if(player.getCheckpointValue()==4 && space1.getCheckpoint().getCheckpointnumber()==5) {
+                                player.setCheckpointValue(5);
+                            }
                             break;
                         case 5:
-                            player.setCheckpointValue(6);
+                            if(player.getCheckpointValue()==5 && space1.getCheckpoint().getCheckpointnumber()==6) {
+                                player.setCheckpointValue(6);
+                            }
                             break;
                     }
 
