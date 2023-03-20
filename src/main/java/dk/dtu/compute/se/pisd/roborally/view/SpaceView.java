@@ -93,9 +93,17 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
             updatePlayer();
             addwall(this.space);
-
-            // addCheckpoints();
+            addCheckpoints();
             // addConveyerbelt();
+        }
+    }
+
+    private void addCheckpoints() {
+        Checkpoint checkpoint = space.getCheckpoint();
+        if (checkpoint != null) {
+            Circle circle = new Circle(10, 10, 10);
+            circle.setStroke(Color.YELLOW);
+            this.getChildren().add(circle);
         }
     }
 
@@ -117,7 +125,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
-                    System.out.println("North");
+
                     break;
                     //nord
                 case EAST:
@@ -127,18 +135,18 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
-                    System.out.println("East");
+
                     break;
 
-                    //øst
+                    //west
                 case WEST:
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
-                    System.out.println("West");
+
                     break;
-                    //vest
+                    //south
 
                 case SOUTH:
 
@@ -146,7 +154,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
-                    System.out.println("South");
+
                     break;
 
                 default:
@@ -162,18 +170,10 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
 
-/*
 
-    public void addCheckpoints() {
-        Checkpoint checkpoint = space.getCheckpoint();
-        if (checkpoint != null) {
-            Circle circle = new Circle(10, 10, 10);
-            circle.setStroke(Color.YELLOW);
-            this.getChildren().add(circle);
-        }
 
-    }
-*/
+
+
      /*
     public void addConveyerbelt() {
         Conveyerbelt conveyerbelt = space.getConveyerbelt();

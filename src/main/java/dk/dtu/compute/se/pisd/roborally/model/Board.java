@@ -248,6 +248,7 @@ public class Board extends Subject {
                 ", Player = " + getCurrentPlayer().getName() +
                 ", AntalSlag = " + getMoveCounter();
 
+
     }
 
     public void addwall(@NotNull Wall wall) {
