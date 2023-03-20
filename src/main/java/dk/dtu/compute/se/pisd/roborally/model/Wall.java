@@ -1,4 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
+
+import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+
 /**
  *
  * @Author s215698
@@ -6,8 +9,11 @@ package dk.dtu.compute.se.pisd.roborally.model;
  */
 
 
-public class Wall {
+public class Wall extends Subject {
     public static Board Space;
+
+     final public Board board;
+
     private Heading heading;
 
     private  Space space;
@@ -26,14 +32,27 @@ public class Wall {
 
     public void setSpace(Space space) {
 
-        if (space != null) {
-            space.setWall(this);
-        }
-    }
 
-    public Wall(Heading heading) {
-        this.heading = null;
-        space = null;
+        if (space == null || space.board == this.board) {
+            this.space = space;
+
+            if (space != null) {
+
+                space.setWall(this);
+
+            }
+            notifyChange();
+        }
+
+
+        }
+
+
+
+    public Wall(Heading heading, Board board) {
+        this.board = board;
+        this.heading = heading;
+        this.space = null;
     }
 }
 

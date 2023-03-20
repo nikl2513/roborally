@@ -76,8 +76,8 @@ public class Space extends Subject {
         Wall oldwall = this.wall;
 
         if (wall != oldwall &&
-                wall == null)  {
-            this.wall = wall;
+                ( wall == null || board == wall.board))  {
+            this.wall = wall ;
             if (oldwall != null) {
                 // this should actually not happen
                 oldwall.setSpace(null);

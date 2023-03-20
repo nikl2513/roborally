@@ -85,35 +85,43 @@ AppController implements Observer {
                 Player player = new Player(board, PLAYER_COLORS.get(i), "Player " + (i + 1));
                 board.addPlayer(player);
                 player.setSpace(board.getSpace(i % board.width, i));
+
             }
 
 
-                Wall wall1 = new Wall(SOUTH);
-                Wall wall2 = new Wall(NORTH);
-                Wall wall3 = new Wall(EAST);
+                Wall wall1 = new Wall(SOUTH, board);
+
+                Wall wall2 = new Wall(NORTH, board);
+                Wall wall3 = new Wall(EAST, board);
+                Wall wall4 = new Wall(WEST,board);
 
                 board.addwall(wall1);
                 board.addwall(wall2);
                 board.addwall(wall3);
+                board.addwall(wall4);
 
             wall1.setSpace(board.getSpace(3,2));
             wall2.setSpace(board.getSpace(7,2));
             wall3.setSpace(board.getSpace(5,3));
+            wall4.setSpace(board.getSpace(1,7));
 
-            Space space1 = board.getSpace(3,2);
-            Space space2 = board.getSpace(7,2);
-            Space space3 = board.getSpace(5,3);
-            space1.setWall(wall1);
-            space2.setWall(wall1);
-            space3.setWall(wall1);
+
 
 
             Conveyerbelt conveyerbelt1 = new Conveyerbelt();
             board.addConveyerbelt(conveyerbelt1);
-            conveyerbelt1.setHeading(EAST);
+            conveyerbelt1.setHeading(WEST);
             conveyerbelt1.setSpace(board.getSpace(1,3));
             Space space4 = board.getSpace(1,3);
             space4.setConveyerbelt(conveyerbelt1);
+
+            Conveyerbelt conveyerbelt2 = new Conveyerbelt();
+            board.addConveyerbelt(conveyerbelt2);
+            conveyerbelt2.setHeading(NORTH);
+            conveyerbelt2.setSpace(board.getSpace(4,6));
+            Space space6 = board.getSpace(4,6);
+            space6.setConveyerbelt(conveyerbelt2);
+
 
 
             Checkpoint checkpoint1 = new Checkpoint();
