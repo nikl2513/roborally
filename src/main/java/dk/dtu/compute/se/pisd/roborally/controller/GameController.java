@@ -309,12 +309,12 @@ public class GameController {
                 if(space1.getCheckpoint()!= null){
                     int value = player.getCheckpointValue();
                     switch(value){
-                        case 0:
-                        case 1:
-                        case 2:
-                        case 3:
-                        case 4:
-                        case 5:
+                        case 0: player.setCheckpointValue(1);
+                        case 1: player.setCheckpointValue(2);
+                        case 2: player.setCheckpointValue(3);
+                        case 3: player.setCheckpointValue(4);
+                        case 4: player.setCheckpointValue(5);
+                        case 5: player.setCheckpointValue(6);
                     }
 
                 }
