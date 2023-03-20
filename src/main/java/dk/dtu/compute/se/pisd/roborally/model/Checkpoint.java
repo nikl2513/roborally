@@ -7,6 +7,16 @@ public class Checkpoint {
 
    private boolean complete;
 
+    public int getCheckpointnumber() {
+        return checkpointnumber;
+    }
+
+    public void setCheckpointnumber(int checkpointnumber) {
+        this.checkpointnumber = checkpointnumber;
+    }
+
+    public int checkpointnumber;
+
     private int value;
     public int getValue() {
         return value;
@@ -36,6 +46,7 @@ public class Checkpoint {
         value = 1;
         space = null;
         complete = false;
+        checkpointnumber= 0;
     }
 
 }

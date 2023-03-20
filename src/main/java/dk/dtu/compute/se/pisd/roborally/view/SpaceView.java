@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ *
  */
 public class SpaceView extends StackPane implements ViewObserver {
 
@@ -92,11 +93,61 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
             updatePlayer();
             addwall(this.space);
-
-            // addCheckpoints();
+            addCheckpoints(this.space);
             // addConveyerbelt();
         }
     }
+
+    private void addCheckpoints(Space space) {
+        Checkpoint checkpoint = space.getCheckpoint();
+
+       if (checkpoint != null) {
+
+           int Checkponitnumber =space.getCheckpoint().getCheckpointnumber();
+           switch (Checkponitnumber) {
+               case 1 -> {
+                   Circle circle = new Circle(10, 10, 10);
+                   circle.setStroke(Color.YELLOW);
+                   this.getChildren().add(circle);
+                   break;
+               }
+               case 2 -> {
+                   Circle circle1 = new Circle(10, 10, 10);
+                   circle1.setStroke(Color.AQUA);
+                   this.getChildren().add(circle1);
+                   break;
+               }
+               case 3 -> {
+                   Circle circle2 = new Circle(10, 10, 10);
+                   circle2.setStroke(Color.RED);
+                   this.getChildren().add(circle2);
+                   break;
+               }
+               case 4 -> {
+                   Circle circle3 = new Circle(10, 10, 10);
+                   circle3.setStroke(Color.BROWN);
+                   this.getChildren().add(circle3);
+                   break;
+               }
+               case 5 -> {
+                   Circle circle4 = new Circle(10, 10, 10);
+                   circle4.setStroke(Color.DARKGREY);
+                   this.getChildren().add(circle4);
+                   break;
+               }
+               case 6 -> {
+                   Circle circle5 = new Circle(10, 10, 10);
+                   circle5.setStroke(Color.PURPLE);
+                   this.getChildren().add(circle5);
+                   break;
+               }
+           }
+
+
+           }
+
+        }
+
 
     public void addwall(Space space) {
 
@@ -116,9 +167,9 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
-                    System.out.println("North");
+
                     break;
-                //nord
+                    //nord
                 case EAST:
 
 
@@ -126,18 +177,18 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
-                    System.out.println("East");
+
                     break;
 
-                //øst
+                    //west
                 case WEST:
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
-                    System.out.println("West");
+
                     break;
-                //vest
+                    //south
 
                 case SOUTH:
 
@@ -145,7 +196,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.setLineWidth(5);
                     gc.setLineCap(StrokeLineCap.ROUND);
                     gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
-                    System.out.println("South");
+
                     break;
 
                 default:

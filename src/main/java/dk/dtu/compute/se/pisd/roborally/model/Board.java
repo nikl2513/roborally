@@ -246,7 +246,8 @@ public class Board extends Subject {
         // XXX: V2 changed the status so that it shows the phase, the current player and the number of steps
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
-                ", AntalSlag = " + getMoveCounter();
+                ", AntalSlag = " + getMoveCounter() +"Checkpoints = " + getCurrentPlayer().getCheckpointValue();
+
 
     }
 
