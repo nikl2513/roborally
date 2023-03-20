@@ -62,7 +62,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.setStyle("-fx-background-color: black;");
         }
 
-        // updatePlayer();
+         updatePlayer();
 
         // This space view should listen to changes of the space
         space.attach(this);
@@ -94,7 +94,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             updatePlayer();
             addwall(this.space);
             addCheckpoints(this.space);
-            // addConveyerbelt();
+            addConveyerbelt();
         }
     }
 
@@ -169,7 +169,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
 
                     break;
-                    //nord
+                //nord
                 case EAST:
 
 
@@ -180,7 +180,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
                     break;
 
-                    //west
+                //west
                 case WEST:
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(5);
@@ -188,7 +188,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
 
                     break;
-                    //south
+                //south
 
                 case SOUTH:
 
@@ -205,25 +205,17 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(canvas);
 
         }
-
-
-
-
-
-
-
-/*
-
-    public void addCheckpoints() {
-        Checkpoint checkpoint = space.getCheckpoint();
-        if (checkpoint != null) {
-            Circle circle = new Circle(10, 10, 10);
-            circle.setStroke(Color.YELLOW);
-            this.getChildren().add(circle);
-        }
-
     }
-*/
+
+
+
+
+
+
+
+
+
+
 
         public void addConveyerbelt () {
             Conveyerbelt conveyerbelt = space.getConveyerbelt();
@@ -303,14 +295,13 @@ public class SpaceView extends StackPane implements ViewObserver {
                     }
                 }
 
-                //Rectangle rectangle = new Rectangle(20, 25);
-                //rectangle.setStroke(Color.YELLOW);
-                //this.getChildren().add(rectangle);
+
 
             }
         }
     }
 
-}
+
+
 
 
