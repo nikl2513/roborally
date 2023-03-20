@@ -305,8 +305,13 @@ public class GameController {
         if (space != null) {
 
             Space space1 = board.getNeighbour(space, heading);
-            Wall wallspacetarget = space.getWall();
-            if (wallcurrentspace == null && wallcurrentspace == null) {
+            Wall wallspacetarget = space1.getWall();
+            Heading heading2 = player.getHeading();
+            heading2.next();
+            heading2.next();
+            player.setHeading(heading2);
+            System.out.println(heading2);
+            if ( wallspacetarget.getHeading() != heading2 && wallcurrentspace.getHeading() != player.getHeading()) {
                 if (space1.getCheckpoint() != null) {
                     int value = player.getCheckpointValue();
                     switch (value) {
