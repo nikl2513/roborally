@@ -34,7 +34,6 @@ import org.jetbrains.annotations.NotNull;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class SpaceView extends StackPane implements ViewObserver {
 
@@ -119,7 +118,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
                     System.out.println("North");
                     break;
-                    //nord
+                //nord
                 case EAST:
 
 
@@ -130,7 +129,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     System.out.println("East");
                     break;
 
-                    //øst
+                //øst
                 case WEST:
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(5);
@@ -138,7 +137,7 @@ public class SpaceView extends StackPane implements ViewObserver {
                     gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
                     System.out.println("West");
                     break;
-                    //vest
+                //vest
 
                 case SOUTH:
 
@@ -174,91 +173,91 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     }
 */
-     /*
-    public void addConveyerbelt() {
-        Conveyerbelt conveyerbelt = space.getConveyerbelt();
-        if (conveyerbelt != null) {
-            Heading heading = space.getConveyerbelt().getHeading();
-            switch(heading) {
-                case NORTH: {
-                    Rectangle rectangleN = new Rectangle(35, 35);
-                    rectangleN.setStroke(Color.RED);
-                    this.getChildren().add(rectangleN);
-                    Polygon arrowN = new Polygon(0.0, 0.0,
-                            17.5, 35.0,
-                            35.0, 0.0);
-                    try {
-                        arrowN.setFill(Color.valueOf("YELLOW"));
-                    } catch (Exception e) {
-                        arrowN.setFill(Color.YELLOW);
+
+        public void addConveyerbelt () {
+            Conveyerbelt conveyerbelt = space.getConveyerbelt();
+            if (conveyerbelt != null) {
+                Heading heading = space.getConveyerbelt().getHeading();
+                switch (heading) {
+                    case NORTH: {
+                        Rectangle rectangleN = new Rectangle(35, 35);
+                        rectangleN.setStroke(Color.RED);
+                        this.getChildren().add(rectangleN);
+                        Polygon arrowN = new Polygon(0.0, 0.0,
+                                17.5, 35.0,
+                                35.0, 0.0);
+                        try {
+                            arrowN.setFill(Color.valueOf("YELLOW"));
+                        } catch (Exception e) {
+                            arrowN.setFill(Color.YELLOW);
+                        }
+
+                        arrowN.setRotate(180);
+                        this.getChildren().add(arrowN);
+                        break;
                     }
 
-                    arrowN.setRotate(180);
-                    this.getChildren().add(arrowN);
-                    break;
-                }
+                    case EAST: {
+                        Rectangle rectangleE = new Rectangle(35, 35);
+                        rectangleE.setStroke(Color.RED);
+                        this.getChildren().add(rectangleE);
+                        Polygon arrowE = new Polygon(0.0, 0.0,
+                                17.5, 35.0,
+                                35.0, 0.0);
+                        try {
+                            arrowE.setFill(Color.valueOf("YELLOW"));
+                        } catch (Exception e) {
+                            arrowE.setFill(Color.YELLOW);
+                        }
 
-                case EAST: {
-                    Rectangle rectangleE = new Rectangle(35, 35);
-                    rectangleE.setStroke(Color.RED);
-                    this.getChildren().add(rectangleE);
-                    Polygon arrowE = new Polygon(0.0, 0.0,
-                            17.5, 35.0,
-                            35.0, 0.0);
-                    try {
-                        arrowE.setFill(Color.valueOf("YELLOW"));
-                    } catch (Exception e) {
-                        arrowE.setFill(Color.YELLOW);
+                        arrowE.setRotate(270);
+                        this.getChildren().add(arrowE);
+                        break;
                     }
 
-                    arrowE.setRotate(270);
-                    this.getChildren().add(arrowE);
-                    break;
-                }
+                    case SOUTH: {
+                        Rectangle rectangleS = new Rectangle(35, 35);
+                        rectangleS.setStroke(Color.RED);
+                        this.getChildren().add(rectangleS);
+                        Polygon arrowS = new Polygon(0.0, 0.0,
+                                17.5, 35.0,
+                                35.0, 0.0);
+                        try {
+                            arrowS.setFill(Color.valueOf("YELLOW"));
+                        } catch (Exception e) {
+                            arrowS.setFill(Color.YELLOW);
+                        }
 
-                case SOUTH: {
-                    Rectangle rectangleS = new Rectangle(35, 35);
-                    rectangleS.setStroke(Color.RED);
-                    this.getChildren().add(rectangleS);
-                    Polygon arrowS = new Polygon(0.0, 0.0,
-                            17.5, 35.0,
-                            35.0, 0.0);
-                    try {
-                        arrowS.setFill(Color.valueOf("YELLOW"));
-                    } catch (Exception e) {
-                        arrowS.setFill(Color.YELLOW);
+                        arrowS.setRotate(0);
+                        this.getChildren().add(arrowS);
+                        break;
                     }
 
-                    arrowS.setRotate(0);
-                    this.getChildren().add(arrowS);
-                    break;
-                }
+                    case WEST: {
+                        Rectangle rectangleW = new Rectangle(35, 35);
+                        rectangleW.setStroke(Color.RED);
+                        this.getChildren().add(rectangleW);
+                        Polygon arrowW = new Polygon(0.0, 0.0,
+                                17.5, 35.0,
+                                35.0, 0.0);
+                        try {
+                            arrowW.setFill(Color.valueOf("YELLOW"));
+                        } catch (Exception e) {
+                            arrowW.setFill(Color.YELLOW);
+                        }
 
-                case WEST: {
-                    Rectangle rectangleW = new Rectangle(35, 35);
-                    rectangleW.setStroke(Color.RED);
-                    this.getChildren().add(rectangleW);
-                    Polygon arrowW = new Polygon(0.0, 0.0,
-                            17.5, 35.0,
-                            35.0, 0.0);
-                    try {
-                        arrowW.setFill(Color.valueOf("YELLOW"));
-                    } catch (Exception e) {
-                        arrowW.setFill(Color.YELLOW);
+                        arrowW.setRotate(90);
+                        this.getChildren().add(arrowW);
+                        break;
                     }
-
-                    arrowW.setRotate(90);
-                    this.getChildren().add(arrowW);
-                    break;
                 }
+
+                //Rectangle rectangle = new Rectangle(20, 25);
+                //rectangle.setStroke(Color.YELLOW);
+                //this.getChildren().add(rectangle);
+
             }
-
-            //Rectangle rectangle = new Rectangle(20, 25);
-            //rectangle.setStroke(Color.YELLOW);
-            //this.getChildren().add(rectangle);
-
         }
-    }*/
     }
 
 }
