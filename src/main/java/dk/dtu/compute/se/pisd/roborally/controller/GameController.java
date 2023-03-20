@@ -306,21 +306,27 @@ public class GameController {
             Space space1 = board.getNeighbour(space, heading);
             Wall wallspacetarget = space.getWall();
             if (wallcurrentspace == null && wallcurrentspace == null) {
-                if(space1.getCheckpoint()!= null){
+                if (space1.getCheckpoint() != null) {
                     int value = player.getCheckpointValue();
-                    switch(value){
-                        case 0: player.setCheckpointValue(1);
-                                break;
-                        case 1: player.setCheckpointValue(2);
-                                break;
-                        case 2: player.setCheckpointValue(3);
-                                break;
-                        case 3: player.setCheckpointValue(4);
-                                break;
-                        case 4: player.setCheckpointValue(5);
-                                break;
-                        case 5: player.setCheckpointValue(6);
-                                break;
+                    switch (value) {
+                        case 0:
+                            player.setCheckpointValue(1);
+                            break;
+                        case 1:
+                            player.setCheckpointValue(2);
+                            break;
+                        case 2:
+                            player.setCheckpointValue(3);
+                            break;
+                        case 3:
+                            player.setCheckpointValue(4);
+                            break;
+                        case 4:
+                            player.setCheckpointValue(5);
+                            break;
+                        case 5:
+                            player.setCheckpointValue(6);
+                            break;
                     }
 
                 }
