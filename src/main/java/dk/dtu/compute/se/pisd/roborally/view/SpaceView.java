@@ -93,19 +93,61 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
             updatePlayer();
             addwall(this.space);
-            addCheckpoints();
+            addCheckpoints(this.space);
             // addConveyerbelt();
         }
     }
 
-    private void addCheckpoints() {
+    private void addCheckpoints(Space space) {
         Checkpoint checkpoint = space.getCheckpoint();
-        if (checkpoint != null) {
-            Circle circle = new Circle(10, 10, 10);
-            circle.setStroke(Color.YELLOW);
-            this.getChildren().add(circle);
+
+       if (checkpoint != null) {
+
+           int Checkponitnumber =space.getCheckpoint().getCheckpointnumber();
+           switch (Checkponitnumber) {
+               case 1 -> {
+                   Circle circle = new Circle(10, 10, 10);
+                   circle.setStroke(Color.YELLOW);
+                   this.getChildren().add(circle);
+                   break;
+               }
+               case 2 -> {
+                   Circle circle1 = new Circle(10, 10, 10);
+                   circle1.setStroke(Color.AQUA);
+                   this.getChildren().add(circle1);
+                   break;
+               }
+               case 3 -> {
+                   Circle circle2 = new Circle(10, 10, 10);
+                   circle2.setStroke(Color.RED);
+                   this.getChildren().add(circle2);
+                   break;
+               }
+               case 4 -> {
+                   Circle circle3 = new Circle(10, 10, 10);
+                   circle3.setStroke(Color.BROWN);
+                   this.getChildren().add(circle3);
+                   break;
+               }
+               case 5 -> {
+                   Circle circle4 = new Circle(10, 10, 10);
+                   circle4.setStroke(Color.DARKGREY);
+                   this.getChildren().add(circle4);
+                   break;
+               }
+               case 6 -> {
+                   Circle circle5 = new Circle(10, 10, 10);
+                   circle5.setStroke(Color.PURPLE);
+                   this.getChildren().add(circle5);
+                   break;
+               }
+           }
+
+
+           }
+
         }
-    }
+
 
     public void addwall(Space space) {
 
