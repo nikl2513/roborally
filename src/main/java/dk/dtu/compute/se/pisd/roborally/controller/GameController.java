@@ -319,7 +319,6 @@ public class GameController {
             player.setHeading(heading);
 
 
-
             if (space1.getCheckpoint() != null) {
                 int value = player.getCheckpointValue();
                 switch (value) {
