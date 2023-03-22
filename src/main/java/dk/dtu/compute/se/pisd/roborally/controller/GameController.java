@@ -183,6 +183,9 @@ public class GameController {
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
+
+                    //--> execute actions on fields!
+                    //--> check checkpoints for alle spillere
                     step++;
 
                     if (step < Player.NO_REGISTERS) {
