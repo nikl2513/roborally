@@ -38,7 +38,7 @@ import java.io.*;
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  */
-public class LoadBoard {
+public class LoadBoard {/*
 
     private static final String BOARDSFOLDER = "boards";
     private static final String DEFAULTBOARD = "defaultboard";
@@ -153,6 +153,6 @@ public class LoadBoard {
                 } catch (IOException e2) {}
             }
         }
-    }
+    }*/
 
 }

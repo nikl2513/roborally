@@ -35,7 +35,7 @@ import java.util.List;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
-class Repository implements IRepository {
+/*class Repository implements IRepository {/*
 	
 	private static final String GAME_GAMEID = "gameID";
 
@@ -110,7 +110,7 @@ class Repository implements IRepository {
 				// inserted after the players are created, since MySQL does
 				// not have a per transaction validation, but validates on
 				// a per row basis.
-				ps = getSelectGameStatementU();
+				/*ps = getSelectGameStatementU();
 				ps.setInt(1, game.getGameId());
 
 				ResultSet rs = ps.executeQuery();
@@ -171,7 +171,7 @@ class Repository implements IRepository {
 			updateCardFieldsInDB(game);
 			*/
 
-            connection.commit();
+            /*connection.commit();
             connection.setAutoCommit(true);
 			return true;
 		} catch (SQLException e) {
@@ -238,7 +238,7 @@ class Repository implements IRepository {
 			loadCardFieldsFromDB(game);
 			*/
 
-			return game;
+			/*return game;
 		} catch (SQLException e) {
 			// TODO error handling
 			e.printStackTrace();
@@ -446,5 +446,5 @@ class Repository implements IRepository {
 	}
 
 
-
-}
+*/
+//}

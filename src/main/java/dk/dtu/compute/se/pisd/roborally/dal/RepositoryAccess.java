@@ -27,7 +27,7 @@ package dk.dtu.compute.se.pisd.roborally.dal;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
-public class RepositoryAccess {
+/*public class RepositoryAccess {
     
 	private static Repository repository;
 	
@@ -39,3 +39,4 @@ public class RepositoryAccess {
 	}
 	
 }
+*/
