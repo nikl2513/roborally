@@ -24,6 +24,11 @@ package dk.dtu.compute.se.pisd.roborally.dal;
 import com.mysql.cj.util.StringUtils;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.IOUtil;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -64,8 +69,16 @@ class Connector {
     
     private void createDatabaseSchema() {
 
-    	String createTablesStatement =
-				IOUtil.readResource("schemas/createschema.sql");
+    	String createTablesStatement;
+		try {
+			ClassLoader classLoader = Connector.class.getClassLoader();
+			URI uri = classLoader.getResource("schemas/createschema.sql") .toURI();
+			byte[] bytes = Files.readAllBytes(Paths.get(uri));
+			createTablesStatement = new String(bytes);
+		}	catch (URISyntaxException | IOException e) {
+			e.printStackTrace();
+			return;
+		}
 
     	try {
     		connection.setAutoCommit(false);
