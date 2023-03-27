@@ -28,6 +28,7 @@ import dk.dtu.compute.se.pisd.roborally.RoboRally;
 
 import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
 import dk.dtu.compute.se.pisd.roborally.dal.IRepository;
+import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 
 import javafx.application.Platform;
@@ -59,6 +60,10 @@ AppController implements Observer {
     private GameController gameController;
     private Board board;
 
+
+    IRepository repository = RepositoryAccess.getRepository();
+
+
     public AppController(@NotNull RoboRally roboRally) {
         this.roboRally = roboRally;
     }
@@ -68,6 +73,9 @@ AppController implements Observer {
         dialog.setTitle("Player number");
         dialog.setHeaderText("Select number of players");
         Optional<Integer> result = dialog.showAndWait();
+
+
+
 
         if (result.isPresent()) {
             if (gameController != null) {
@@ -81,8 +89,9 @@ AppController implements Observer {
             // XXX the board should eventually be created programmatically or loaded from a file
             //     here we just create an empty board with the required number of players.
             Board board = new Board(8, 8);
-            this.board = board;
-            iRepository.createGameInDB(board);
+
+            repository.createGameInDB(board);
+
             gameController = new GameController(board);
             int no = result.get();
             for (int i = 0; i < no; i++) {
@@ -182,15 +191,14 @@ AppController implements Observer {
     }
 
     public void saveGame() {
-        iRepository.updateGameInDB(board);
+        repository.updateGameInDB(board);
     }
-
 
 
     public void loadGame() {
         //
         if (gameController == null) {
-            iRepository.getGames();
+            repository.getGames();
         }
     }
 
@@ -244,26 +252,5 @@ AppController implements Observer {
     public void update(Subject subject) {
         // XXX do nothing for now
     }
+}
 
-    IRepository iRepository = new IRepository() {
-        @Override
-        public boolean createGameInDB(Board game) {
-            return false;
-        }
-
-        @Override
-        public boolean updateGameInDB(Board game) {
-            return false;
-        }
-
-        @Override
-        public Board loadGameFromDB(int id) {
-            return null;
-        }
-
-        @Override
-        public List<GameInDB> getGames() {
-            return null;
-        }
-    };
-    }

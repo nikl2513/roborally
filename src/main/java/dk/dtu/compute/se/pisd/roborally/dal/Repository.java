@@ -69,8 +69,10 @@ class Repository implements IRepository {
 
 	@Override
 	public boolean createGameInDB(Board game) {
+		System.out.println("Test");
 		if (game.getGameId() == null) {
 			Connection connection = connector.getConnection();
+			System.out.println("Fisk");
 			try {
 				connection.setAutoCommit(false);
 
@@ -118,6 +120,7 @@ class Repository implements IRepository {
 					rs.updateInt(GAME_CURRENTPLAYER, game.getPlayerNumber(game.getCurrentPlayer()));
 					rs.updateRow();
 				} else {
+					System.out.println("Kagemand");
 					// TODO error handling
 				}
 				rs.close();
