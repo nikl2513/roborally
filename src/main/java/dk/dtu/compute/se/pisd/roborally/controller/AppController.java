@@ -90,7 +90,7 @@ AppController implements Observer {
             //     here we just create an empty board with the required number of players.
             Board board = new Board(8, 8);
 
-            repository.createGameInDB(board);
+
 
             gameController = new GameController(board);
             int no = result.get();
@@ -185,7 +185,7 @@ AppController implements Observer {
             // XXX: V2
             // board.setCurrentPlayer(board.getPlayer(0));
             gameController.startProgrammingPhase();
-
+            repository.createGameInDB(board);
             roboRally.createBoardView(gameController);
         }
     }

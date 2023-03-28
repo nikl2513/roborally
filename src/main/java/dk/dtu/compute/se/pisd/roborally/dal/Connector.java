@@ -54,7 +54,7 @@ class Connector {
         
     Connector() {
         try {
-			 String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
+			String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
 			//String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?serverTimezone=UTC";
 			connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
 

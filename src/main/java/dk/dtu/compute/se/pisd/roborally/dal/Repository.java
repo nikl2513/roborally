@@ -71,6 +71,7 @@ class Repository implements IRepository {
 	public boolean createGameInDB(Board game) {
 		System.out.println("Test");
 		if (game.getGameId() == null) {
+
 			Connection connection = connector.getConnection();
 			System.out.println("Fisk");
 			try {
@@ -89,8 +90,8 @@ class Repository implements IRepository {
 				// the check would need to be temporarily disabled, since
 				// MySQL does not have a per transaction validation, but
 				// validates on a per row basis.
-				// Statement statement = connection.createStatement();
-				// statement.execute("SET foreign_key_checks = 0");
+				 Statement statement = connection.createStatement();
+				 statement.execute("SET foreign_key_checks = 0");
 				
 				int affectedRows = ps.executeUpdate();
 				ResultSet generatedKeys = ps.getGeneratedKeys();
@@ -100,8 +101,8 @@ class Repository implements IRepository {
 				generatedKeys.close();
 				
 				// Enable foreign key constraint check again:
-				// statement.execute("SET foreign_key_checks = 1");
-				// statement.close();
+				statement.execute("SET foreign_key_checks = 1");
+				statement.close();
 
 				createPlayersInDB(game);
 				/* TOODO this method needs to be implemented first
@@ -150,7 +151,7 @@ class Repository implements IRepository {
 	@Override
 	public boolean updateGameInDB(Board game) {
 		assert game.getGameId() != null;
-		
+
 		Connection connection = connector.getConnection();
 		try {
 			connection.setAutoCommit(false);
