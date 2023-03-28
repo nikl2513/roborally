@@ -37,3 +37,4 @@ public class StartRoboRally {
     }
 
 }
+//spiller, felter, check.

@@ -95,6 +95,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             addwall(this.space);
             addCheckpoints(this.space);
             addConveyerbelt();
+
         }
     }
 

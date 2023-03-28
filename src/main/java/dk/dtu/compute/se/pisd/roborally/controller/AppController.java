@@ -188,9 +188,11 @@ AppController implements Observer {
 
 
     public void loadGame() {
-        //
+
         if (gameController == null) {
+
             iRepository.getGames();
+            iRepository.loadGameFromDB(board.getGameId());
         }
     }
 

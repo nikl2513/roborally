@@ -246,7 +246,9 @@ class Repository implements IRepository {
 		}
 		return null;
 	}
-	
+
+
+
 	@Override
 	public List<GameInDB> getGames() {
 		// TODO when there many games in the DB, fetching all available games
@@ -314,6 +316,9 @@ class Repository implements IRepository {
 				player.setHeading(Heading.values()[heading]);
 
 				// TODO  should also load players program and hand here
+
+
+
 			} else {
 				// TODO error handling
 				System.err.println("Game in DB does not have a player with id " + i +"!");
