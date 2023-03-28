@@ -28,7 +28,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextBoundsType;
 import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
 
 /**
  * ...
@@ -107,39 +113,46 @@ public class SpaceView extends StackPane implements ViewObserver {
            int Checkponitnumber =space.getCheckpoint().getCheckpointnumber();
            switch (Checkponitnumber) {
                case 1 -> {
+                   Text text   = createText("1");
                    Circle circle = new Circle(10, 10, 10);
                    circle.setFill(Color.YELLOW);
-                   this.getChildren().add(circle);
+                   //this.getChildren().add(circle);
+                   this.getChildren().addAll(circle, text);
                    break;
                }
                case 2 -> {
+                   Text text   = createText("2");
                    Circle circle1 = new Circle(10, 10, 10);
                    circle1.setFill(Color.AQUA);
-                   this.getChildren().add(circle1);
+                   this.getChildren().addAll(circle1, text);
                    break;
                }
                case 3 -> {
+                   Text text   = createText("3");
                    Circle circle2 = new Circle(10, 10, 10);
                    circle2.setFill(Color.RED);
-                   this.getChildren().add(circle2);
+                   this.getChildren().addAll(circle2, text);
                    break;
                }
                case 4 -> {
+                   Text text   = createText("4");
                    Circle circle3 = new Circle(10, 10, 10);
                    circle3.setFill(Color.BROWN);
-                   this.getChildren().add(circle3);
+                   this.getChildren().addAll(circle3, text);
                    break;
                }
                case 5 -> {
+                   Text text   = createText("5");
                    Circle circle4 = new Circle(10, 10, 10);
                    circle4.setFill(Color.DARKGREY);
-                   this.getChildren().add(circle4);
+                   this.getChildren().addAll(circle4, text);
                    break;
                }
                case 6 -> {
+                   Text text   = createText("6");
                    Circle circle5 = new Circle(10, 10, 10);
                    circle5.setFill(Color.PURPLE);
-                   this.getChildren().add(circle5);
+                   this.getChildren().addAll(circle5, text);
                    break;
                }
            }
@@ -300,6 +313,16 @@ public class SpaceView extends StackPane implements ViewObserver {
 
             }
         }
+    private Text createText(String string) {
+        Text text = new Text(string);
+        text.setBoundsType(TextBoundsType.VISUAL);
+        text.setStyle(
+                "-fx-font-family: \"Times New Roman\";" +
+                        "-fx-font-style: italic;" +
+                        "-fx-font-size: 12px;"
+        );
+        return text;
+    }
     }
 
 
