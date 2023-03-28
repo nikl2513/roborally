@@ -363,7 +363,7 @@ public class GameController {
                 player.setSpace(space1);
                 if (space1.getConveyerbelt() != null) {
                     Space space2 = board.getNeighbour(space1, space1.getConveyerbelt().getHeading());
-                    moveCurrentPlayerToSpace(space2);
+                    player.setSpace(space2);
                 }
             } else if (space1 != null && space1.getPlayer() != null) {
                 try {

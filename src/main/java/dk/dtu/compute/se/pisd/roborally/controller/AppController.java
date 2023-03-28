@@ -192,6 +192,7 @@ AppController implements Observer {
 
     public void saveGame() {
         repository.updateGameInDB(board);
+
     }
 
 
