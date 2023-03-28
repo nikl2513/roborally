@@ -121,7 +121,7 @@ class Repository implements IRepository {
 					rs.updateInt(GAME_CURRENTPLAYER, game.getPlayerNumber(game.getCurrentPlayer()));
 					rs.updateRow();
 				} else {
-					System.out.println("Kagemand");
+
 					// TODO error handling
 				}
 				rs.close();
@@ -166,6 +166,7 @@ class Repository implements IRepository {
 				rs.updateInt(GAME_STEP, game.getStep());
 				rs.updateRow();
 			} else {
+
 				// TODO error handling
 			}
 			rs.close();
