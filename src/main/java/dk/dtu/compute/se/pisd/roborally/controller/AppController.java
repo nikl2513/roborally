@@ -196,9 +196,21 @@ AppController implements Observer {
 
 
     public void loadGame() {
-        //
-        if (gameController == null) {
-            repository.getGames();
+        List<GameInDB> list = repository.getGames();
+        ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(0),list);
+        dialog.setTitle("");
+        dialog.setHeaderText("Select number of players");
+        Optional<GameInDB> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            int id = result.get().id;
+            Board board = repository.loadGameFromDB(id);
+            gameController = new GameController(board);
+            for (int i = 0; i < board.getPlayersNumber(); i++) {
+                Player player = board.getPlayer(i);
+                board.addPlayer(player);
+                player.setSpace(board.getPlayer(i).getSpace());
+            }
+            roboRally.createBoardView(gameController);
         }
     }
 

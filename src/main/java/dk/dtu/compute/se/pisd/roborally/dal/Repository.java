@@ -205,7 +205,7 @@ class Repository implements IRepository {
 			//      above for the pupose
 			PreparedStatement ps = getSelectGameStatementU();
 			ps.setInt(1, id);
-			
+
 			ResultSet rs = ps.executeQuery();
 			int playerNo = -1;
 			if (rs.next()) {
