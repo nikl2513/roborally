@@ -1,2 +1,3 @@
 # Project exclude paths
 /target/
+/src/main/java/dk/dtu/compute/se/pisd/roborally/dal/Passwords.java
