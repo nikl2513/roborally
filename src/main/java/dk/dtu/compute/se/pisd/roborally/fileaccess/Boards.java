@@ -25,17 +25,6 @@ public class Boards {
         wall2.setSpace(board.getSpace(7, 2));
         wall3.setSpace(board.getSpace(5, 3));
         wall4.setSpace(board.getSpace(1, 7));
-           /* Space space =new Space(board,3,2);
-            Space space1 =new Space(board,7,2);
-            Space space2 =new Space(board,5,3);
-            Space space3 =new Space(board,1,7);
-
-
-            //space.setWall(wall1);
-            //space1.setWall(wall2);
-            //space2.setWall(wall3);
-            //space3.setWall(wall4)
-            */
 
 
         Conveyerbelt conveyerbelt1 = new Conveyerbelt();

@@ -211,10 +211,17 @@ public class Board extends Subject {
      * @param space   the space for which the neighbour should be computed
      * @param heading the heading of the neighbour
      * @return the space in the given direction; null if there is no (reachable) neighbour
+     *
      */
+
+
+    // Sæt væg tjek ind her.
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading) {
         int x = space.x;
         int y = space.y;
+        Board board = current.board;
+
+
         switch (heading) {
             case SOUTH:
                 y = (y + 1) % height;
@@ -229,6 +236,23 @@ public class Board extends Subject {
                 x = (x + 1) % width;
                 break;
         }
+        Space space1 = board.getSpace(x, y);
+        Wall wallcurrentspace = space.getWall();
+        Wall wallspacetarget = space1.getWall();
+        Heading heading1 = heading.prev();
+        Heading heading2 = heading1.prev();
+
+        if (space.getWall() != null) {
+            if (wallcurrentspace.getHeading() == heading) {
+                return null;
+            }
+        }
+        if (space1.getWall() != null) {
+            if (wallspacetarget.getHeading() == heading2) {
+                return null;
+            }
+        }
+
 
         return getSpace(x, y);
     }
@@ -236,6 +260,7 @@ public class Board extends Subject {
     /**
      * Her har vi tilføjet antal slag til statuslinjen
      * Vi bruger getMoveCounter() til at vise hvor mange slag der er sket i spillet
+     * Vi har også tilføjet et CheckpointValue til den så man kan se hvor mange chekpoints hver spiller har.
      */
     public String getStatusMessage() {
         // this is actually a view aspect, but for making assignment V1 easy for

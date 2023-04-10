@@ -313,6 +313,12 @@ public class SpaceView extends StackPane implements ViewObserver {
 
             }
         }
+
+    /**
+     * From: https://stackoverflow.com/questions/23258605/javafx-how-can-i-best-place-a-label-centered-in-a-shape
+     * @param string
+     * @return A texts string.
+     */
     private Text createText(String string) {
         Text text = new Text(string);
         text.setBoundsType(TextBoundsType.VISUAL);
