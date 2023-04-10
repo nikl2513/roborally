@@ -305,7 +305,7 @@ public class GameController {
             Space space = player.getSpace();
             Heading heading = player.getHeading();
             Space target = board.getNeighbour(space, heading);
-            if (target != null && target.getPlayer() != null) {
+            if (target != null) {
                 try {
                     moveToSpace(player, target, heading);
                     player.setSpace(target);
@@ -326,16 +326,15 @@ public class GameController {
      */
     public void executeActionspace() {
     int i;
-    System.out.println(board.getPlayersNumber());
     for (i = 0; i < board.getPlayersNumber(); ++i) {
         Player player = board.getPlayer(i);
         Space space = player.getSpace();
         Heading heading = player.getHeading();
         if (space.getConveyerbelt() != null) {
             Space space2 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
-            if (space2 != null && space2.getPlayer() != null) {
+            if (space2 != null) {
                 try {
-                    moveToSpace(player, space2, heading);
+                    moveToSpace(player, space2, space.getConveyerbelt().getHeading());
                     player.setSpace(space2);
                 } catch (ImpossibleMoveException e) {
                 }
