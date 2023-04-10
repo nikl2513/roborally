@@ -177,7 +177,6 @@ public class GameController {
                         return;
                     }
                     executeCommand(currentPlayer, command);
-
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
@@ -186,6 +185,7 @@ public class GameController {
 
                     //--> execute actions on fields!
                     //--> check checkpoints for alle spillere
+                    executeActionspace();
                     step++;
 
                     if (step < Player.NO_REGISTERS) {
@@ -195,6 +195,7 @@ public class GameController {
                     } else {
                         startProgrammingPhase();
                     }
+
                 }
             } else {
                 // this should not happen
@@ -269,12 +270,11 @@ public class GameController {
                     this.fastForward(player);
                     break;
                 case Move2:
-                    this.Move2(player);
+                    this.move2(player);
                     break;
                 case Uturn:
-                    this.Uturn(player);
+                    this.uturn(player);
                     break;
-
                 case Moveback:
                     this.turnRight(player);
                     this.turnRight(player);
@@ -304,76 +304,30 @@ public class GameController {
         Space space = player.getSpace();
         Heading heading = player.getHeading();
         Wall wallcurrentspace = space.getWall();
-
-        if (space != null) {
-
-            Space space1 = board.getNeighbour(space, heading);
+        Space space1 = board.getNeighbour(space, heading);
             Wall wallspacetarget = space1.getWall();
-            Heading heading2 = player.getHeading();
-
-
             player.setHeading(heading.prev());
             Heading heading3 = player.getHeading();
-
             player.setHeading(heading3.prev());
             Heading heading4 = player.getHeading();
-
-
             player.setHeading(heading);
+            player.setSpace(space1);
 
-
-            if (space1.getCheckpoint() != null) {
-                int value = player.getCheckpointValue();
-                switch (value) {
-                    case 0:
-                        if (player.getCheckpointValue() == 0 && space1.getCheckpoint().getCheckpointnumber() == 1) {
-                            player.setCheckpointValue(1);
-                        }
-                        break;
-                    case 1:
-                        if (player.getCheckpointValue() == 1 && space1.getCheckpoint().getCheckpointnumber() == 2) {
-                            player.setCheckpointValue(2);
-                        }
-                        break;
-                    case 2:
-                        if (player.getCheckpointValue() == 2 && space1.getCheckpoint().getCheckpointnumber() == 3) {
-                            player.setCheckpointValue(3);
-                        }
-                        break;
-                    case 3:
-                        if (player.getCheckpointValue() == 3 && space1.getCheckpoint().getCheckpointnumber() == 4) {
-                            player.setCheckpointValue(4);
-                        }
-                        break;
-                    case 4:
-                        if (player.getCheckpointValue() == 4 && space1.getCheckpoint().getCheckpointnumber() == 5) {
-                            player.setCheckpointValue(5);
-                        }
-                        break;
-                    case 5:
-                        if (player.getCheckpointValue() == 5 && space1.getCheckpoint().getCheckpointnumber() == 6) {
-                            player.setCheckpointValue(6);
-                        }
-                        break;
-                }
-
-            }
-
-            if (space1 != null && space1.getPlayer() == null) {
+        if (space != null){
+            Space space2 = board.getNeighbour(space, heading);
+            if(space2 != null && space2.getPlayer()== null) {
                 player.setSpace(space1);
-                if (space1.getConveyerbelt() != null) {
-                    Space space2 = board.getNeighbour(space1, space1.getConveyerbelt().getHeading());
-                    player.setSpace(space2);
-                }
-            } else if (space1 != null && space1.getPlayer() != null) {
+            }else if (space2 != null && space2.getPlayer()!= null ){
                 try {
-                    moveToSpace(player, space, heading);
-                    player.setSpace(space1);
+                    moveToSpace(player,space,heading);
+                    player.setSpace(space2);
                 } catch (ImpossibleMoveException e) {
                     throw new RuntimeException(e);
                 }
             }
 
+
+        }
             if (space.getWall() != null) {
                 if (wallcurrentspace.getHeading() == player.getHeading()) {
                     player.setSpace(space);
@@ -387,7 +341,70 @@ public class GameController {
             }
 
         }
+
+
+
+    /**
+     * Det er her vores aktionfelter bliver aktiveret efter at spillernes tur er færdig.
+     * Lige nu omhandler det chekpoints og conveyerbelts
+     *
+     * @author Amskov
+     */
+    public void executeActionspace() {
+    int i;
+    System.out.println(board.getPlayersNumber());
+    for (i = 0; i < board.getPlayersNumber(); ++i) {
+        Player player = board.getPlayer(i);
+        Space space = player.getSpace();
+        Heading heading = player.getHeading();
+        if (space.getConveyerbelt() != null) {
+            Space space2 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
+            player.setSpace(space2);
+        }
     }
+
+    for (i = 0; i < board.getPlayersNumber(); ++i) {
+        Player player = board.getPlayer(i);
+        Space space1 = player.getSpace();
+        if (space1.getCheckpoint() != null) {
+            int value = player.getCheckpointValue();
+            switch (value) {
+                case 0:
+                    if (player.getCheckpointValue() == 0 && space1.getCheckpoint().getCheckpointnumber() == 1) {
+                        player.setCheckpointValue(1);
+                    }
+                    break;
+                case 1:
+                    if (player.getCheckpointValue() == 1 && space1.getCheckpoint().getCheckpointnumber() == 2) {
+                        player.setCheckpointValue(2);
+                    }
+                    break;
+                case 2:
+                    if (player.getCheckpointValue() == 2 && space1.getCheckpoint().getCheckpointnumber() == 3) {
+                        player.setCheckpointValue(3);
+                    }
+                    break;
+                case 3:
+                    if (player.getCheckpointValue() == 3 && space1.getCheckpoint().getCheckpointnumber() == 4) {
+                        player.setCheckpointValue(4);
+                    }
+                    break;
+                case 4:
+                    if (player.getCheckpointValue() == 4 && space1.getCheckpoint().getCheckpointnumber() == 5) {
+                        player.setCheckpointValue(5);
+                    }
+                    break;
+                case 5:
+                    if (player.getCheckpointValue() == 5 && space1.getCheckpoint().getCheckpointnumber() == 6) {
+                        player.setCheckpointValue(6);
+                    }
+                    break;
+            }
+        }
+    }
+}
+
+
 
 
     // TODO Assignment V2
@@ -403,14 +420,7 @@ public class GameController {
         this.moveForward(player);
         this.moveForward(player);
         this.moveForward(player);
-        // Space space = player.getSpace();
-        //Heading heading = player.getHeading();
-        //Space space1 = board.getNeighbour(space,heading);
-        //Space space2 = board.getNeighbour(space1,heading);
-        //Space space3 = board.getNeighbour(space2,heading);
-        //if (space != null && space1 != null && space2!= null && space3 != null){
-        //  player.setSpace(space3);
-        // }
+
 
     }
 
@@ -448,7 +458,7 @@ public class GameController {
      * @auther Amskov
      * The robots direction turns around
      */
-    public void Uturn(@NotNull Player player) {
+    public void uturn(@NotNull Player player) {
         int i;
         for (i = 0; i < 2; ++i) {
             Heading heading = player.getHeading();
@@ -457,7 +467,7 @@ public class GameController {
     }
 
 
-    public void Move2(@NotNull Player player) {
+    public void move2(@NotNull Player player) {
         this.moveForward(player);
         this.moveForward(player);
     }
