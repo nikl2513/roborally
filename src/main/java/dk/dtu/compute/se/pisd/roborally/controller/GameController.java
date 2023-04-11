@@ -329,7 +329,6 @@ public class GameController {
     for (i = 0; i < board.getPlayersNumber(); ++i) {
         Player player = board.getPlayer(i);
         Space space = player.getSpace();
-        Heading heading = player.getHeading();
         if (space.getConveyerbelt() != null) {
             Space space2 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
             if (space2 != null) {
@@ -377,6 +376,7 @@ public class GameController {
                 case 5:
                     if (player.getCheckpointValue() == 5 && space1.getCheckpoint().getCheckpointnumber() == 6) {
                         player.setCheckpointValue(6);
+                        System.out.println(player.getName() + " vandt");
                     }
                     break;
             }
