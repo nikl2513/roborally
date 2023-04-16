@@ -39,11 +39,21 @@ public class Space extends Subject {
     private Player player;
     private Wall wall;
     private Conveyerbelt conveyerbelt;
+
+
+    private Turnpad turnpad;
     private boolean wallbool;
     private Checkpoint checkpoint;
     private boolean CheckpointBool;
 
 
+    public Turnpad getTurnpad() {
+        return turnpad;
+    }
+
+    public void setTurnpad(Turnpad turnpad) {
+        this.turnpad = turnpad;
+    }
 
 
 

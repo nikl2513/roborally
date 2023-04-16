@@ -55,6 +55,8 @@ public class Board extends Subject {
 
     private final List<Conveyerbelt> conveyerbelts = new ArrayList<>();
 
+    private final List<Turnpad> turnpads = new ArrayList<>();
+
     private Player current;
 
     private Phase phase = INITIALISATION;
@@ -294,5 +296,12 @@ public class Board extends Subject {
         if (checkpoint.Space == this && !checkpoints.contains(checkpoint))
         checkpoints.add(checkpoint);
         notifyChange();
+    }
+
+    public void addTurnpad(Turnpad turnpad){
+        if(Turnpad.Space == this && !turnpads.contains(turnpad)){
+            turnpads.add(turnpad);
+            notifyChange();
+        }
     }
 }

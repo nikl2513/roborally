@@ -329,7 +329,7 @@ public class GameController {
     for (i = 0; i < board.getPlayersNumber(); ++i) {
         Player player = board.getPlayer(i);
         Space space = player.getSpace();
-        Heading heading = player.getHeading();
+       //  Heading heading = player.getHeading();
         if (space.getConveyerbelt() != null) {
             Space space2 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
             if (space2 != null) {
@@ -342,6 +342,22 @@ public class GameController {
 
         }
     }
+        for ( i = 0; i < board.getPlayersNumber() ; i++) {
+            Player player = board.getPlayer(i);
+            Space space = player.getSpace();
+            if(space.getTurnpad() != null){
+
+            if(space.getTurnpad().getDirection() == "Right"){
+                turnRight(player);
+            }
+            if(space.getTurnpad().getDirection() == "Left"){
+                turnLeft(player);
+            }
+
+            }
+
+        }
+
 
     for (i = 0; i < board.getPlayersNumber(); ++i) {
         Player player = board.getPlayer(i);
