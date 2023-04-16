@@ -41,6 +41,8 @@ public class Space extends Subject {
     private Conveyerbelt conveyerbelt;
 
 
+
+    private Pit pit;
     private Turnpad turnpad;
     private boolean wallbool;
     private Checkpoint checkpoint;
@@ -54,7 +56,13 @@ public class Space extends Subject {
     public void setTurnpad(Turnpad turnpad) {
         this.turnpad = turnpad;
     }
+    public Pit getPit() {
+        return pit;
+    }
 
+    public void setPit(Pit pit) {
+        this.pit = pit;
+    }
 
 
     public Checkpoint getCheckpoint(){

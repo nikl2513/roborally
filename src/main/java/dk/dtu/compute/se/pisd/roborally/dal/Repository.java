@@ -70,11 +70,11 @@ class Repository implements IRepository {
 
 	@Override
 	public boolean createGameInDB(Board game) {
-		System.out.println("Test");
+
 		if (game.getGameId() == null) {
 
 			Connection connection = connector.getConnection();
-			System.out.println("Fisk");
+
 			try {
 				connection.setAutoCommit(false);
 

@@ -353,11 +353,18 @@ public class GameController {
             if(space.getTurnpad().getDirection() == "Left"){
                 turnLeft(player);
             }
-
             }
-
         }
 
+        for ( i = 0; i < board.getPlayersNumber() ; i++) {
+            Player player = board.getPlayer(i);
+            Space space = player.getSpace();
+            if(space.getPit() != null){
+
+                player.setHp(player.getHp() - 1 );
+                player.setSpace(board.getSpace(i % board.width, i));
+            }
+        }
 
     for (i = 0; i < board.getPlayersNumber(); ++i) {
         Player player = board.getPlayer(i);

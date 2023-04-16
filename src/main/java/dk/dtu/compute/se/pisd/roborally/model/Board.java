@@ -57,6 +57,7 @@ public class Board extends Subject {
 
     private final List<Turnpad> turnpads = new ArrayList<>();
 
+    private final List<Pit> pits = new ArrayList<>();
     private Player current;
 
     private Phase phase = INITIALISATION;
@@ -273,7 +274,8 @@ public class Board extends Subject {
         // XXX: V2 changed the status so that it shows the phase, the current player and the number of steps
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
-                ", AntalSlag = " + getMoveCounter() +", Checkpoints = " + getCurrentPlayer().getCheckpointValue();
+                ", AntalSlag = " + getMoveCounter() +", Checkpoints = " + getCurrentPlayer().getCheckpointValue() +
+                ", HP = " + getCurrentPlayer().getHp();
 
 
     }
@@ -301,6 +303,12 @@ public class Board extends Subject {
     public void addTurnpad(Turnpad turnpad){
         if(Turnpad.Space == this && !turnpads.contains(turnpad)){
             turnpads.add(turnpad);
+            notifyChange();
+        }
+    }
+    public void addpit(Pit pit){
+        if(Pit.Space == this && !pits.contains(pit)){
+            pits.add(pit);
             notifyChange();
         }
     }
