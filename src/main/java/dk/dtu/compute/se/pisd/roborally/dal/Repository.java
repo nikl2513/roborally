@@ -315,6 +315,18 @@ class Repository implements IRepository {
 
 		ResultSet rs = ps.executeQuery();
 		for (int i = 0; i < game.getPlayersNumber(); i++) {
+			int playerID = rs.getInt(FIELD_PLAYERID);
+			Player player = game.getPlayer(playerID);
+			rs.updateInt(FIELD_GAMEID, game.getGameId());
+			rs.updateInt(FIELD_PLAYERID,i);
+			for (int j = 0; j < 4; j++) {
+				rs.moveToInsertRow();
+				rs.updateInt(FIELD_TYPE, 0);
+				rs.updateInt(FIELD_POS,i);
+				rs.updateInt(FIELD_VISIBLE,player.getProgramField(i).isVisible());
+
+			}
+
 
 
 		}
@@ -404,6 +416,36 @@ class Repository implements IRepository {
 		// TODO error handling/consistency check: check whether all players were updated
 	}
 
+	private void updateCardFieldinDB(Board game) throws SQLException {
+		PreparedStatement ps = getSelectPlayersStatementU();
+		ps.setInt(1, game.getGameId());
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			int playerId = rs.getInt(FIELD_PLAYERID);
+			Player player = game.getPlayer(playerId);
+			int type = rs.getInt(FIELD_TYPE);
+			int pos = rs.getInt(FIELD_POS);
+			CommandCardField field;
+			if (FIELD_TYPE_REGISTER == type) {
+				field = player.getProgramField(pos);
+				if (field.isVisible()) {
+					rs.updateInt(FIELD_VISIBLE, 1);
+					Command card1 = Command.valueOf(player.getProgramField(pos).getCard().getName());
+					rs.updateInt(FIELD_COMMAND, card1.ordinal());
+				}
+			}
+			else if (FIELD_TYPE_HAND == type){
+				field = player.getCardField(pos);
+				if (field.isVisible()){
+					rs.updateInt(FIELD_VISIBLE, 0);
+					Command card1 = Command.valueOf(player.getCardField(pos).getCard().getName());
+					rs.updateInt(FIELD_COMMAND, card1.ordinal());
+				}
+			} else {
+				field = null;
+			}
+		}
+	}
 	private static final String SQL_INSERT_GAME =
 			"INSERT INTO Game(name, currentPlayer, phase, step) VALUES (?, ?, ?, ?)";
 
