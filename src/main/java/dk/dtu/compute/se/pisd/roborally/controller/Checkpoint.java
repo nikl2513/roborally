@@ -1,12 +1,15 @@
-package dk.dtu.compute.se.pisd.roborally.model;
+package dk.dtu.compute.se.pisd.roborally.controller;
+
+import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 /*
 checkpoint klasse, s224567
  */
-public class Checkpoint {
+public class Checkpoint extends FieldAction {
 
     public static Board Space;
-    private Space space;
+    private dk.dtu.compute.se.pisd.roborally.model.Space space;
 
    private boolean complete;
 
@@ -52,4 +55,8 @@ public class Checkpoint {
         checkpointnumber= 0;
     }
 
+    @Override
+    public boolean doAction(GameController gameController, dk.dtu.compute.se.pisd.roborally.model.Space space) {
+        return false;
+    }
 }

@@ -22,10 +22,12 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ...
@@ -46,7 +48,17 @@ public class Space extends Subject {
     private Checkpoint checkpoint;
     private boolean CheckpointBool;
 
+    private List<FieldAction> actions = new ArrayList<>();
 
+    private List<Heading> walls = new ArrayList<>();
+
+
+    public List<Heading> getWalls() {
+        return walls;
+    }
+    public List<FieldAction> getActions() {
+        return actions;
+    }
 
 
 

@@ -73,8 +73,8 @@ public class LoadBoard {
 			for (SpaceTemplate spaceTemplate: template.spaces) {
 			    Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
 			    if (space != null) {
-                    //space.getActions().addAll(spaceTemplate.actions);
-                    //space.getWalls().addAll(spaceTemplate.walls);
+                    space.getActions().addAll(spaceTemplate.actions);
+                    space.getWalls().addAll(spaceTemplate.walls);
                 }
             }
 			reader.close();
