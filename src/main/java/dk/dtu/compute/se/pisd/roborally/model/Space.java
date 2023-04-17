@@ -27,6 +27,7 @@ import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -143,4 +144,13 @@ public class Space extends Subject {
         notifyChange();
     }
 
+    public Collection<FieldAction> getActions(Space space) {
+        if(space.getCheckpoint()!=null){
+            return (Collection<FieldAction>) checkpoint;
+        }
+        if(space.getConveyerbelt()!=null){
+            return (Collection<FieldAction>) conveyerbelt;
+        }
+        return null;
+    }
 }
