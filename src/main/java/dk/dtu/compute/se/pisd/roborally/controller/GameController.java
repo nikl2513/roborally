@@ -165,8 +165,10 @@ public class GameController {
      * to the next player
      */
     private void executeNextStep() {
+
         Player currentPlayer = board.getCurrentPlayer();
         if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
+
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
@@ -201,6 +203,7 @@ public class GameController {
                 // this should not happen
                 assert false;
             }
+
         } else {
             // this should not happen
             assert false;

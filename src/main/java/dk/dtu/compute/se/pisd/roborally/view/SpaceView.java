@@ -101,6 +101,8 @@ public class SpaceView extends StackPane implements ViewObserver {
             addwall(this.space);
             addCheckpoints(this.space);
             addConveyerbelt();
+            addTurnpad();
+            addPit();
 
         }
     }
@@ -311,6 +313,24 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
 
+            }
+        }
+        public void addTurnpad(){
+            Turnpad turnpad = space.getTurnpad();
+            if(turnpad != null){
+                Circle circle = new Circle(20, 20, 20);
+                circle.setFill(Color.GREENYELLOW);
+                this.getChildren().addAll(circle);
+            }
+
+        }
+
+        public void addPit(){
+            Pit pit = space.getPit();
+            if(pit != null){
+                Circle circle = new Circle(20, 20, 20);
+                circle.setFill(Color.GREY);
+                this.getChildren().addAll(circle);
             }
         }
 
