@@ -99,25 +99,30 @@ public class SpaceView extends StackPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == this.space) {
             updatePlayer();
-            addwall(this.space);
+
             for (FieldAction action :space.getActions()){
                 if (action instanceof ConveyorBelt){
                     ConveyorBelt conveyorBelt = (ConveyorBelt) action;
                     addConveyerbelt(conveyorBelt.getHeading());
                 }
+                if (action instanceof Checkpoint){
+                    Checkpoint checkpoint = (Checkpoint) action;
+                    checkpoint.getCheckpointnumber();
+                    addCheckpoints(checkpoint.getCheckpointnumber());
+                }
+
             }
-            addCheckpoints(this.space);
+
+            for (Heading heading :space.getWalls()){
+                addwall(heading);
+            }
 
 
         }
     }
 
-    private void addCheckpoints(Space space) {
-        Checkpoint checkpoint = space.getCheckpoint();
+    private void addCheckpoints(int Checkponitnumber) {
 
-       if (checkpoint != null) {
-
-           int Checkponitnumber =space.getCheckpoint().getCheckpointnumber();
            switch (Checkponitnumber) {
                case 1 -> {
                    Text text   = createText("1");
@@ -167,20 +172,16 @@ public class SpaceView extends StackPane implements ViewObserver {
 
            }
 
-        }
 
 
-    public void addwall(Space space) {
+
+    public void addwall(Heading heading) {
 
 
         Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-
-        if (space.getWall() != null) {
-
-
-            switch (space.getWall().getHeading()) {
+            switch (heading) {
 
 
                 case NORTH:
@@ -226,7 +227,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(canvas);
 
         }
-    }
+
 
 
 
