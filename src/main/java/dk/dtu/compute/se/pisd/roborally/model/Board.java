@@ -238,18 +238,17 @@ public class Board extends Subject {
                 break;
         }
         Space space1 = board.getSpace(x, y);
-        Wall wallcurrentspace = space.getWall();
-        Wall wallspacetarget = space1.getWall();
+
         Heading heading1 = heading.prev();
         Heading heading2 = heading1.prev();
-
-        if (space.getWall() != null) {
-            if (wallcurrentspace.getHeading() == heading) {
+        for (Heading headingwall :space.getWalls()){
+            if (headingwall==heading){
                 return null;
             }
         }
-        if (space1.getWall() != null) {
-            if (wallspacetarget.getHeading() == heading2) {
+
+        for (Heading headingwall2 :space1.getWalls()){
+            if (headingwall2==heading2){
                 return null;
             }
         }
