@@ -98,21 +98,30 @@ public class SpaceView extends StackPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == this.space) {
             updatePlayer();
-            addwall(this.space);
-            addCheckpoints(this.space);
-            addConveyerbelt();
-            addTurnpad();
-            addPit();
+
+            for (FieldAction action :space.getActions()){
+                if (action instanceof ConveyorBelt){
+                    ConveyorBelt conveyorBelt = (ConveyorBelt) action;
+                    addConveyerbelt(conveyorBelt.getHeading());
+                }
+                if (action instanceof Checkpoint){
+                    Checkpoint checkpoint = (Checkpoint) action;
+                    checkpoint.getCheckpointnumber();
+                    addCheckpoints(checkpoint.getCheckpointnumber());
+                }
+
+            }
+
+            for (Heading heading :space.getWalls()){
+                addwall(heading);
+            }
+
 
         }
     }
 
-    private void addCheckpoints(Space space) {
-        Checkpoint checkpoint = space.getCheckpoint();
+    private void addCheckpoints(int Checkponitnumber) {
 
-       if (checkpoint != null) {
-
-           int Checkponitnumber =space.getCheckpoint().getCheckpointnumber();
            switch (Checkponitnumber) {
                case 1 -> {
                    Text text   = createText("1");
@@ -162,20 +171,16 @@ public class SpaceView extends StackPane implements ViewObserver {
 
            }
 
-        }
 
 
-    public void addwall(Space space) {
+
+    public void addwall(Heading heading) {
 
 
         Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-
-        if (space.getWall() != null) {
-
-
-            switch (space.getWall().getHeading()) {
+            switch (heading) {
 
 
                 case NORTH:
@@ -221,118 +226,87 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(canvas);
 
         }
-    }
 
 
 
+    public void addConveyerbelt (Heading heading) {
 
-
-
-
-
-
-
-
-        public void addConveyerbelt () {
-            Conveyerbelt conveyerbelt = space.getConveyerbelt();
-            if (conveyerbelt != null) {
-                Heading heading = space.getConveyerbelt().getHeading();
-                switch (heading) {
-                    case NORTH: {
-                        Rectangle rectangleN = new Rectangle(35, 35);
-                        rectangleN.setStroke(Color.RED);
-                        this.getChildren().add(rectangleN);
-                        Polygon arrowN = new Polygon(0.0, 0.0,
-                                17.5, 35.0,
-                                35.0, 0.0);
-                        try {
-                            arrowN.setFill(Color.valueOf("YELLOW"));
-                        } catch (Exception e) {
-                            arrowN.setFill(Color.YELLOW);
-                        }
-
-                        arrowN.setRotate(180);
-                        this.getChildren().add(arrowN);
-                        break;
-                    }
-
-                    case EAST: {
-                        Rectangle rectangleE = new Rectangle(35, 35);
-                        rectangleE.setStroke(Color.RED);
-                        this.getChildren().add(rectangleE);
-                        Polygon arrowE = new Polygon(0.0, 0.0,
-                                17.5, 35.0,
-                                35.0, 0.0);
-                        try {
-                            arrowE.setFill(Color.valueOf("YELLOW"));
-                        } catch (Exception e) {
-                            arrowE.setFill(Color.YELLOW);
-                        }
-
-                        arrowE.setRotate(270);
-                        this.getChildren().add(arrowE);
-                        break;
-                    }
-
-                    case SOUTH: {
-                        Rectangle rectangleS = new Rectangle(35, 35);
-                        rectangleS.setStroke(Color.RED);
-                        this.getChildren().add(rectangleS);
-                        Polygon arrowS = new Polygon(0.0, 0.0,
-                                17.5, 35.0,
-                                35.0, 0.0);
-                        try {
-                            arrowS.setFill(Color.valueOf("YELLOW"));
-                        } catch (Exception e) {
-                            arrowS.setFill(Color.YELLOW);
-                        }
-
-                        arrowS.setRotate(0);
-                        this.getChildren().add(arrowS);
-                        break;
-                    }
-
-                    case WEST: {
-                        Rectangle rectangleW = new Rectangle(35, 35);
-                        rectangleW.setStroke(Color.RED);
-                        this.getChildren().add(rectangleW);
-                        Polygon arrowW = new Polygon(0.0, 0.0,
-                                17.5, 35.0,
-                                35.0, 0.0);
-                        try {
-                            arrowW.setFill(Color.valueOf("YELLOW"));
-                        } catch (Exception e) {
-                            arrowW.setFill(Color.YELLOW);
-                        }
-
-                        arrowW.setRotate(90);
-                        this.getChildren().add(arrowW);
-                        break;
-                    }
+        switch (heading) {
+            case NORTH: {
+                Rectangle rectangleN = new Rectangle(35, 35);
+                rectangleN.setStroke(Color.RED);
+                this.getChildren().add(rectangleN);
+                Polygon arrowN = new Polygon(0.0, 0.0,
+                        17.5, 35.0,
+                        35.0, 0.0);
+                try {
+                    arrowN.setFill(Color.valueOf("YELLOW"));
+                } catch (Exception e) {
+                    arrowN.setFill(Color.YELLOW);
                 }
 
-
-
-            }
-        }
-        public void addTurnpad(){
-            Turnpad turnpad = space.getTurnpad();
-            if(turnpad != null){
-                Circle circle = new Circle(20, 20, 20);
-                circle.setFill(Color.GREENYELLOW);
-                this.getChildren().addAll(circle);
+                arrowN.setRotate(180);
+                this.getChildren().add(arrowN);
+                break;
             }
 
-        }
+            case EAST: {
+                Rectangle rectangleE = new Rectangle(35, 35);
+                rectangleE.setStroke(Color.RED);
+                this.getChildren().add(rectangleE);
+                Polygon arrowE = new Polygon(0.0, 0.0,
+                        17.5, 35.0,
+                        35.0, 0.0);
+                try {
+                    arrowE.setFill(Color.valueOf("YELLOW"));
+                } catch (Exception e) {
+                    arrowE.setFill(Color.YELLOW);
+                }
 
-        public void addPit(){
-            Pit pit = space.getPit();
-            if(pit != null){
-                Circle circle = new Circle(20, 20, 20);
-                circle.setFill(Color.GREY);
-                this.getChildren().addAll(circle);
+                arrowE.setRotate(270);
+                this.getChildren().add(arrowE);
+                break;
+            }
+
+            case SOUTH: {
+                Rectangle rectangleS = new Rectangle(35, 35);
+                rectangleS.setStroke(Color.RED);
+                this.getChildren().add(rectangleS);
+                Polygon arrowS = new Polygon(0.0, 0.0,
+                        17.5, 35.0,
+                        35.0, 0.0);
+                try {
+                    arrowS.setFill(Color.valueOf("YELLOW"));
+                } catch (Exception e) {
+                    arrowS.setFill(Color.YELLOW);
+                }
+
+                arrowS.setRotate(0);
+                this.getChildren().add(arrowS);
+                break;
+            }
+
+            case WEST: {
+                Rectangle rectangleW = new Rectangle(35, 35);
+                rectangleW.setStroke(Color.RED);
+                this.getChildren().add(rectangleW);
+                Polygon arrowW = new Polygon(0.0, 0.0,
+                        17.5, 35.0,
+                        35.0, 0.0);
+                try {
+                    arrowW.setFill(Color.valueOf("YELLOW"));
+                } catch (Exception e) {
+                    arrowW.setFill(Color.YELLOW);
+                }
+
+                arrowW.setRotate(90);
+                this.getChildren().add(arrowW);
+                break;
             }
         }
+
+    }
+
 
     /**
      * From: https://stackoverflow.com/questions/23258605/javafx-how-can-i-best-place-a-label-centered-in-a-shape
