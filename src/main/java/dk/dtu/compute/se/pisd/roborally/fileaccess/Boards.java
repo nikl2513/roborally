@@ -41,6 +41,19 @@ public class Boards {
         Space space6 = board.getSpace(4, 6);
         space6.setConveyerbelt(conveyerbelt2);
 
+        Turnpad turnpad1 = new Turnpad();
+        board.addTurnpad(turnpad1);
+        turnpad1.setDirection("Left");
+        turnpad1.setSpace(board.getSpace(4,7));
+        Space space1t = board.getSpace(4,7);
+        space1t.setTurnpad(turnpad1);
+
+        Pit pit1 = new Pit();
+        board.addpit(pit1);
+        pit1.setSpace(board.getSpace(0,3));
+        Space space1p = board.getSpace(0,3);
+        space1p.setPit(pit1);
+
 
         Checkpoint checkpoint1 = new Checkpoint();
         Checkpoint checkpoint2 = new Checkpoint();

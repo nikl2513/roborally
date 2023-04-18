@@ -22,13 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * ...
@@ -45,22 +39,30 @@ public class Space extends Subject {
     private Player player;
     private Wall wall;
     private Conveyerbelt conveyerbelt;
+
+
+
+    private Pit pit;
+    private Turnpad turnpad;
     private boolean wallbool;
     private Checkpoint checkpoint;
     private boolean CheckpointBool;
 
-    private List<FieldAction> actions = new ArrayList<>();
 
-    private List<Heading> walls = new ArrayList<>();
-
-
-    public List<Heading> getWalls() {
-        return walls;
-    }
-    public List<FieldAction> getActions() {
-        return actions;
+    public Turnpad getTurnpad() {
+        return turnpad;
     }
 
+    public void setTurnpad(Turnpad turnpad) {
+        this.turnpad = turnpad;
+    }
+    public Pit getPit() {
+        return pit;
+    }
+
+    public void setPit(Pit pit) {
+        this.pit = pit;
+    }
 
 
     public Checkpoint getCheckpoint(){
@@ -144,13 +146,4 @@ public class Space extends Subject {
         notifyChange();
     }
 
-    public Collection<FieldAction> getActions(Space space) {
-        if(space.getCheckpoint()!=null){
-            return (Collection<FieldAction>) checkpoint;
-        }
-        if(space.getConveyerbelt()!=null){
-            return (Collection<FieldAction>) conveyerbelt;
-        }
-        return null;
-    }
 }
