@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -237,18 +238,17 @@ public class Board extends Subject {
                 break;
         }
         Space space1 = board.getSpace(x, y);
-        Wall wallcurrentspace = space.getWall();
-        Wall wallspacetarget = space1.getWall();
+
         Heading heading1 = heading.prev();
         Heading heading2 = heading1.prev();
-
-        if (space.getWall() != null) {
-            if (wallcurrentspace.getHeading() == heading) {
+        for (Heading headingwall :space.getWalls()){
+            if (headingwall==heading){
                 return null;
             }
         }
-        if (space1.getWall() != null) {
-            if (wallspacetarget.getHeading() == heading2) {
+
+        for (Heading headingwall2 :space1.getWalls()){
+            if (headingwall2==heading2){
                 return null;
             }
         }
@@ -263,15 +263,28 @@ public class Board extends Subject {
      * Vi har også tilføjet et CheckpointValue til den så man kan se hvor mange chekpoints hver spiller har.
      */
     public String getStatusMessage() {
+        Board board = current.board;
         // this is actually a view aspect, but for making assignment V1 easy for
         // the students, this method gives a string representation of the current
         // status of the game
 
         // XXX: V1 add the move count to the status message
         // XXX: V2 changed the status so that it shows the phase, the current player and the number of steps
+        if (board.getPhase() == Phase.GAME_ENDING) {
+            int i;
+            for (i = 0; i < board.getPlayersNumber(); ++i) {
+                Player player = board.getPlayer(i);
+                if (player.getCheckpointValue() == 6) {
+                    board.setCurrentPlayer(player);
+                }
+            }
+            return "Winner is: " + getCurrentPlayer().getName();
+        }
+
+
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
-                ", AntalSlag = " + getMoveCounter() +", Checkpoints = " + getCurrentPlayer().getCheckpointValue();
+                ", AntalSlag = " + getMoveCounter() + ", Checkpoints = " + getCurrentPlayer().getCheckpointValue();
 
 
     }

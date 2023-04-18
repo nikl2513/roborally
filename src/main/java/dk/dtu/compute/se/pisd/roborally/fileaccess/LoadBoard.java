@@ -40,7 +40,7 @@ import java.io.*;
  */
 public class LoadBoard {
 
-    private static final String BOARDSFOLDER = "boards";
+    private static final String BOARDSFOLDER = "Boards";
     private static final String DEFAULTBOARD = "defaultboard";
     private static final String JSON_EXT = "json";
 
@@ -62,19 +62,19 @@ public class LoadBoard {
         Gson gson = simpleBuilder.create();
 
 		Board result;
-		// FileReader fileReader = null;
+		InputStreamReader streamReader;
         JsonReader reader = null;
 		try {
-			// fileReader = new FileReader(filename);
-			reader = gson.newJsonReader(new InputStreamReader(inputStream));
+            streamReader = new InputStreamReader(inputStream);
+			reader = gson.newJsonReader(streamReader);
 			BoardTemplate template = gson.fromJson(reader, BoardTemplate.class);
 
 			result = new Board(template.width, template.height);
 			for (SpaceTemplate spaceTemplate: template.spaces) {
 			    Space space = result.getSpace(spaceTemplate.x, spaceTemplate.y);
 			    if (space != null) {
-                    //space.getActions().addAll(spaceTemplate.actions);
-                    //space.getWalls().addAll(spaceTemplate.walls);
+                    space.getActions().addAll(spaceTemplate.actions);
+                    space.getWalls().addAll(spaceTemplate.walls);
                 }
             }
 			reader.close();

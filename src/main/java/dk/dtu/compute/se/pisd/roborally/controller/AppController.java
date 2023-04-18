@@ -30,6 +30,7 @@ import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
 import dk.dtu.compute.se.pisd.roborally.dal.IRepository;
 import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.Boards;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 
 import javafx.application.Platform;
@@ -89,7 +90,8 @@ AppController implements Observer {
 
             // XXX the board should eventually be created programmatically or loaded from a file
             //     here we just create an empty board with the required number of players.
-            Board board = Boards.createBoard("Board1");
+            //Board board = Boards.createBoard("Board1");
+            Board board = LoadBoard.loadBoard(null);
 
             gameController = new GameController(board);
             int no = result.get();
