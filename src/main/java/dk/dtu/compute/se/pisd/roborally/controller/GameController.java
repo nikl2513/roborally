@@ -325,64 +325,74 @@ public class GameController {
      * @author Amskov
      */
     public void executeActionspace() {
-    int i;
-    for (i = 0; i < board.getPlayersNumber(); ++i) {
-        Player player = board.getPlayer(i);
-        Space space = player.getSpace();
-        Heading heading = player.getHeading();
-        if (space.getConveyerbelt() != null) {
-            Space space2 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
-            if (space2 != null) {
-                try {
-                    moveToSpace(player, space2, space.getConveyerbelt().getHeading());
-                    player.setSpace(space2);
-                } catch (ImpossibleMoveException e) {
+        int i;
+        //Converyer belt
+        for (i = 0; i < board.getPlayersNumber(); ++i) {
+            Player player = board.getPlayer(i);
+            Space space = player.getSpace();
+            for (FieldAction action : space.getActions()) {
+                if (action instanceof ConveyorBelt) {
+                    ConveyorBelt conveyorBelt = (ConveyorBelt) action;
+                    Space space2 = board.getNeighbour(space, conveyorBelt.getHeading());
+                    if (space2 != null) {
+                        try {
+                            moveToSpace(player, space2, conveyorBelt.getHeading());
+                            player.setSpace(space2);
+                        } catch (ImpossibleMoveException e) {
+                        }
+                    }
                 }
             }
-
         }
-    }
 
-    for (i = 0; i < board.getPlayersNumber(); ++i) {
-        Player player = board.getPlayer(i);
-        Space space1 = player.getSpace();
-        if (space1.getCheckpoint() != null) {
-            int value = player.getCheckpointValue();
-            switch (value) {
-                case 0:
-                    if (player.getCheckpointValue() == 0 && space1.getCheckpoint().getCheckpointnumber() == 1) {
-                        player.setCheckpointValue(1);
+        //Checkpoint
+        for (i = 0; i < board.getPlayersNumber(); ++i) {
+            Player player1 = board.getPlayer(i);
+            Space space1 = player1.getSpace();
+            for (FieldAction action : space1.getActions()) {
+                if (action instanceof Checkpoint) {
+                    Checkpoint checkpoint = (Checkpoint) action;
+                        int value = player1.getCheckpointValue();
+                        switch (value) {
+                            case 0:
+                                if (player1.getCheckpointValue() == 0 && checkpoint.getCheckpointnumber()==1) {
+                                    player1.setCheckpointValue(1);
+                                }
+                                break;
+                            case 1:
+                                if (player1.getCheckpointValue() == 1 && checkpoint.getCheckpointnumber() == 2) {
+                                    player1.setCheckpointValue(2);
+                                }
+                                break;
+                            case 2:
+                                if (player1.getCheckpointValue() == 2 && checkpoint.getCheckpointnumber() == 3) {
+                                    player1.setCheckpointValue(3);
+                                }
+                                break;
+                            case 3:
+                                if (player1.getCheckpointValue() == 3 && checkpoint.getCheckpointnumber() == 4) {
+                                    player1.setCheckpointValue(4);
+                                }
+                                break;
+                            case 4:
+                                if (player1.getCheckpointValue() == 4 && checkpoint.getCheckpointnumber() == 5) {
+                                    player1.setCheckpointValue(5);
+                                }
+                                break;
+                            case 5:
+                                if (player1.getCheckpointValue() == 5 && checkpoint.getCheckpointnumber() == 6) {
+                                    player1.setCheckpointValue(6);
+                                    board.setPhase(Phase.GAME_ENDING);
+                                    board.getStatusMessage();
+                                }
+                                break;
+                        }
                     }
-                    break;
-                case 1:
-                    if (player.getCheckpointValue() == 1 && space1.getCheckpoint().getCheckpointnumber() == 2) {
-                        player.setCheckpointValue(2);
-                    }
-                    break;
-                case 2:
-                    if (player.getCheckpointValue() == 2 && space1.getCheckpoint().getCheckpointnumber() == 3) {
-                        player.setCheckpointValue(3);
-                    }
-                    break;
-                case 3:
-                    if (player.getCheckpointValue() == 3 && space1.getCheckpoint().getCheckpointnumber() == 4) {
-                        player.setCheckpointValue(4);
-                    }
-                    break;
-                case 4:
-                    if (player.getCheckpointValue() == 4 && space1.getCheckpoint().getCheckpointnumber() == 5) {
-                        player.setCheckpointValue(5);
-                    }
-                    break;
-                case 5:
-                    if (player.getCheckpointValue() == 5 && space1.getCheckpoint().getCheckpointnumber() == 6) {
-                        player.setCheckpointValue(6);
-                    }
-                    break;
+                }
             }
         }
-    }
-}
+
+
 
 
 

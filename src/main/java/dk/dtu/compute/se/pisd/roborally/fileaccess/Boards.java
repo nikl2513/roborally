@@ -1,6 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.fileaccess;
 
-import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.*;
