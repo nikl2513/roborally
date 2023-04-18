@@ -113,9 +113,9 @@ class Repository implements IRepository {
 
                 createPlayersInDB(game);
 				//TOODO this method needs to be implemented first
-                System.out.println("hej med dig");
-				createCardFieldsInDB(game);
-                System.out.println("hej med mig");
+                //System.out.println("hej med dig");
+				//createCardFieldsInDB(game);
+                //System.out.println("hej med mig");
                 // since current player is a foreign key, it can oly be
                 // inserted after the players are created, since MySQL does
                 // not have a per transaction validation, but validates on
@@ -312,7 +312,7 @@ class Repository implements IRepository {
 
         ResultSet rs = ps.executeQuery();
         for (int i = 0; i < game.getPlayersNumber(); i++) {
-            int playerID = rs.getInt(FIELD_PLAYERID);
+            int playerID = rs.getInt(i);
             Player player = game.getPlayer(playerID);
             rs.updateInt(FIELD_GAMEID, game.getGameId());
             rs.updateInt(FIELD_PLAYERID, i);
@@ -512,7 +512,8 @@ class Repository implements IRepository {
         return select_players_stmt;
     }
 
-    private static final String SQL_SELECT_CARD_FIELDS = "SELECT * FROM CardField WHERE gameID = ?";
+    private static final String SQL_SELECT_CARD_FIELDS = "SELECT * FROM Cardfield WHERE gameID = ?";
+    private static final String SQL_SELECT_CARD_FIELDS2 = "AND playerID = ?";
 
     private PreparedStatement select_card_field_stmt = null;
 
