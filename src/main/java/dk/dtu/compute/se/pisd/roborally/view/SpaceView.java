@@ -307,7 +307,6 @@ public class SpaceView extends StackPane implements ViewObserver {
                 break;
             }
         }
-
     }
     public void addTurnpad(){
         Turnpad turnpad = space.getTurnpad();
