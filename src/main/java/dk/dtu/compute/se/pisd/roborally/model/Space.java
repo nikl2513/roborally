@@ -61,6 +61,20 @@ public class Space extends Subject {
         return actions;
     }
 
+    public Turnpad getTurnpad() {
+        return turnpad;
+    }
+
+    public void setTurnpad(Turnpad turnpad) {
+        this.turnpad = turnpad;
+    }
+    public Pit getPit() {
+        return pit;
+    }
+
+    public void setPit(Pit pit) {
+        this.pit = pit;
+    }
 
 
     public Checkpoint getCheckpoint(){
