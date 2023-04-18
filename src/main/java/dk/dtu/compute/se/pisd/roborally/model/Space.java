@@ -45,6 +45,8 @@ public class Space extends Subject {
     private Player player;
     private Wall wall;
     private Conveyerbelt conveyerbelt;
+    private Pit pit;
+    private Turnpad turnpad;
     private boolean wallbool;
     private Checkpoint checkpoint;
     private boolean CheckpointBool;
