@@ -230,15 +230,6 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
 
-
-
-
-
-
-
-
-
-
     public void addConveyerbelt (Heading heading) {
 
         switch (heading) {
