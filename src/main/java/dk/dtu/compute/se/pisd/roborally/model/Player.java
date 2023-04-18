@@ -48,6 +48,7 @@ public class Player extends Subject {
     private boolean checkpoint1Complete;
 
     private int checkpointValue;
+    private int hp;
     public int getCheckpointValue() {
         return checkpointValue;
     }
@@ -64,6 +65,7 @@ public class Player extends Subject {
         this.color = color;
 
         checkpointValue = 0;
+        hp = 0;
 
         this.space = null;
         checkpoint1Complete = false;
@@ -158,6 +160,14 @@ public class Player extends Subject {
 
     public CommandCardField getCardField(int i) {
         return cards[i];
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
 }

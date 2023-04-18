@@ -74,6 +74,7 @@ class Repository implements IRepository {
 		if (game.getGameId() == null) {
 
 			Connection connection = connector.getConnection();
+
 			try {
 				connection.setAutoCommit(false);
 
