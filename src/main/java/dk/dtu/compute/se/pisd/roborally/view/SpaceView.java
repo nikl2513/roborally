@@ -238,14 +238,14 @@ public class SpaceView extends StackPane implements ViewObserver {
             case NORTH: {
                 Rectangle rectangleN = new Rectangle(35, 35);
                 rectangleN.setStroke(Color.RED);
-                this.getChildren().add(rectangleN);
+                //this.getChildren().add(rectangleN);
                 Polygon arrowN = new Polygon(0.0, 0.0,
-                        17.5, 35.0,
-                        35.0, 0.0);
+                        7.5, 15.0,
+                        15.0, 0.0);
                 try {
-                    arrowN.setFill(Color.valueOf("YELLOW"));
+                    arrowN.setFill(Color.valueOf("CHOCOLATE"));
                 } catch (Exception e) {
-                    arrowN.setFill(Color.YELLOW);
+                    arrowN.setFill(Color.CHOCOLATE);
                 }
 
                 arrowN.setRotate(180);
@@ -256,14 +256,14 @@ public class SpaceView extends StackPane implements ViewObserver {
             case EAST: {
                 Rectangle rectangleE = new Rectangle(35, 35);
                 rectangleE.setStroke(Color.RED);
-                this.getChildren().add(rectangleE);
+                //this.getChildren().add(rectangleE);
                 Polygon arrowE = new Polygon(0.0, 0.0,
-                        17.5, 35.0,
-                        35.0, 0.0);
+                        7.5, 15.0,
+                        15.0, 0.0);
                 try {
-                    arrowE.setFill(Color.valueOf("YELLOW"));
+                    arrowE.setFill(Color.valueOf("CHOCOLATE"));
                 } catch (Exception e) {
-                    arrowE.setFill(Color.YELLOW);
+                    arrowE.setFill(Color.CHOCOLATE);
                 }
 
                 arrowE.setRotate(270);
@@ -274,14 +274,14 @@ public class SpaceView extends StackPane implements ViewObserver {
             case SOUTH: {
                 Rectangle rectangleS = new Rectangle(35, 35);
                 rectangleS.setStroke(Color.RED);
-                this.getChildren().add(rectangleS);
+                //this.getChildren().add(rectangleS);
                 Polygon arrowS = new Polygon(0.0, 0.0,
-                        17.5, 35.0,
-                        35.0, 0.0);
+                        7.5, 15.0,
+                        15.0, 0.0);
                 try {
-                    arrowS.setFill(Color.valueOf("YELLOW"));
+                    arrowS.setFill(Color.valueOf("CHOCOLATE"));
                 } catch (Exception e) {
-                    arrowS.setFill(Color.YELLOW);
+                    arrowS.setFill(Color.CHOCOLATE);
                 }
 
                 arrowS.setRotate(0);
@@ -292,14 +292,14 @@ public class SpaceView extends StackPane implements ViewObserver {
             case WEST: {
                 Rectangle rectangleW = new Rectangle(35, 35);
                 rectangleW.setStroke(Color.RED);
-                this.getChildren().add(rectangleW);
+                //this.getChildren().add(rectangleW);
                 Polygon arrowW = new Polygon(0.0, 0.0,
-                        17.5, 35.0,
-                        35.0, 0.0);
+                        7.5, 15.0,
+                        15.0, 0.0);
                 try {
-                    arrowW.setFill(Color.valueOf("YELLOW"));
+                    arrowW.setFill(Color.valueOf("CHOCOLATE"));
                 } catch (Exception e) {
-                    arrowW.setFill(Color.YELLOW);
+                    arrowW.setFill(Color.CHOCOLATE);
                 }
 
                 arrowW.setRotate(90);
