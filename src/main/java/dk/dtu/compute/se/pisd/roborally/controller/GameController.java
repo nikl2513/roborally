@@ -348,6 +348,7 @@ public class GameController {
                 }
             }
         }
+        //Turnpad
         for ( i = 0; i < board.getPlayersNumber() ; i++) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
@@ -361,6 +362,7 @@ public class GameController {
                 }
             }
         }
+        //Pit
 
         for ( i = 0; i < board.getPlayersNumber() ; i++) {
             Player player = board.getPlayer(i);

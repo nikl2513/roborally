@@ -38,7 +38,7 @@ public class ConveyorBelt extends FieldAction {
 
     private Space space;
 
-    public  Heading getHeading() {
+    public Heading getHeading() {
         return heading;
     }
 
@@ -67,16 +67,4 @@ public class ConveyorBelt extends FieldAction {
             return false;
         }
     }
-
-   /* public void movePlayer(Space space, GameController gameController, Board board) {
-        Space space1 = board.getNeighbour(space, space.getConveyerbelt().getHeading());
-        if (space1.getWall() != null) {
-            try {
-                gameController.moveToSpace(space.getPlayer(), space, space.getConveyerbelt().getHeading());
-            } catch (ImpossibleMoveException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-    }*/
 }
