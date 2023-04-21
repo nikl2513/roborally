@@ -37,7 +37,7 @@ public class Checkpoint extends FieldAction {
         return false;
     }
 
-    public void action(Player player1, Checkpoint checkpoint, Board board) {
+    public void executeAction(Player player1, Checkpoint checkpoint, Board board) {
         int value = player1.getCheckpointValue();
         switch (value) {
             case 0:

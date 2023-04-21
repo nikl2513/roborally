@@ -386,7 +386,7 @@ public class GameController {
             for (FieldAction action : space1.getActions()) {
                 if (action instanceof Checkpoint) {
                     Checkpoint checkpoint = (Checkpoint) action;
-                    checkpoint.action(player1, checkpoint, board);
+                    checkpoint.executeAction(player1, checkpoint, board);
                 }
             }
         }

@@ -269,11 +269,23 @@ public class Board extends Subject {
      * Vi har også tilføjet et CheckpointValue til den så man kan se hvor mange chekpoints hver spiller har.
      */
     public String getStatusMessage() {
+        Board board = current.board;
         // this is actually a view aspect, but for making assignment V1 easy for
         // the students, this method gives a string representation of the current
         // status of the game
+
         // XXX: V1 add the move count to the status message
         // XXX: V2 changed the status so that it shows the phase, the current player and the number of steps
+        if (board.getPhase() == Phase.GAME_ENDING) {
+            int i;
+            for (i = 0; i < board.getPlayersNumber(); ++i) {
+                Player player = board.getPlayer(i);
+                if (player.getCheckpointValue() == 6) {
+                    board.setCurrentPlayer(player);
+                }
+            }
+            return "Winner is: " + getCurrentPlayer().getName();
+        }
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
                 ", AntalSlag = " + getMoveCounter() +", Checkpoints = " + getCurrentPlayer().getCheckpointValue() +
