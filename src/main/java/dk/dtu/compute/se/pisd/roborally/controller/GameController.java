@@ -351,13 +351,13 @@ public class GameController {
             }
         }
         //Turnpad
-        for ( i = 0; i < board.getPlayersNumber() ; i++) {
+        for (i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
             Heading heading = player.getHeading();
             for (FieldAction action : space.getActions()) {
                 if (action instanceof Turnpad) {
-                    Turnpad turnpad =( Turnpad) action;
+                    Turnpad turnpad = (Turnpad) action;
 
                     if (Objects.equals(turnpad.getDirection(), "Right")) {
                         player.setHeading(heading.next());
@@ -370,16 +370,15 @@ public class GameController {
         }
         //Pit
 
-        for ( i = 0; i < board.getPlayersNumber() ; i++) {
+        for (i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
-            if(space.getPit() != null){
+            if (space.getPit() != null) {
 
-                player.setHp(player.getHp() - 1 );
+                player.setHp(player.getHp() - 1);
                 player.setSpace(board.getSpace(i % board.width, i));
             }
         }
-
         //Checkpoint
         for (i = 0; i < board.getPlayersNumber(); ++i) {
             Player player1 = board.getPlayer(i);
@@ -390,7 +389,7 @@ public class GameController {
                     int value = player1.getCheckpointValue();
                     switch (value) {
                         case 0:
-                            if (player1.getCheckpointValue() == 0 && checkpoint.getCheckpointnumber()==1) {
+                            if (player1.getCheckpointValue() == 0 && checkpoint.getCheckpointnumber() == 1) {
                                 player1.setCheckpointValue(1);
                             }
                             break;

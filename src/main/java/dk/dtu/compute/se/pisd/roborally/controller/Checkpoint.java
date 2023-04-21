@@ -34,4 +34,5 @@ public class Checkpoint extends FieldAction {
     public boolean doAction(GameController gameController, dk.dtu.compute.se.pisd.roborally.model.Space space) {
         return false;
     }
+
 }
