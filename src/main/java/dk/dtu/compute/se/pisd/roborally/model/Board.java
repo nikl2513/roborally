@@ -23,6 +23,8 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
+import dk.dtu.compute.se.pisd.roborally.controller.Pit;
+import dk.dtu.compute.se.pisd.roborally.controller.Turnpad;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

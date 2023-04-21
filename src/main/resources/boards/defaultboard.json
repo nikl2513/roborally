@@ -72,7 +72,7 @@
           }
         }
       ],
-      "x": 7,
+      "x": 5,
       "y": 2
     },
     {
@@ -281,6 +281,44 @@
       ],
       "x": 7,
       "y": 7
+    },
+    {
+      "walls": [],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.Pit",
+          "INSTANCE": {}
+        }
+      ],
+      "x": 4,
+      "y": 7
+    }
+  ,
+    {
+      "walls": [],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.Turnpad",
+          "INSTANCE": {
+            "direction": "Right"
+          }
+        }
+      ],
+      "x": 7,
+      "y": 4
+    },
+    {
+      "walls": [],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.Turnpad",
+          "INSTANCE": {
+           "direction": "Left"
+          }
+        }
+      ],
+      "x": 7,
+      "y": 6
     }
   ]
 }

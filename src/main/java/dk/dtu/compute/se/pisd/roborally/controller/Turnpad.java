@@ -1,7 +1,10 @@
-package dk.dtu.compute.se.pisd.roborally.model;
+package dk.dtu.compute.se.pisd.roborally.controller;
 
-public class Turnpad {
-    private Space space;
+import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
+
+public class Turnpad extends FieldAction{
+    private dk.dtu.compute.se.pisd.roborally.model.Space space;
     private String direction;
     public static Board Space;
 
@@ -29,4 +32,8 @@ public class Turnpad {
 }
 
 
+    @Override
+    public boolean doAction(GameController gameController, dk.dtu.compute.se.pisd.roborally.model.Space space) {
+        return false;
+    }
 }

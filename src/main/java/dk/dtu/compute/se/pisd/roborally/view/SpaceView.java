@@ -22,9 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
-import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.*;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -37,7 +35,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
+import java.util.Objects;
 
 /**
  * ...
@@ -109,8 +107,15 @@ public class SpaceView extends StackPane implements ViewObserver {
                 }
                 if (action instanceof Checkpoint){
                     Checkpoint checkpoint = (Checkpoint) action;
-                    checkpoint.getCheckpointnumber();
+
                     addCheckpoints(checkpoint.getCheckpointnumber());
+                }
+                if (action instanceof Turnpad){
+                    Turnpad turnpad = (Turnpad) action;
+                    addTurnpad(turnpad.getDirection());
+                }
+                if (action instanceof Pit){
+                    addPit();
                 }
 
             }
@@ -308,24 +313,30 @@ public class SpaceView extends StackPane implements ViewObserver {
             }
         }
     }
-    public void addTurnpad(){
-        Turnpad turnpad = space.getTurnpad();
-        if(turnpad != null){
-            Circle circle = new Circle(20, 20, 20);
+    public void addTurnpad(String d){
+
+        if(Objects.equals(d, "Left")){
+            Text text   = createText("Left");
+            Circle circle = new Circle(12, 12, 12);
             circle.setFill(Color.GREENYELLOW);
-            this.getChildren().addAll(circle);
+            this.getChildren().addAll(circle,text);
+        }
+        if (Objects.equals(d, "Right")){
+            Text text   = createText("Right");
+            Circle circle = new Circle(12, 12, 12);
+            circle.setFill(Color.GREENYELLOW);
+            this.getChildren().addAll(circle,text);
         }
 
     }
 
     public void addPit(){
-        Pit pit = space.getPit();
-        if(pit != null){
-            Circle circle = new Circle(20, 20, 20);
+
+            Rectangle circle = new Rectangle(25, 25);
             circle.setFill(Color.GREY);
             this.getChildren().addAll(circle);
         }
-    }
+
 
 
     /**
