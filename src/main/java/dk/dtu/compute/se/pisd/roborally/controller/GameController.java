@@ -24,6 +24,8 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * ...
  *
@@ -352,13 +354,17 @@ public class GameController {
         for ( i = 0; i < board.getPlayersNumber() ; i++) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
-            if(space.getTurnpad() != null){
+            Heading heading = player.getHeading();
+            for (FieldAction action : space.getActions()) {
+                if (action instanceof Turnpad) {
+                    Turnpad turnpad =( Turnpad) action;
 
-                if(space.getTurnpad().getDirection() == "Right"){
-                    turnRight(player);
-                }
-                if(space.getTurnpad().getDirection() == "Left"){
-                    turnLeft(player);
+                    if (Objects.equals(turnpad.getDirection(), "Right")) {
+                        player.setHeading(heading.next());
+                    }
+                    if (Objects.equals(turnpad.getDirection(), "Left")) {
+                        player.setHeading(heading.prev());
+                    }
                 }
             }
         }
