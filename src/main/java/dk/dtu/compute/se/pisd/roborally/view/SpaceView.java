@@ -22,9 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
-import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.*;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -36,8 +34,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 import org.jetbrains.annotations.NotNull;
-
-import java.awt.*;
 
 /**
  * ...
