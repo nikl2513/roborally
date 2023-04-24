@@ -358,13 +358,7 @@ public class GameController {
             for (FieldAction action : space.getActions()) {
                 if (action instanceof Turnpad) {
                     Turnpad turnpad = (Turnpad) action;
-
-                    if (Objects.equals(turnpad.getDirection(), "Right")) {
-                        player.setHeading(heading.next());
-                    }
-                    if (Objects.equals(turnpad.getDirection(), "Left")) {
-                        player.setHeading(heading.prev());
-                    }
+                    turnpad.executeaction(turnpad,heading,player);
                 }
             }
         }

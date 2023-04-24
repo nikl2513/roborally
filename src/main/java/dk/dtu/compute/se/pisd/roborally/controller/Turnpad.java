@@ -1,7 +1,11 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+
+import java.util.Objects;
 
 public class Turnpad extends FieldAction{
     private dk.dtu.compute.se.pisd.roborally.model.Space space;
@@ -31,7 +35,14 @@ public class Turnpad extends FieldAction{
 
 }
 
-
+public void executeaction(Turnpad turnpad, Heading heading, Player player){
+    if (Objects.equals(turnpad.getDirection(), "Right")) {
+        player.setHeading(heading.next());
+    }
+    if (Objects.equals(turnpad.getDirection(), "Left")) {
+        player.setHeading(heading.prev());
+    }
+}
     @Override
     public boolean doAction(GameController gameController, dk.dtu.compute.se.pisd.roborally.model.Space space) {
         return false;
