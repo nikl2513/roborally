@@ -35,6 +35,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * ...
  *
@@ -67,7 +69,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.setStyle("-fx-background-color: black;");
         }
 
-         updatePlayer();
+        updatePlayer();
 
         // This space view should listen to changes of the space
         space.attach(this);
@@ -105,8 +107,15 @@ public class SpaceView extends StackPane implements ViewObserver {
                 }
                 if (action instanceof Checkpoint){
                     Checkpoint checkpoint = (Checkpoint) action;
-                    checkpoint.getCheckpointnumber();
+
                     addCheckpoints(checkpoint.getCheckpointnumber());
+                }
+                if (action instanceof Turnpad){
+                    Turnpad turnpad = (Turnpad) action;
+                    addTurnpad(turnpad.getDirection());
+                }
+                if (action instanceof Pit){
+                    addPit();
                 }
 
             }
@@ -121,54 +130,54 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     private void addCheckpoints(int Checkponitnumber) {
 
-           switch (Checkponitnumber) {
-               case 1 -> {
-                   Text text   = createText("1");
-                   Circle circle = new Circle(10, 10, 10);
-                   circle.setFill(Color.YELLOW);
-                   //this.getChildren().add(circle);
-                   this.getChildren().addAll(circle, text);
-                   break;
-               }
-               case 2 -> {
-                   Text text   = createText("2");
-                   Circle circle1 = new Circle(10, 10, 10);
-                   circle1.setFill(Color.AQUA);
-                   this.getChildren().addAll(circle1, text);
-                   break;
-               }
-               case 3 -> {
-                   Text text   = createText("3");
-                   Circle circle2 = new Circle(10, 10, 10);
-                   circle2.setFill(Color.RED);
-                   this.getChildren().addAll(circle2, text);
-                   break;
-               }
-               case 4 -> {
-                   Text text   = createText("4");
-                   Circle circle3 = new Circle(10, 10, 10);
-                   circle3.setFill(Color.BROWN);
-                   this.getChildren().addAll(circle3, text);
-                   break;
-               }
-               case 5 -> {
-                   Text text   = createText("5");
-                   Circle circle4 = new Circle(10, 10, 10);
-                   circle4.setFill(Color.DARKGREY);
-                   this.getChildren().addAll(circle4, text);
-                   break;
-               }
-               case 6 -> {
-                   Text text   = createText("6");
-                   Circle circle5 = new Circle(10, 10, 10);
-                   circle5.setFill(Color.PURPLE);
-                   this.getChildren().addAll(circle5, text);
-                   break;
-               }
-           }
+        switch (Checkponitnumber) {
+            case 1 -> {
+                Text text   = createText("1");
+                Circle circle = new Circle(10, 10, 10);
+                circle.setFill(Color.YELLOW);
+                //this.getChildren().add(circle);
+                this.getChildren().addAll(circle, text);
+                break;
+            }
+            case 2 -> {
+                Text text   = createText("2");
+                Circle circle1 = new Circle(10, 10, 10);
+                circle1.setFill(Color.AQUA);
+                this.getChildren().addAll(circle1, text);
+                break;
+            }
+            case 3 -> {
+                Text text   = createText("3");
+                Circle circle2 = new Circle(10, 10, 10);
+                circle2.setFill(Color.RED);
+                this.getChildren().addAll(circle2, text);
+                break;
+            }
+            case 4 -> {
+                Text text   = createText("4");
+                Circle circle3 = new Circle(10, 10, 10);
+                circle3.setFill(Color.BROWN);
+                this.getChildren().addAll(circle3, text);
+                break;
+            }
+            case 5 -> {
+                Text text   = createText("5");
+                Circle circle4 = new Circle(10, 10, 10);
+                circle4.setFill(Color.DARKGREY);
+                this.getChildren().addAll(circle4, text);
+                break;
+            }
+            case 6 -> {
+                Text text   = createText("6");
+                Circle circle5 = new Circle(10, 10, 10);
+                circle5.setFill(Color.PURPLE);
+                this.getChildren().addAll(circle5, text);
+                break;
+            }
+        }
 
 
-           }
+    }
 
 
 
@@ -179,52 +188,52 @@ public class SpaceView extends StackPane implements ViewObserver {
         Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-            switch (heading) {
+        switch (heading) {
 
 
-                case NORTH:
-                    gc.setStroke(Color.RED);
-                    gc.setLineWidth(5);
-                    gc.setLineCap(StrokeLineCap.ROUND);
-                    gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+            case NORTH:
+                gc.setStroke(Color.RED);
+                gc.setLineWidth(5);
+                gc.setLineCap(StrokeLineCap.ROUND);
+                gc.strokeLine(2, SPACE_HEIGHT - 38, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
 
-                    break;
-                //nord
-                case EAST:
+                break;
+            //nord
+            case EAST:
 
 
-                    gc.setStroke(Color.RED);
-                    gc.setLineWidth(5);
-                    gc.setLineCap(StrokeLineCap.ROUND);
-                    gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
+                gc.setStroke(Color.RED);
+                gc.setLineWidth(5);
+                gc.setLineCap(StrokeLineCap.ROUND);
+                gc.strokeLine(38, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 38);
 
-                    break;
+                break;
 
-                //west
-                case WEST:
-                    gc.setStroke(Color.RED);
-                    gc.setLineWidth(5);
-                    gc.setLineCap(StrokeLineCap.ROUND);
-                    gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
+            //west
+            case WEST:
+                gc.setStroke(Color.RED);
+                gc.setLineWidth(5);
+                gc.setLineCap(StrokeLineCap.ROUND);
+                gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 38, SPACE_HEIGHT - 38);
 
-                    break;
-                //south
+                break;
+            //south
 
-                case SOUTH:
+            case SOUTH:
 
-                    gc.setStroke(Color.RED);
-                    gc.setLineWidth(5);
-                    gc.setLineCap(StrokeLineCap.ROUND);
-                    gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
+                gc.setStroke(Color.RED);
+                gc.setLineWidth(5);
+                gc.setLineCap(StrokeLineCap.ROUND);
+                gc.strokeLine(2, SPACE_HEIGHT - 2, SPACE_WIDTH - 2, SPACE_HEIGHT - 2);
 
-                    break;
+                break;
 
-                default:
-                    break;
-            }
-            this.getChildren().add(canvas);
-
+            default:
+                break;
         }
+        this.getChildren().add(canvas);
+
+    }
 
 
 
@@ -304,24 +313,30 @@ public class SpaceView extends StackPane implements ViewObserver {
             }
         }
     }
-    public void addTurnpad(){
-        Turnpad turnpad = space.getTurnpad();
-        if(turnpad != null){
-            Circle circle = new Circle(20, 20, 20);
+    public void addTurnpad(String d){
+
+        if(Objects.equals(d, "Left")){
+            Text text   = createText("Left");
+            Circle circle = new Circle(12, 12, 12);
             circle.setFill(Color.GREENYELLOW);
-            this.getChildren().addAll(circle);
+            this.getChildren().addAll(circle,text);
+        }
+        if (Objects.equals(d, "Right")){
+            Text text   = createText("Right");
+            Circle circle = new Circle(12, 12, 12);
+            circle.setFill(Color.GREENYELLOW);
+            this.getChildren().addAll(circle,text);
         }
 
     }
 
     public void addPit(){
-        Pit pit = space.getPit();
-        if(pit != null){
-            Circle circle = new Circle(20, 20, 20);
-            circle.setFill(Color.GREY);
-            this.getChildren().addAll(circle);
-        }
+
+        Rectangle circle = new Rectangle(25, 25);
+        circle.setFill(Color.GREY);
+        this.getChildren().addAll(circle);
     }
+
 
 
     /**
@@ -339,9 +354,4 @@ public class SpaceView extends StackPane implements ViewObserver {
         );
         return text;
     }
-    }
-
-
-
-
-
+}

@@ -77,7 +77,7 @@ class Repository implements IRepository {
 	}
 
 	@Override
-	public boolean createGameInDB(Board game) {
+	public boolean createGameInDB(Board game, int k) {
 
 		if (game.getGameId() == null) {
 
@@ -93,6 +93,7 @@ class Repository implements IRepository {
 				ps.setNull(2, Types.TINYINT); // game.getPlayerNumber(game.getCurrentPlayer())); is inserted after players!
 				ps.setInt(3, game.getPhase().ordinal());
 				ps.setInt(4, game.getStep());
+				ps.setInt(5,k);
 
 				// If you have a foreign key constraint for current players,
 				// the check would need to be temporarily disabled, since
@@ -181,7 +182,7 @@ class Repository implements IRepository {
 
 			updatePlayersInDB(game);
 			//TOODO this method needs to be implemented first
-			//updateCardFieldsInDB(game);
+			updateCardFieldsInDB(game);
 
 			connection.commit();
 			connection.setAutoCommit(true);
@@ -223,8 +224,12 @@ class Repository implements IRepository {
 				// TODO and we should also store the used game board in the database
 				//      for now, we use the default game board
 
-				//game = LoadBoard.loadBoard(null);
-				game = Boards.createBoard("board1");
+
+
+				game = LoadBoard.loadBoard(rs.getInt("boardname"));
+
+
+				//game = Boards.createBoard("1");
 				if (game == null) {
 					return null;
 				}
@@ -452,7 +457,7 @@ class Repository implements IRepository {
 	}
 
 	private static final String SQL_INSERT_GAME =
-			"INSERT INTO Game(name, currentPlayer, phase, step) VALUES (?, ?, ?, ?)";
+			"INSERT INTO Game(name, currentPlayer, phase, step, boardname) VALUES (?, ?, ?, ?, ?)";
 
 	private PreparedStatement insert_game_stmt = null;
 

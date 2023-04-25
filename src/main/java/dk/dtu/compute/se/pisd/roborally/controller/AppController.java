@@ -111,7 +111,7 @@ AppController implements Observer {
             // XXX: V2
             // board.setCurrentPlayer(board.getPlayer(0));
             gameController.startProgrammingPhase();
-            repository.createGameInDB(gameController.board);
+            repository.createGameInDB(gameController.board,result1.get());
             roboRally.createBoardView(gameController);
         }
     }
