@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class Turnpad extends FieldAction{
     private dk.dtu.compute.se.pisd.roborally.model.Space space;
-    private String direction;
+    private int direction;
     public static Board Space;
 
     public Space getSpace() {
@@ -22,28 +22,28 @@ public class Turnpad extends FieldAction{
     }
 
 
-    public String getDirection() {
+    public int getDirection() {
         return direction;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
 
-    public void executeaction(Turnpad turnpad, Heading heading, Player player){
-        if (Objects.equals(turnpad.getDirection(), "Right")) {
-            player.setHeading(heading.next());
-        }
-        if (Objects.equals(turnpad.getDirection(), "Left")) {
-            player.setHeading(heading.prev());
-        }
-    }
+
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        if (space.getTurnpad() != null) {
-            return true;
-        } else {
-            return false;
-        }
+       Player player = space.getPlayer();
+       Heading heading =  player.getHeading();
+
+       if (direction ==1 ){
+           player.setHeading(heading.prev());
+           return  true;
+       }
+       if (direction==2){
+           player.setHeading(heading.next());
+           return  true;
+       }
+
+
+
+        return  false;
     }
 
 

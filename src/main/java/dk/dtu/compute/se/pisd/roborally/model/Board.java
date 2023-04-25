@@ -225,8 +225,6 @@ public class Board extends Subject {
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading) {
         int x = space.x;
         int y = space.y;
-        Board board = current.board;
-
 
         switch (heading) {
             case SOUTH:
@@ -242,21 +240,15 @@ public class Board extends Subject {
                 x = (x + 1) % width;
                 break;
         }
-        Space space1 = board.getSpace(x, y);
-        Heading heading1 = heading.prev();
-        Heading heading2 = heading1.prev();
-        for (Heading headingwall :space.getWalls()){
-            if (headingwall==heading){
-                return null;
-            }
-        }
+        Space space1 = this.getSpace(x, y);
+        Heading heading2 = heading.prev().prev();
 
-        for (Heading headingwall2 :space1.getWalls()){
-            if (headingwall2==heading2){
-                return null;
-            }
+        if (space.getWalls().contains(heading)) {
+            return null;
         }
-
+        if (space1.getWalls().contains(heading2)){
+            return  null;
+        }
 
         return getSpace(x, y);
     }

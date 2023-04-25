@@ -325,7 +325,7 @@ public class GameController {
 
     /**
      * Det er her vores aktionfelter bliver aktiveret efter at spillernes tur er færdig.
-     * Lige nu omhandler det chekpoints og conveyerbelts
+     * Ved at gennemgå hvor spillerne står henne og ser hvilken Fieldaction de står på. og kalder derefter doAction
      *
      * @author Amskov
      */
@@ -334,44 +334,9 @@ public class GameController {
         for (i = 0; i < board.getPlayersNumber(); ++i) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
-            Heading heading = player.getHeading();
             for (FieldAction action : space.getActions()) {
-
-
-                //Conveyorbelt
-                if (action instanceof ConveyorBelt) {
-                    ConveyorBelt conveyorBelt = (ConveyorBelt) action;
-                    Space space2 = board.getNeighbour(space, conveyorBelt.getHeading());
-                    if (space2 != null) {
-                        try {
-                            moveToSpace(player, space2, conveyorBelt.getHeading());
-                            player.setSpace(space2);
-                        } catch (ImpossibleMoveException e) {
-                        }
-                    }
-                }
-                //Turnpad
-                if (action instanceof Turnpad) {
-                    Turnpad turnpad = (Turnpad) action;
-                    turnpad.executeaction(turnpad, heading, player);
-                }
-                //Pit
-                if (action instanceof Pit) {
-                    player.setHp(player.getHp() - 1);
-                    player.setSpace(board.getSpace(i % board.width, i));
-
-                    if (player.getHp() == 0) {
-                        player.setHp(3);
-                        player.setCheckpointValue(0);
-
-                    }
-                }
-                //Checkpoint
-                if (action instanceof Checkpoint) {
-                    Checkpoint checkpoint = (Checkpoint) action;
-                    checkpoint.executeAction(player, checkpoint, board);
-                }
-
+                GameController gameController = new GameController(board);
+                action.doAction(gameController,space);
             }
         }
 

@@ -300,7 +300,7 @@
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.Turnpad",
           "INSTANCE": {
-            "direction": "Right"
+            "direction": 2
           }
         }
       ],

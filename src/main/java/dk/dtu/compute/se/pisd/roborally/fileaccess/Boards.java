@@ -45,7 +45,7 @@ public class Boards {
 
         Turnpad turnpad1 = new Turnpad();
         board.addTurnpad(turnpad1);
-        turnpad1.setDirection("Left");
+
         turnpad1.setSpace(board.getSpace(4,7));
         Space space1t = board.getSpace(4,7);
         space1t.setTurnpad(turnpad1);

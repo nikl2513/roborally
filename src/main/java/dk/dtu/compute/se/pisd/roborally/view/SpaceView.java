@@ -313,15 +313,15 @@ public class SpaceView extends StackPane implements ViewObserver {
             }
         }
     }
-    public void addTurnpad(String d){
+    public void addTurnpad(int d){
 
-        if(Objects.equals(d, "Left")){
+        if(d==1){
             Text text   = createText("Left");
             Circle circle = new Circle(12, 12, 12);
             circle.setFill(Color.GREENYELLOW);
             this.getChildren().addAll(circle,text);
         }
-        if (Objects.equals(d, "Right")){
+        if (d==2){
             Text text   = createText("Right");
             Circle circle = new Circle(12, 12, 12);
             circle.setFill(Color.GREENYELLOW);
