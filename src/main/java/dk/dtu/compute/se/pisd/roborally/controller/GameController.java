@@ -368,9 +368,14 @@ public class GameController {
             Space space = player.getSpace();
             for (FieldAction action : space.getActions()) {
                 if (action instanceof Pit) {
-
                     player.setHp(player.getHp() - 1);
                     player.setSpace(board.getSpace(i % board.width, i));
+
+                    if (player.getHp()== 0){
+                        player.setHp(3);
+                        player.setCheckpointValue(0);
+
+                    }
                 }
             }
         }
