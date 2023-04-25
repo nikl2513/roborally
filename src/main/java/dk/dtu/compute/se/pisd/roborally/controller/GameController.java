@@ -24,6 +24,8 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * ...
  *
@@ -349,31 +351,29 @@ public class GameController {
             }
         }
         //Turnpad
-        for ( i = 0; i < board.getPlayersNumber() ; i++) {
+        for (i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
-            if(space.getTurnpad() != null){
-
-                if(space.getTurnpad().getDirection() == "Right"){
-                    turnRight(player);
-                }
-                if(space.getTurnpad().getDirection() == "Left"){
-                    turnLeft(player);
+            Heading heading = player.getHeading();
+            for (FieldAction action : space.getActions()) {
+                if (action instanceof Turnpad) {
+                    Turnpad turnpad = (Turnpad) action;
+                    turnpad.executeaction(turnpad,heading,player);
                 }
             }
         }
         //Pit
-
-        for ( i = 0; i < board.getPlayersNumber() ; i++) {
+        for (i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
-            if(space.getPit() != null){
+            for (FieldAction action : space.getActions()) {
+                if (action instanceof Pit) {
 
-                player.setHp(player.getHp() - 1 );
-                player.setSpace(board.getSpace(i % board.width, i));
+                    player.setHp(player.getHp() - 1);
+                    player.setSpace(board.getSpace(i % board.width, i));
+                }
             }
         }
-
         //Checkpoint
         for (i = 0; i < board.getPlayersNumber(); ++i) {
             Player player1 = board.getPlayer(i);
@@ -381,41 +381,7 @@ public class GameController {
             for (FieldAction action : space1.getActions()) {
                 if (action instanceof Checkpoint) {
                     Checkpoint checkpoint = (Checkpoint) action;
-                    int value = player1.getCheckpointValue();
-                    switch (value) {
-                        case 0:
-                            if (player1.getCheckpointValue() == 0 && checkpoint.getCheckpointnumber()==1) {
-                                player1.setCheckpointValue(1);
-                            }
-                            break;
-                        case 1:
-                            if (player1.getCheckpointValue() == 1 && checkpoint.getCheckpointnumber() == 2) {
-                                player1.setCheckpointValue(2);
-                            }
-                            break;
-                        case 2:
-                            if (player1.getCheckpointValue() == 2 && checkpoint.getCheckpointnumber() == 3) {
-                                player1.setCheckpointValue(3);
-                            }
-                            break;
-                        case 3:
-                            if (player1.getCheckpointValue() == 3 && checkpoint.getCheckpointnumber() == 4) {
-                                player1.setCheckpointValue(4);
-                            }
-                            break;
-                        case 4:
-                            if (player1.getCheckpointValue() == 4 && checkpoint.getCheckpointnumber() == 5) {
-                                player1.setCheckpointValue(5);
-                            }
-                            break;
-                        case 5:
-                            if (player1.getCheckpointValue() == 5 && checkpoint.getCheckpointnumber() == 6) {
-                                player1.setCheckpointValue(6);
-                                board.setPhase(Phase.GAME_ENDING);
-                                board.getStatusMessage();
-                            }
-                            break;
-                    }
+                    checkpoint.executeAction(player1, checkpoint, board);
                 }
             }
         }
