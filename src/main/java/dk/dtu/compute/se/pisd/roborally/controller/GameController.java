@@ -363,14 +363,15 @@ public class GameController {
             }
         }
         //Pit
-
         for (i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
-            if (space.getPit() != null) {
+            for (FieldAction action : space.getActions()) {
+                if (action instanceof Pit) {
 
-                player.setHp(player.getHp() - 1);
-                player.setSpace(board.getSpace(i % board.width, i));
+                    player.setHp(player.getHp() - 1);
+                    player.setSpace(board.getSpace(i % board.width, i));
+                }
             }
         }
         //Checkpoint
