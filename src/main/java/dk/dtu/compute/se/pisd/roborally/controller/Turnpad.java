@@ -30,11 +30,6 @@ public class Turnpad extends FieldAction{
         this.direction = direction;
     }
 
-    public void turnpad(){
-    space = null;
-    direction = null;
-
-}
     public void executeaction(Turnpad turnpad, Heading heading, Player player){
         if (Objects.equals(turnpad.getDirection(), "Right")) {
             player.setHeading(heading.next());

@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS Cardfield (
     command tinyint,
 
     PRIMARY KEY (gameID, playerID, type, position),
+
     FOREIGN KEY (gameID) REFERENCES Game(gameID),
     FOREIGN KEY (gameID, playerID) REFERENCES Player(gameID, playerID)
 );;

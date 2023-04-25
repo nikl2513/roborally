@@ -336,7 +336,9 @@ public class GameController {
         for (i = 0; i < board.getPlayersNumber(); ++i) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
+            Heading heading = player.getHeading();
             for (FieldAction action : space.getActions()) {
+                //Conveyorbelt
                 if (action instanceof ConveyorBelt) {
                     ConveyorBelt conveyorBelt = (ConveyorBelt) action;
                     Space space2 = board.getNeighbour(space, conveyorBelt.getHeading());
@@ -348,25 +350,12 @@ public class GameController {
                         }
                     }
                 }
-            }
-        }
-        //Turnpad
-        for (i = 0; i < board.getPlayersNumber(); i++) {
-            Player player = board.getPlayer(i);
-            Space space = player.getSpace();
-            Heading heading = player.getHeading();
-            for (FieldAction action : space.getActions()) {
+                //Turnpad
                 if (action instanceof Turnpad) {
                     Turnpad turnpad = (Turnpad) action;
                     turnpad.executeaction(turnpad,heading,player);
                 }
-            }
-        }
-        //Pit
-        for (i = 0; i < board.getPlayersNumber(); i++) {
-            Player player = board.getPlayer(i);
-            Space space = player.getSpace();
-            for (FieldAction action : space.getActions()) {
+                //Pit
                 if (action instanceof Pit) {
                     player.setHp(player.getHp() - 1);
                     player.setSpace(board.getSpace(i % board.width, i));
@@ -377,19 +366,15 @@ public class GameController {
 
                     }
                 }
-            }
-        }
-        //Checkpoint
-        for (i = 0; i < board.getPlayersNumber(); ++i) {
-            Player player1 = board.getPlayer(i);
-            Space space1 = player1.getSpace();
-            for (FieldAction action : space1.getActions()) {
+                //Checkpoint
                 if (action instanceof Checkpoint) {
                     Checkpoint checkpoint = (Checkpoint) action;
-                    checkpoint.executeAction(player1, checkpoint, board);
+                    checkpoint.executeAction(player, checkpoint, board);
                 }
+
             }
         }
+
     }
 
 

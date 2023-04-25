@@ -229,7 +229,6 @@ class Repository implements IRepository {
 				game = LoadBoard.loadBoard(rs.getInt("boardname"));
 
 
-				//game = Boards.createBoard("1");
 				if (game == null) {
 					return null;
 				}
