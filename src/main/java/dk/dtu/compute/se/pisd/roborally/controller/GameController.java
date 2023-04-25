@@ -186,7 +186,6 @@ public class GameController {
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
-
                     //--> execute actions on fields!
                     //--> check checkpoints for alle spillere
                     executeActionspace();
@@ -332,12 +331,13 @@ public class GameController {
      */
     public void executeActionspace() {
         int i;
-        //Converyer belt
         for (i = 0; i < board.getPlayersNumber(); ++i) {
             Player player = board.getPlayer(i);
             Space space = player.getSpace();
             Heading heading = player.getHeading();
             for (FieldAction action : space.getActions()) {
+
+
                 //Conveyorbelt
                 if (action instanceof ConveyorBelt) {
                     ConveyorBelt conveyorBelt = (ConveyorBelt) action;

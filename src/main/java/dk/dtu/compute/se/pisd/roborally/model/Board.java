@@ -259,7 +259,6 @@ public class Board extends Subject {
             }
         }
 
-
         return getSpace(x, y);
     }
 
