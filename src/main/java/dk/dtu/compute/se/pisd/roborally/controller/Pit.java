@@ -22,7 +22,11 @@ public class Pit extends FieldAction{
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         Player player = space.getPlayer();
         player.setHp(player.getHp() - 1);
-        player.setSpace(gameController.board.getSpace(1 % gameController.board.width, 1));
+        Space randomSpace = gameController.board.getRandomSpace();
+        while (randomSpace.getPlayer()!=null){
+            randomSpace = gameController.board.getRandomSpace();
+        }
+            player.setSpace(randomSpace);
 
         if (player.getHp() == 0) {
             player.setHp(3);
