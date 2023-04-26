@@ -42,7 +42,7 @@ public class Space extends Subject {
     public final int y;
     private Player player;
     private Wall wall;
-    private Conveyerbelt conveyerbelt;
+
     private Pit pit;
     private Turnpad turnpad;
     private boolean wallbool;
@@ -87,15 +87,9 @@ public class Space extends Subject {
     public void movePlayer(Space space, GameController gameController, Board board){
 
     }
-    public Conveyerbelt getConveyerbelt() {
-        return conveyerbelt;
-    }
 
 
 
-    public void setConveyerbelt(Conveyerbelt conveyerbelt) {
-        this.conveyerbelt = conveyerbelt;
-    }
 
     public void setCheckpoint(Checkpoint checkpoint) {
         this.checkpoint = checkpoint;
@@ -158,13 +152,4 @@ public class Space extends Subject {
         notifyChange();
     }
 
-    public Collection<FieldAction> getActions(Space space) {
-        if(space.getCheckpoint()!=null){
-            return (Collection<FieldAction>) checkpoint;
-        }
-        if(space.getConveyerbelt()!=null){
-            return (Collection<FieldAction>) conveyerbelt;
-        }
-        return null;
-    }
 }
