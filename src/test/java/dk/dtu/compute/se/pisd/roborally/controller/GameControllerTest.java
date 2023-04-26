@@ -126,6 +126,9 @@ class GameControllerTest {
 
     }
 
+    /**
+     * Test if the player is turn right by cheking the heading of the player, is goinge from South to West.
+     */
     @Test
     void turnRight() {
         Board board = gameController.board;
@@ -135,7 +138,9 @@ class GameControllerTest {
         Assertions.assertEquals(current, board.getSpace(0, 0).getPlayer(), "Player " + current.getName() + " should beSpace (0,0)!");
     }
 
-
+    /**
+     * Test if the player is turn left by cheking the heading of the player, is goinge from South to East.
+     */
     @Test
     void turnLeft() {
         Board board = gameController.board;
@@ -163,6 +168,7 @@ class GameControllerTest {
 
         Assertions.assertEquals(other, board.getSpace(7,2).getPlayer(), "The other player should have been pushed");
         Assertions.assertEquals(current, board.getSpace(7,1).getPlayer(),"The player should have moved to the space");
+
         //sætter spillerne ved væg
         current.setSpace(board.getSpace(2,0));
         other.setSpace(board.getSpace(2,1));

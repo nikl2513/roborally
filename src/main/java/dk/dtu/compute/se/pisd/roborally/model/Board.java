@@ -294,7 +294,7 @@ public class Board extends Subject {
                     board.setCurrentPlayer(player);
                 }
             }
-            return "Winner is: " + getCurrentPlayer().getName();
+            return "Winner is: " + getCurrentPlayer().getName() + "Phase: " + getPhase().name() ;
         }
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
