@@ -32,12 +32,12 @@ public class Checkpoint extends FieldAction {
         this.space = space;
     }
 
+
     @Override
     public boolean doAction(GameController gameController, dk.dtu.compute.se.pisd.roborally.model.Space space) {
         Player player1 = space.getPlayer();
         if (checkpointnumber == player1.getCheckpointValue()+1) {
             player1.setCheckpointValue(player1.getCheckpointValue()+1);
-
             if (player1.getCheckpointValue()==6){
                 gameController.board.setPhase(Phase.GAME_ENDING);
                 gameController.board.getStatusMessage();

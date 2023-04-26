@@ -20,7 +20,6 @@ public class Pit extends FieldAction{
     public void setSpace(Space space){this.space = space;}
 
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-
         Player player = space.getPlayer();
         player.setHp(player.getHp() - 1);
         Space randomSpace = gameController.board.getRandomSpace();
@@ -32,7 +31,6 @@ public class Pit extends FieldAction{
         if (player.getHp() == 0) {
             player.setHp(3);
             player.setCheckpointValue(0);
-
         }
         return  true;
     }

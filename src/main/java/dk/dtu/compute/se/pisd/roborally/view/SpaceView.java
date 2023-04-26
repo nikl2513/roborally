@@ -99,7 +99,6 @@ public class SpaceView extends StackPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == this.space) {
             updatePlayer();
-
             for (FieldAction action :space.getActions()){
                 if (action instanceof ConveyorBelt){
                     ConveyorBelt conveyorBelt = (ConveyorBelt) action;
@@ -126,6 +125,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
         }
+
     }
 
     private void addCheckpoints(int Checkponitnumber) {
