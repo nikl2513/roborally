@@ -58,7 +58,6 @@ public class Board extends Subject {
 
     private final List<Checkpoint> checkpoints = new ArrayList<>();
 
-    private final List<Conveyerbelt> conveyerbelts = new ArrayList<>();
 
     private final List<Turnpad> turnpads = new ArrayList<>();
 
@@ -300,12 +299,7 @@ public class Board extends Subject {
         }
 
     }
-    public void addConveyerbelt(@NotNull Conveyerbelt conveyerbelt){
-        if(Conveyerbelt.Space == this && !conveyerbelts.contains(conveyerbelt)){
-            conveyerbelts.add(conveyerbelt);
-            notifyChange();
-        }
-    }
+
 
     public void addCheckpoint(Checkpoint checkpoint) {
         if (checkpoint.Space == this && !checkpoints.contains(checkpoint))
