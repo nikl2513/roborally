@@ -109,4 +109,13 @@ class GameControllerTest {
         Assertions.assertEquals(Heading.EAST, current.getHeading(), "Player 0 should be heading East!");
         Assertions.assertEquals(current, board.getSpace(0, 0).getPlayer(), "Player " + current.getName() + " should beSpace (0,0)!");
     }
+
+    @Test
+    void turnpad(){
+        Board board =gameController.board;
+
+
+
+    }
+
 }
