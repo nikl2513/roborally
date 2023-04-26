@@ -77,6 +77,17 @@ AppController implements Observer {
         dialog.setHeaderText("Select number of players");
         Optional<Integer> result = dialog.showAndWait();
 
+
+        /**
+         * This allows players to choose from board options that are defined in an array list
+         * as a parameter in the AppController.
+         * It then takes the answer and defines it as result1,
+         * which is then used to select the correct board from the board folder that contains the JSON files.
+         *
+         * @auther s224552
+         */
+
+
         ChoiceDialog<Integer> dialog1 = new ChoiceDialog<>(BOARD_OPTIONS.get(0), BOARD_OPTIONS);
         dialog1.setTitle("Board number");
         dialog1.setHeaderText("Select Board");

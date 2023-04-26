@@ -324,10 +324,10 @@ public class GameController {
 
 
     /**
-     * Det er her vores aktionfelter bliver aktiveret efter at spillernes tur er færdig.
-     * Ved at gennemgå hvor spillerne står henne og ser hvilken Fieldaction de står på. og kalder derefter doAction
+     * It is here where our action fields are activated after the players' turn is finished.
+     * By examining where the players are located and which Fieldaction they are on, we then call doAction.
      *
-     * @author Amskov
+     * @author s224552
      */
     public void executeActionspace() {
         int i;
