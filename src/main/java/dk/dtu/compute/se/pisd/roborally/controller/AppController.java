@@ -84,7 +84,6 @@ AppController implements Observer {
          * @auther s224552
          */
 
-
         ChoiceDialog<Integer> dialog1 = new ChoiceDialog<>(BOARD_OPTIONS.get(0), BOARD_OPTIONS);
         dialog1.setTitle("Board number");
         dialog1.setHeaderText("Select Board");
