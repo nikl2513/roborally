@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author s224576
+ * @auther s224552
  * This test tests, that our conveyerbelt will move one player.
  * It also tests that if there is a player in the space that the conveyerbelt pushes another player,
  * then that player will get pushed one space too.
