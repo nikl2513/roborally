@@ -30,7 +30,8 @@ class TurnpadTest {
             Player player = new Player(board, null,"Player " + i);
             board.addPlayer(player);
             player.setSpace(board.getSpace(i, i));
-            player.setHeading(Heading.values()[i % Heading.values().length]);}
+            player.setHeading(Heading.values()[i % Heading.values().length]);
+        }
         board.setCurrentPlayer(board.getPlayer(0));
     }
 
