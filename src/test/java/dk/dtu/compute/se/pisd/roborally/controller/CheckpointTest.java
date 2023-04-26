@@ -3,6 +3,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Phase;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -42,5 +43,10 @@ class CheckpointTest {
 
         gameController.executeActionspace();
         Assertions.assertEquals(CheckpointValue+1,player1.getCheckpointValue());
+
+        player1.setCheckpointValue(5);
+        player1.setSpace(board.getSpace(4,0));
+        gameController.executeActionspace();
+        Assertions.assertEquals(board.getPhase(), Phase.GAME_ENDING,"The game should be ending after a player reaches 6 Checkpoints");
     }
 }
