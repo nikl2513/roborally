@@ -177,6 +177,24 @@ class GameControllerTest {
         Assertions.assertEquals(current, board.getSpace(2,0).getPlayer(),"The player should have not moved to the space");
     }
 
+    /**
+     * @author s215698
+     * This Test checks if the Uturn method works as intend
+     * It does this by checking the player on getSpace(0,0)
+     * The first Assertions.assertEquals asserts that the players starts out heading South
+     * The Second then asserts that after calling the Uturn the player now has a Heading of North
+     */
+    @Test
+    void uturn(){
+        Board board = gameController.board;
+        Player player = board.getSpace(0,0).getPlayer();
+        Heading heading0 = player.getHeading();
+        gameController.uturn(player);
+        Assertions.assertEquals(Heading.SOUTH, heading0, "The players defualt heading is South");
+        Assertions.assertEquals(Heading.NORTH, player.getHeading(), "North from a starting Heading of South");
+
+    }
+
 
 
 
