@@ -14,9 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * @author s224576
  * This test tests, that our conveyerbelt will move one player.
- * It also tests that if there is another player in the space, that the conveyerbelt pushes the first player,
- * then that player will get pushed too.
- *
+ * It also tests that if there is a player in the space that the conveyerbelt pushes another player,
+ * then that player will get pushed one space too.
+ * we extended this test so we can check if a player will get pushed through a wall.
  */
 class ConveyorBeltTest {
 
@@ -54,5 +54,10 @@ class ConveyorBeltTest {
         gameController.executeActionspace();
         Assertions.assertEquals(player1.getSpace(),board.getSpace(3,4),"The Player should move one space");
         Assertions.assertEquals(player2.getSpace(),board.getSpace(2,4),"The Player should move one space");
+        player1.setSpace(board.getSpace(2,2));
+        player2.setSpace(board.getSpace(3,2));
+        gameController.executeActionspace();
+        Assertions.assertEquals(player1.getSpace(),board.getSpace(2,2),"The player should not move");
+        Assertions.assertEquals(player2.getSpace(),board.getSpace(3,2),"The Player should not move");
     }
 }
