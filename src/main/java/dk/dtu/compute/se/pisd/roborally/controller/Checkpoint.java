@@ -44,6 +44,7 @@ public class Checkpoint extends FieldAction {
      * @param space the space this action should be executed for
      * @return true if the action has executed
      * @auther s224552
+     * @auther s224567
      */
     @Override
     public boolean doAction(GameController gameController, dk.dtu.compute.se.pisd.roborally.model.Space space) {

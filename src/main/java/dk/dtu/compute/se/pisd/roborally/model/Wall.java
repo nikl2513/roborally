@@ -5,6 +5,13 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 /**
  *
  * @Author s215698
+ * Wall is a subclass of Subject
+ * This class contains the template used to create walls inside the game.
+ * The wall method contains the variables board, heading and space
+ * The board is a parameter when you create an instance of the wall object
+ * This ensures that the walls are created on the correct board
+ * another parameter is the heading which is given to every instance of the object this determinds the way the wall is facing
+ * The Heading is then called in another method using the getHeading to check if the Wall is blocking the move of a robot
  *
  */
 

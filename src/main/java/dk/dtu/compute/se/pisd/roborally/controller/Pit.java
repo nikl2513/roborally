@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
  * In this case it will take the player that shares a space with the pit and subtract 1 from its hp variable and then
  * move the player to a randomized starting space on the board, it checks the random space to ensure that there is no player on that space already
  * This is to ensure that we don't accidentally overwrite another players robot.
- *
  * If the players HP variable reachs 0 the player is "Dead" which in this case means they respawn but without the checkpoints they have previously
  * aquired
  */
@@ -39,7 +38,7 @@ public class Pit extends FieldAction{
         Player player = space.getPlayer();
         player.setHp(player.getHp() - 1);
         Space randomSpace = gameController.board.getRandomSpace();
-        while (randomSpace.getPlayer()!=null){
+        while (randomSpace.getPlayer()!=null && randomSpace == space){
             randomSpace = gameController.board.getRandomSpace();
         }
             player.setSpace(randomSpace);
