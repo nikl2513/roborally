@@ -5,8 +5,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Phase;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
-/*
-checkpoint klasse, s224567
+/**
+ * Checkpoint class
+ * @author s224567
  */
 public class Checkpoint extends FieldAction {
 
