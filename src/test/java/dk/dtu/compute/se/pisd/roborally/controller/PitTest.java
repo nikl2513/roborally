@@ -24,7 +24,7 @@ class PitTest {
     void setUp() {
         Board board = LoadBoard.loadBoard(1);
         gameController = new GameController(board);
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 6; i++) {
             Player player1 = new Player(board, null,"Player1 " + i);
             board.addPlayer(player1);
             player1.setSpace(board.getSpace(i, i));
