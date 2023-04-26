@@ -177,6 +177,17 @@ class GameControllerTest {
         Assertions.assertEquals(current, board.getSpace(2,0).getPlayer(),"The player should have not moved to the space");
     }
 
+    @Test
+    void uturn(){
+        Board board = gameController.board;
+        Player player = board.getSpace(0,0).getPlayer();
+        Heading heading0 = player.getHeading();
+        gameController.uturn(player);
+        Assertions.assertEquals(Heading.SOUTH, heading0, "The players defualt heading is South");
+        Assertions.assertEquals(Heading.NORTH, player.getHeading(), "North from a starting Heading of South");
+
+    }
+
 
 
 
