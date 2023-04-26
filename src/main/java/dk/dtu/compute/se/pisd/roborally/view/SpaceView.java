@@ -183,7 +183,11 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
     public void addwall(Heading heading) {
-
+        /**
+         * @author s224552
+         * @author s215698
+         *
+         */
 
         Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -314,7 +318,10 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
     }
     public void addTurnpad(int d){
-
+        /**
+         * @author s215698
+         * @author s224552
+         */
         if(d==1){
             Text text   = createText("Left");
             Circle circle = new Circle(12, 12, 12);
@@ -331,7 +338,10 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
     public void addPit(){
-
+        /**
+         * @author s215698
+         * @author s224552
+         */
         Rectangle circle = new Rectangle(25, 25);
         circle.setFill(Color.GREY);
         this.getChildren().addAll(circle);

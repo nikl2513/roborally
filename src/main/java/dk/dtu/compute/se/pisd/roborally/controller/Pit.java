@@ -33,7 +33,10 @@ public class Pit extends FieldAction{
 
     public void setSpace(Space space){this.space = space;}
 
-
+    /**
+     * @author s215698
+     * @author s224567
+     */
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         Player player = space.getPlayer();
         player.setHp(player.getHp() - 1);
