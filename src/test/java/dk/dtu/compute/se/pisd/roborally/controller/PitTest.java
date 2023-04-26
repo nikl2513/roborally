@@ -15,9 +15,9 @@ class PitTest {
 
     /**
      * @author s224567
-     * Denne testklasse er lavet for at teste Pits, hvilket den gør i doAction
-     * Der tjekkes om spilleren som rammer Pitten bliver sendt til en ny position,
-     * som ikke er på en anden spiller eller på Pittens position.
+     * This test class is created to test Pits, which it does in the doAction method.
+     * It verifies whether the player hitting the Pit,
+     * is sent to a new position that is not on another player or on the Pit's position.
      */
     private GameController gameController;
     @BeforeEach

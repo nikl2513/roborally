@@ -66,6 +66,12 @@ class GameControllerTest {
         Assertions.assertEquals(player2, board.getCurrentPlayer(), "Current player should be " + player2.getName() +"!");
     }
 
+
+    /**
+     * This test checks if moveForward correctly moves the player 1 spaces forward.
+     * It also verifies that if there is a wall directly in front, it does not move forward.
+     * @auther s224552
+     */
     @Test
     void moveForward() {
         Board board = gameController.board;
@@ -86,7 +92,12 @@ class GameControllerTest {
 
     }
 
-
+    /**
+     * This test checks if fastForward correctly moves the player 3 spaces forward.
+     * It also verifies that if there is a wall directly in front, it does not move forward.
+     * Furthermore, it confirms that it can still move the player 1 space forward if the wall is placed afterwards
+     * @auther s224552
+     */
     @Test
     void fastForward() {
         Board board = gameController.board;
@@ -103,7 +114,12 @@ class GameControllerTest {
 
        //Sætter spilleren ved væg
         current.setSpace(board.getSpace(2,1));
-        gameController.moveForward(current);
+        gameController.fastForward(current);
+        Assertions.assertEquals(current, board.getSpace(2, 1).getPlayer(), "Player " + current.getName() + " should beSpace (2,1)!");
+
+        //Sætter spilleren 1 skridt væk fra væg
+        current.setSpace(board.getSpace(2,0));
+        gameController.fastForward(current);
         Assertions.assertEquals(current, board.getSpace(2, 1).getPlayer(), "Player " + current.getName() + " should beSpace (2,1)!");
 
 
@@ -129,7 +145,11 @@ class GameControllerTest {
         Assertions.assertEquals(current, board.getSpace(0, 0).getPlayer(), "Player " + current.getName() + " should beSpace (0,0)!");
     }
 
-
+    /**
+     * Testing the pushing mechanism in our game by calling moveforward, where it should push the player. Additionally,
+     * it also checks if it would be possible to push a player through a wall, which should not be possible.
+     * @auther s224552
+     */
     @Test
     void moveToSpace() {
         Board board = gameController.board;
@@ -142,11 +162,13 @@ class GameControllerTest {
         gameController.moveForward(current);
 
         Assertions.assertEquals(other, board.getSpace(7,2).getPlayer(), "The other player should have been pushed");
-        Assertions.assertEquals(current, board.getSpace(7,1).getPlayer(),"The player should have moved to the spce");
-        //sætter
-
-
-
+        Assertions.assertEquals(current, board.getSpace(7,1).getPlayer(),"The player should have moved to the space");
+        //sætter spillerne ved væg
+        current.setSpace(board.getSpace(2,0));
+        other.setSpace(board.getSpace(2,1));
+        gameController.moveForward(current);
+        Assertions.assertEquals(other, board.getSpace(2,1).getPlayer(), "The other player should not have been pushed");
+        Assertions.assertEquals(current, board.getSpace(2,0).getPlayer(),"The player should have not moved to the space");
     }
 
 
