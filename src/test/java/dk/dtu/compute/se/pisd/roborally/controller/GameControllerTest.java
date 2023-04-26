@@ -111,11 +111,18 @@ class GameControllerTest {
     }
 
     @Test
-    void turnpad(){
-        Board board =gameController.board;
+    void moveToSpace() {
+        Board board = gameController.board;
+        Space space1 = board.getSpace(0,0);
+        Space space2 = board.getSpace(0,1);
+        Player current = board.getCurrentPlayer();
+        Player other = board.getPlayer(2);
+        current.setSpace(space1);
+        other.setSpace(space2);
+        gameController.moveForward(current);
 
-
+        Assertions.assertEquals(other, board.getSpace(0,2).getPlayer(), "The other player should have been pushed");
+        Assertions.assertEquals(current, board.getSpace(0,1).getPlayer(),"The player should have moved to the spce");
 
     }
-
 }
