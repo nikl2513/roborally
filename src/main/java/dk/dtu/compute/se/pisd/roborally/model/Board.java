@@ -134,8 +134,8 @@ public class Board extends Subject {
     }
     public Space getRandomSpace() {
         Random random = new Random();
-        int xx = random.nextInt(9);
-        int yy = random.nextInt(9);
+        int xx = random.nextInt(width);
+        int yy = random.nextInt(height);
 
         return spaces [xx][yy];
     }
