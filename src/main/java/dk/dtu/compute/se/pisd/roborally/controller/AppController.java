@@ -68,6 +68,9 @@ AppController implements Observer {
         this.roboRally = roboRally;
     }
 
+    /**
+     * The newGame() method lets you start a new game, where you choose the number of players that will be playing the game
+     */
     public void newGame() {
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
@@ -123,11 +126,15 @@ AppController implements Observer {
         }
     }
 
-    public void saveGame() {
-        repository.updateGameInDB(gameController.board);
-    }
+    /**
+     * saveGame() saves a game id in the database.
+     */
+    public void saveGame() {repository.updateGameInDB(gameController.board);}
 
 
+    /**
+     *
+     */
     public void loadGame() {
         List<GameInDB> list = repository.getGames();
         ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(0),list);
