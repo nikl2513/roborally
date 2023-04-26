@@ -183,8 +183,6 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
     public void addwall(Heading heading) {
-
-
         Canvas canvas = new Canvas(SPACE_HEIGHT, SPACE_WIDTH);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
@@ -238,7 +236,6 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
     public void addConveyerbelt (Heading heading) {
-
         switch (heading) {
             case NORTH: {
                 Rectangle rectangleN = new Rectangle(35, 35);
@@ -313,6 +310,7 @@ public class SpaceView extends StackPane implements ViewObserver {
             }
         }
     }
+
     public void addTurnpad(int d){
 
         if(d==1){
@@ -330,8 +328,8 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     }
 
-    public void addPit(){
 
+    public void addPit(){
         Rectangle circle = new Rectangle(25, 25);
         circle.setFill(Color.GREY);
         this.getChildren().addAll(circle);
