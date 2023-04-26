@@ -108,7 +108,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     /**
      * @author s224576
-     * @author
+     * @author s224552
      * UpdateView adds our objects to the board
      * so if we use the addCheckpoints() method to the UpdateView() it will then be added to the board
      * @param subject the subject of the observer design pattern
@@ -151,7 +151,9 @@ public class SpaceView extends StackPane implements ViewObserver {
      * so we know, what checkpoints a player is supposed to pick up first.
      * The method can then be called in updateview() and be visible on the board
      * @param Checkpointnumber the Checkpoints that are to be collected in the game.
+     * @author s224552
      */
+
     private void addCheckpoints(int Checkpointnumber) {
 
         switch (Checkpointnumber) {
@@ -272,6 +274,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      * Here we design our conveyerbelt. We give our conveyerbelts a heading, a design, and a colour.
      * Then the addConveyerbelt() method can be called in updateview() which will add our conveyerbelt to the board.
      * @param heading the heading of the Conveyerbelt
+     * @author s224552
      */
     public void addConveyerbelt (Heading heading) {
 

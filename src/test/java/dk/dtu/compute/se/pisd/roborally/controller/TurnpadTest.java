@@ -1,5 +1,4 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
-
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
@@ -8,8 +7,17 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ *  This class is created to test turnPad, which it does in the doAction method.
+ *  In doAction, the player is placed on a Turnpad that rotates to the right,
+ *  and it is checked that this action is performed. You call executeActionSpace(),
+ *  which in turn calls all the actions that the players are standing on, and thus the player should be rotated.
+ * @auther s224552
+ */
+
+
 
 class TurnpadTest {
 

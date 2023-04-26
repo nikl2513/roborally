@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author s215698
  * @author s224567
+ * @author s224552
  * The class Pit is a subclass of FieldAction.
  * It represents the Action field pit that a robot can land on.
  * Pit contains a variable of the type space which is the space associated with a given pit

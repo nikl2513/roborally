@@ -231,6 +231,18 @@ public class Board extends Subject {
 
     // Sæt væg tjek ind her.
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading) {
+        /**
+         *
+         * This Method returns the neighbouring space
+         * It takes the current space of the player and a heading as Parameters
+         * It then uses they these to determind the neighbouring space in a given direction.
+         * In adition it checks for walls that are between the space and its neighbour.
+         * heading1 checks for a wall on the players space that is facing the same way as the player
+         * heading2 checks for an opposite facing wall on the neighbouring.
+         * It does this by checking the if a List of wall the wall headings on the players currentfield contains a heading matching the players
+         * And if the opposite field has a wall heading facing the opposite way.
+         *
+         */
         int x = space.x;
         int y = space.y;
 
@@ -282,7 +294,7 @@ public class Board extends Subject {
                     board.setCurrentPlayer(player);
                 }
             }
-            return "Winner is: " + getCurrentPlayer().getName();
+            return "Winner is: " + getCurrentPlayer().getName() + "Phase: " + getPhase().name() ;
         }
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
