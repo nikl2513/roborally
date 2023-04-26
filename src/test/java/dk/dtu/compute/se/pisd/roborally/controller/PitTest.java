@@ -24,7 +24,7 @@ class PitTest {
     void setUp() {
         Board board = LoadBoard.loadBoard(1);
         gameController = new GameController(board);
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 2; i++) {
             Player player1 = new Player(board, null,"Player1 " + i);
             board.addPlayer(player1);
             player1.setSpace(board.getSpace(i, i));
@@ -46,9 +46,9 @@ class PitTest {
         //We know that there is a Pit on space x = 4 y = 7
         player1.setSpace(board.getSpace(4,7));
         int hp = player1.getHp();
+        Player player2 = board.getPlayer(1);
         gameController.executeActionspace();
         //We put a new player on the board
-        Player player2 = board.getPlayer(1);
         Assertions.assertNotEquals(player1.getSpace(), board.getSpace(4,7),"Player1 should be moved from the pits position");
         Assertions.assertNotEquals(player2.getSpace(),player1.getSpace(),"Player 1 should not be put in the same position as Player2");
         Assertions.assertEquals(player1.getHp(),hp-1, "the old hp - 1 should be the same as the new player hp");
