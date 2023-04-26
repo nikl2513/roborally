@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -123,6 +124,24 @@ class GameControllerTest {
 
         Assertions.assertEquals(other, board.getSpace(0,2).getPlayer(), "The other player should have been pushed");
         Assertions.assertEquals(current, board.getSpace(0,1).getPlayer(),"The player should have moved to the spce");
+
+    }
+
+    void turnPad() {
+        Board board = LoadBoard.loadBoard(1);
+        gameController = new GameController(board);
+        for (int i = 0; i < 6; i++) {
+            Player player = new Player(board, null,"Player " + i);
+            board.addPlayer(player);
+            player.setSpace(board.getSpace(i, i));
+            player.setHeading(Heading.values()[i % Heading.values().length]);
+        }
+        board.setCurrentPlayer(board.getPlayer(0));
+        //we know there is a turnpad on space x = 7 , y = 4
+        Player player1 = board.getPlayer(1);
+        player1.setSpace(board.getSpace(7,4));
+        gameController.executeActionspace();
+        Assertions.assertEquals(Heading.WEST, player1.getHeading(), "Player 0 should be heading WEST!");
 
     }
 }
