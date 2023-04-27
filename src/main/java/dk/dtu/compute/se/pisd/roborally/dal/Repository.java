@@ -114,7 +114,7 @@ class Repository implements IRepository {
                 createPlayersInDB(game);
 				//TOODO this method needs to be implemented first
                 //System.out.println("hej med dig");
-				//createCardFieldsInDB(game);
+				createCardFieldsInDB(game);
                 //System.out.println("hej med mig");
                 // since current player is a foreign key, it can oly be
                 // inserted after the players are created, since MySQL does
@@ -180,7 +180,7 @@ class Repository implements IRepository {
 
             updatePlayersInDB(game);
 			//TOODO this method needs to be implemented first
-			//updateCardFieldsInDB(game);
+			updateCardFieldsInDB(game);
 
             connection.commit();
             connection.setAutoCommit(true);
@@ -248,7 +248,7 @@ class Repository implements IRepository {
             }
 
 			//TOODO this method needs to be implemented first
-			//loadCardFieldsFromDB(game);
+			loadCardFieldsFromDB(game);
 
 
             return game;
@@ -311,22 +311,46 @@ class Repository implements IRepository {
         ps.setInt(1, game.getGameId());
 
         ResultSet rs = ps.executeQuery();
+
         for (int i = 0; i < game.getPlayersNumber(); i++) {
-            int playerID = rs.getInt(i);
-            Player player = game.getPlayer(playerID);
-            rs.updateInt(FIELD_GAMEID, game.getGameId());
-            rs.updateInt(FIELD_PLAYERID, i);
+            Player player = game.getPlayer(i);
             for (int j = 0; j < 4; j++) {
                 rs.moveToInsertRow();
+                rs.updateInt(FIELD_GAMEID, game.getGameId());
+                rs.updateInt(FIELD_PLAYERID, i);
                 rs.updateInt(FIELD_TYPE, 0);
-                rs.updateInt(FIELD_POS, i);
-                rs.updateBoolean(FIELD_VISIBLE, player.getProgramField(i).isVisible());
+                rs.updateInt(FIELD_POS, j);
+                rs.updateBoolean(FIELD_VISIBLE, player.getProgramField(j).isVisible());
+                CommandCard cards = player.getProgramField(j).getCard();
+                if (cards != null) {
+                    Command card1 = player.getProgramField(j).getCard().command;
+                    Integer card2 = card1.ordinal();
+                    if (card2 != null) {
+                        rs.updateInt(FIELD_COMMAND, card1.ordinal());
+                    } else {
+                        rs.updateNull(FIELD_COMMAND);
+                    }
+                }
+                rs.insertRow();
             }
             for (int j = 0; j < 7; j++) {
                 rs.moveToInsertRow();
+                rs.updateInt(FIELD_GAMEID, game.getGameId());
+                rs.updateInt(FIELD_PLAYERID, i);
                 rs.updateInt(FIELD_TYPE, 1);
-                rs.updateInt(FIELD_POS, i);
-                rs.updateBoolean(FIELD_VISIBLE, player.getCardField(i).isVisible());
+                rs.updateInt(FIELD_POS, j);
+                rs.updateBoolean(FIELD_VISIBLE, player.getCardField(j).isVisible());
+                CommandCard cards = player.getCardField(j).getCard();
+                if (cards != null) {
+                    Command card3 = player.getCardField(j).getCard().command;
+                    Integer card4 = card3.ordinal();
+                    if (card4 != null) {
+                        rs.updateInt(FIELD_COMMAND, card3.ordinal());
+                    } else {
+                        rs.updateNull(FIELD_COMMAND);
+                    }
+                }
+                rs.insertRow();
             }
         }
     }
@@ -443,11 +467,18 @@ class Repository implements IRepository {
                     rs.updateInt(FIELD_VISIBLE, 0);
                     Command card1 = Command.valueOf(player.getCardField(pos).getCard().getName());
                     rs.updateInt(FIELD_COMMAND, card1.ordinal());
+                    if (card1 != null) {
+                        rs.updateInt(FIELD_COMMAND, card1.ordinal());
+                    } else {
+                        rs.updateNull(FIELD_COMMAND);
+                    }
                 }
             } else {
                 field = null;
             }
+            rs.insertRow();
         }
+        rs.close();
     }
 
     private static final String SQL_INSERT_GAME =
