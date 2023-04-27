@@ -17,7 +17,7 @@ class CheckpointTest {
     /**
      * @author s224567
      * This test class is created to test Checkpoints, which it does in the doAction method.
-     * ...
+     * It Checks if a players CheckpointValue goes up by 1 if the player hit a checkpoint.
      */
 
     private GameController gameController;
@@ -51,8 +51,16 @@ class CheckpointTest {
         Assertions.assertEquals(CheckpointValue+1,player1.getCheckpointValue());
 
         player1.setCheckpointValue(5);
+        // We know the position of Checkpoint 6
         player1.setSpace(board.getSpace(4,0));
         gameController.executeActionspace();
         Assertions.assertEquals(board.getPhase(), Phase.GAME_ENDING,"The game should be ending after a player reaches 6 Checkpoints");
+
+        player1.setCheckpointValue(1);
+        int NewCheckpointValue = player1.getCheckpointValue();
+        //We know the position of a checkpoint that does not match player1's checkpointvalue
+        player1.setSpace(board.getSpace(0,5));
+        gameController.executeActionspace();
+        Assertions.assertNotEquals(player1.getCheckpointValue(),NewCheckpointValue+1);
     }
 }
