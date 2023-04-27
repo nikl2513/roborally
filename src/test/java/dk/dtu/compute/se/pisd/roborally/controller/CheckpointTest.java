@@ -14,6 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CheckpointTest {
 
+    /**
+     * @author s224567
+     * This test class is created to test Checkpoints, which it does in the doAction method.
+     * ...
+     */
+
     private GameController gameController;
     @BeforeEach
     void setUp() {
