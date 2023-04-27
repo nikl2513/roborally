@@ -180,7 +180,7 @@ class Repository implements IRepository {
 
             updatePlayersInDB(game);
 			//TOODO this method needs to be implemented first
-			updateCardFieldsInDB(game);
+			//updateCardFieldsInDB(game);
 
             connection.commit();
             connection.setAutoCommit(true);
