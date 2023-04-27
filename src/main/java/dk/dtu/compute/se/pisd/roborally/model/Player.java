@@ -30,7 +30,6 @@ import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class Player extends Subject {
 
@@ -49,9 +48,11 @@ public class Player extends Subject {
 
     private int checkpointValue;
     private int hp;
+
     public int getCheckpointValue() {
         return checkpointValue;
     }
+
     public void setCheckpointValue(int checkpointValue) {
         this.checkpointValue = checkpointValue;
     }
@@ -110,7 +111,8 @@ public class Player extends Subject {
 
     /**
      * Gets current space of Robot
-     * @return  current space of Robot
+     *
+     * @return current space of Robot
      */
     public Space getSpace() {
         return space;
@@ -118,6 +120,7 @@ public class Player extends Subject {
 
     /**
      * sets the current players robot in the space that taken in the parameter
+     *
      * @param space the space you want to move the robot to.
      */
     public void setSpace(Space space) {
@@ -137,6 +140,7 @@ public class Player extends Subject {
 
     /**
      * Returns the current direction of the robot
+     *
      * @return the current direction of the robot
      */
     public Heading getHeading() {

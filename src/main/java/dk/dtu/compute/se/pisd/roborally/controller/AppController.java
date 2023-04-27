@@ -52,7 +52,7 @@ public class
 AppController implements Observer {
 
     final private List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(2, 3, 4, 5, 6);
-    final private List<Integer> BOARD_OPTIONS = Arrays.asList(1,2,3);
+    final private List<Integer> BOARD_OPTIONS = Arrays.asList(1, 2, 3);
     final private List<String> PLAYER_COLORS = Arrays.asList("red", "green", "blue", "orange", "grey", "magenta");
 
     final private RoboRally roboRally;
@@ -93,7 +93,6 @@ AppController implements Observer {
         Optional<Integer> result1 = dialog1.showAndWait();
 
 
-
         if (result.isPresent()) {
             if (gameController != null) {
                 // The UI should not allow this, but in case this happens anyway.
@@ -121,7 +120,7 @@ AppController implements Observer {
             // XXX: V2
             // board.setCurrentPlayer(board.getPlayer(0));
             gameController.startProgrammingPhase();
-            repository.createGameInDB(gameController.board,result1.get());
+            repository.createGameInDB(gameController.board, result1.get());
             roboRally.createBoardView(gameController);
         }
     }
@@ -129,17 +128,21 @@ AppController implements Observer {
     /**
      * saveGame() saves a game id in the database.
      */
-    public void saveGame() {repository.updateGameInDB(gameController.board);}
+    public void saveGame() {
+        repository.updateGameInDB(gameController.board);
+    }
 
 
     /**
-     *
+     * After having saved a game in the database, a player can now choose to load a chosen game
+     * After choosing the saved game to load from the database, it will load the saved  board, the players,
+     * and the cards.
      */
     public void loadGame() {
         List<GameInDB> list = repository.getGames();
-        ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(0),list);
+        ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(0), list);
         dialog.setTitle("");
-        dialog.setHeaderText("Select number of players");
+        dialog.setHeaderText("Choose game to load");
         Optional<GameInDB> result = dialog.showAndWait();
         if (result.isPresent()) {
             int id = result.get().id;
@@ -176,6 +179,9 @@ AppController implements Observer {
         return false;
     }
 
+    /**
+     * Basically when you try to quit roborally it will bring up the buttons that will let you exit roborally
+     */
     public void exit() {
         if (gameController != null) {
             Alert alert = new Alert(AlertType.CONFIRMATION);

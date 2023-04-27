@@ -25,7 +25,6 @@ package dk.dtu.compute.se.pisd.roborally.model;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public enum Heading {
 
@@ -33,6 +32,7 @@ public enum Heading {
 
     /**
      * Gets the next direction in a clockwise direction
+     *
      * @return the  next direction in a clockwise direction
      */
     public Heading next() {
@@ -41,6 +41,7 @@ public enum Heading {
 
     /**
      * Gets the next direction in a counterclockwise direction
+     *
      * @return Gets the next direction in a counterclockwise direction
      */
     public Heading prev() {

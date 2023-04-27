@@ -20,12 +20,13 @@ class PitTest {
      * It Checks that a players HP is going down by 1
      */
     private GameController gameController;
+
     @BeforeEach
     void setUp() {
         Board board = LoadBoard.loadBoard(1);
         gameController = new GameController(board);
         for (int i = 0; i < 6; i++) {
-            Player player1 = new Player(board, null,"Player1 " + i);
+            Player player1 = new Player(board, null, "Player1 " + i);
             board.addPlayer(player1);
             player1.setSpace(board.getSpace(i, i));
             player1.setHeading(Heading.values()[i % Heading.values().length]);
@@ -44,14 +45,14 @@ class PitTest {
         Board board = gameController.board;
         Player player1 = board.getCurrentPlayer();
         //We know that there is a Pit on space x = 4 y = 7
-        player1.setSpace(board.getSpace(4,7));
+        player1.setSpace(board.getSpace(4, 7));
         int hp = player1.getHp();
         Player player2 = board.getPlayer(1);
         gameController.executeActionspace();
         //We put a new player on the board
-        Assertions.assertNotEquals(player1.getSpace(), board.getSpace(4,7),"Player1 should be moved from the pits position");
-        Assertions.assertNotEquals(player2.getSpace(),player1.getSpace(),"Player 1 should not be put in the same position as Player2");
-        Assertions.assertEquals(player1.getHp(),hp-1, "the old hp - 1 should be the same as the new player hp");
+        Assertions.assertNotEquals(player1.getSpace(), board.getSpace(4, 7), "Player1 should be moved from the pits position");
+        Assertions.assertNotEquals(player2.getSpace(), player1.getSpace(), "Player 1 should not be put in the same position as Player2");
+        Assertions.assertEquals(player1.getHp(), hp - 1, "the old hp - 1 should be the same as the new player hp");
 
     }
 }

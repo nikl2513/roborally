@@ -321,8 +321,6 @@ public class GameController {
     }
 
 
-
-
     /**
      * It is here where our action fields are activated after the players' turn is finished.
      * By examining where the players are located and which Fieldaction they are on, we then call doAction.
@@ -336,13 +334,10 @@ public class GameController {
             Space space = player.getSpace();
             for (FieldAction action : space.getActions()) {
                 GameController gameController = new GameController(board);
-                action.doAction(gameController,space);
+                action.doAction(gameController, space);
             }
         }
-
     }
-
-
 
 
     // TODO Assignment V2

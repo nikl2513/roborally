@@ -38,22 +38,21 @@ import java.sql.Statement;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 class Connector {
-	
-    private static final String HOST     = "localhost";
-    private static final int    PORT     = 3306;
-    private static final String DATABASE = "pisu";
-    private static final String USERNAME = Passwords.DB_USER;
-    private static final String PASSWORD = Passwords.DB_PWD;
 
-    private static final String DELIMITER = ";;";
-    
-    private Connection connection;
-        
-    Connector() {
-        try {
+	private static final String HOST = "localhost";
+	private static final int PORT = 3306;
+	private static final String DATABASE = "pisu";
+	private static final String USERNAME = Passwords.DB_USER;
+	private static final String PASSWORD = Passwords.DB_PWD;
+
+	private static final String DELIMITER = ";;";
+
+	private Connection connection;
+
+	Connector() {
+		try {
 			String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
 			//String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + "?serverTimezone=UTC";
 			connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
@@ -65,47 +64,49 @@ class Connector {
 			e.printStackTrace();
 			// Platform.exit();
 		}
-    }
-    
-    private void createDatabaseSchema() {
+	}
 
-    	String createTablesStatement;
+	private void createDatabaseSchema() {
+
+		String createTablesStatement;
 		try {
 			ClassLoader classLoader = Connector.class.getClassLoader();
-			URI uri = classLoader.getResource("schemas/createschema.sql") .toURI();
+			URI uri = classLoader.getResource("schemas/createschema.sql").toURI();
 			byte[] bytes = Files.readAllBytes(Paths.get(uri));
 			createTablesStatement = new String(bytes);
-		}	catch (URISyntaxException | IOException e) {
+		} catch (URISyntaxException | IOException e) {
 			e.printStackTrace();
 			return;
 		}
 
-    	try {
-    		connection.setAutoCommit(false);
-    		Statement statement = connection.createStatement();
-    		for (String sql : createTablesStatement.split(DELIMITER)) {
-    			if (!StringUtils.isEmptyOrWhitespaceOnly(sql)) {
-    				statement.executeUpdate(sql);
-    			}
-    		}
+		try {
+			connection.setAutoCommit(false);
+			Statement statement = connection.createStatement();
+			for (String sql : createTablesStatement.split(DELIMITER)) {
+				if (!StringUtils.isEmptyOrWhitespaceOnly(sql)) {
+					statement.executeUpdate(sql);
+				}
+			}
 
-    		statement.close();
-    		connection.commit();
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    		// TODO error handling
-    		try {
+			statement.close();
+			connection.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO error handling
+			try {
 				connection.rollback();
-			} catch (SQLException e1) {}
-    	} finally {
+			} catch (SQLException e1) {
+			}
+		} finally {
 			try {
 				connection.setAutoCommit(true);
-			} catch (SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
-    }
-    
-    Connection getConnection() {
-    	return connection; 
-    }
-    
+	}
+
+	Connection getConnection() {
+		return connection;
+	}
+
 }

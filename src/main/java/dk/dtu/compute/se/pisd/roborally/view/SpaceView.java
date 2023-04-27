@@ -41,7 +41,6 @@ import java.util.Objects;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class SpaceView extends StackPane implements ViewObserver {
 
@@ -54,6 +53,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     /**
      * here we design the boards height and width. We design the colours on the board,
      * where the spaces mainly is made of black and white spaces.
+     *
      * @param space
      */
     public SpaceView(@NotNull Space space) {
@@ -107,37 +107,37 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
     /**
+     * @param subject the subject of the observer design pattern
      * @author s224576
      * @author s224552
      * UpdateView adds our objects to the board
      * so if we use the addCheckpoints() method to the UpdateView() it will then be added to the board
-     * @param subject the subject of the observer design pattern
      */
     @Override
     public void updateView(Subject subject) {
         if (subject == this.space) {
             updatePlayer();
-            for (FieldAction action :space.getActions()){
-                if (action instanceof ConveyorBelt){
+            for (FieldAction action : space.getActions()) {
+                if (action instanceof ConveyorBelt) {
                     ConveyorBelt conveyorBelt = (ConveyorBelt) action;
                     addConveyerbelt(conveyorBelt.getHeading());
                 }
-                if (action instanceof Checkpoint){
+                if (action instanceof Checkpoint) {
                     Checkpoint checkpoint = (Checkpoint) action;
 
                     addCheckpoints(checkpoint.getCheckpointnumber());
                 }
-                if (action instanceof Turnpad){
+                if (action instanceof Turnpad) {
                     Turnpad turnpad = (Turnpad) action;
                     addTurnpad(turnpad.getDirection());
                 }
-                if (action instanceof Pit){
+                if (action instanceof Pit) {
                     addPit();
                 }
 
             }
 
-            for (Heading heading :space.getWalls()){
+            for (Heading heading : space.getWalls()) {
                 addwall(heading);
             }
 
@@ -150,6 +150,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      * Here we design our Checkpoints. We design the colour, the shape, and assign a number
      * so we know, what checkpoints a player is supposed to pick up first.
      * The method can then be called in updateview() and be visible on the board
+     *
      * @param Checkpointnumber the Checkpoints that are to be collected in the game.
      * @author s224552
      */
@@ -158,7 +159,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
         switch (Checkpointnumber) {
             case 1 -> {
-                Text text   = createText("1");
+                Text text = createText("1");
                 Circle circle = new Circle(10, 10, 10);
                 circle.setFill(Color.YELLOW);
                 //this.getChildren().add(circle);
@@ -166,35 +167,35 @@ public class SpaceView extends StackPane implements ViewObserver {
                 break;
             }
             case 2 -> {
-                Text text   = createText("2");
+                Text text = createText("2");
                 Circle circle1 = new Circle(10, 10, 10);
                 circle1.setFill(Color.AQUA);
                 this.getChildren().addAll(circle1, text);
                 break;
             }
             case 3 -> {
-                Text text   = createText("3");
+                Text text = createText("3");
                 Circle circle2 = new Circle(10, 10, 10);
                 circle2.setFill(Color.RED);
                 this.getChildren().addAll(circle2, text);
                 break;
             }
             case 4 -> {
-                Text text   = createText("4");
+                Text text = createText("4");
                 Circle circle3 = new Circle(10, 10, 10);
                 circle3.setFill(Color.BROWN);
                 this.getChildren().addAll(circle3, text);
                 break;
             }
             case 5 -> {
-                Text text   = createText("5");
+                Text text = createText("5");
                 Circle circle4 = new Circle(10, 10, 10);
                 circle4.setFill(Color.DARKGREY);
                 this.getChildren().addAll(circle4, text);
                 break;
             }
             case 6 -> {
-                Text text   = createText("6");
+                Text text = createText("6");
                 Circle circle5 = new Circle(10, 10, 10);
                 circle5.setFill(Color.PURPLE);
                 this.getChildren().addAll(circle5, text);
@@ -209,6 +210,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     /**
      * We design our walls. We give them a heading on the board and assign a calour and a length.
      * Then the addwall() method can be called in updateView(), which will add them to the board.
+     *
      * @param heading the heading of the walls
      */
 
@@ -273,10 +275,11 @@ public class SpaceView extends StackPane implements ViewObserver {
     /**
      * Here we design our conveyerbelt. We give our conveyerbelts a heading, a design, and a colour.
      * Then the addConveyerbelt() method can be called in updateview() which will add our conveyerbelt to the board.
+     *
      * @param heading the heading of the Conveyerbelt
      * @author s224552
      */
-    public void addConveyerbelt (Heading heading) {
+    public void addConveyerbelt(Heading heading) {
 
         switch (heading) {
             case NORTH: {
@@ -356,24 +359,25 @@ public class SpaceView extends StackPane implements ViewObserver {
     /**
      * Here we design our turnpad. we design a shape, assign a colour and add text on the turnpad to indicate what function it has
      * Then the addTurnpad() method can be called in updateview() which will add our turnpad to the board
+     *
      * @param d describes the type of turnpad it is, as we have 2 types.
      */
-    public void addTurnpad(int d){
+    public void addTurnpad(int d) {
         /**
          * @author s215698
          * @author s224552
          */
-        if(d==1){
-            Text text   = createText("Left");
+        if (d == 1) {
+            Text text = createText("Left");
             Circle circle = new Circle(12, 12, 12);
             circle.setFill(Color.GREENYELLOW);
-            this.getChildren().addAll(circle,text);
+            this.getChildren().addAll(circle, text);
         }
-        if (d==2){
-            Text text   = createText("Right");
+        if (d == 2) {
+            Text text = createText("Right");
             Circle circle = new Circle(12, 12, 12);
             circle.setFill(Color.GREENYELLOW);
-            this.getChildren().addAll(circle,text);
+            this.getChildren().addAll(circle, text);
         }
 
     }
@@ -382,7 +386,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      * Here we design our addPit. we design a shape and assign a colour to the pit.
      * Then the addPit() method can be called in updateview() which will add our pit to the board
      */
-    public void addPit(){
+    public void addPit() {
         /**
          * @author s215698
          * @author s224552
@@ -393,9 +397,9 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
 
-
     /**
      * From: https://stackoverflow.com/questions/23258605/javafx-how-can-i-best-place-a-label-centered-in-a-shape
+     *
      * @param string
      * @return A texts string.
      */

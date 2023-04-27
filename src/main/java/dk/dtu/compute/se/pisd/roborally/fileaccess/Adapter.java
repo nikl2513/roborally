@@ -41,32 +41,31 @@ import com.google.gson.JsonSerializer;
  * the class hierarchy resp. to the static type, which is dynamically sub-typed
  * in the structure. Note that this solution does not work if instances of
  * E itself need to be serialized (typically E would be abstract).
- * 
- * @author Menelaos Perdikeas, https://github.com/mperdikeas
- * @author Ekkart Kindler, ekki@dtu.dk
  *
  * @param <E> The top of the class hierarchy
+ * @author Menelaos Perdikeas, https://github.com/mperdikeas
+ * @author Ekkart Kindler, ekki@dtu.dk
  */
-public class Adapter<E> implements JsonSerializer<E>, JsonDeserializer<E>{
+public class Adapter<E> implements JsonSerializer<E>, JsonDeserializer<E> {
 
     private static final String CLASSNAME = "CLASSNAME";
-    private static final String INSTANCE  = "INSTANCE";
+    private static final String INSTANCE = "INSTANCE";
 
     @Override
     public JsonElement serialize(E src, Type typeOfSrc,
-            JsonSerializationContext context) {
+                                 JsonSerializationContext context) {
 
         JsonObject retValue = new JsonObject();
         String className = src.getClass().getName();
         retValue.addProperty(CLASSNAME, className);
-        JsonElement elem = context.serialize(src); 
+        JsonElement elem = context.serialize(src);
         retValue.add(INSTANCE, elem);
         return retValue;
     }
 
     @Override
     public E deserialize(JsonElement json, Type typeOfT,
-            JsonDeserializationContext context) throws JsonParseException  {
+                         JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
         JsonPrimitive prim = (JsonPrimitive) jsonObject.get(CLASSNAME);
         String className = prim.getAsString();
