@@ -16,8 +16,8 @@ class PitTest {
     /**
      * @author s224567
      * This test class is created to test Pits, which it does in the doAction method.
-     * It verifies whether the player hitting the Pit,
-     * is sent to a new position that is not on another player or on the Pit's position.
+     * It verifies whether the player hitting the Pit, is sent to a new position that is not on another player or on the Pit's position.
+     * It Checks that a players HP is going down by 1
      */
     private GameController gameController;
     @BeforeEach

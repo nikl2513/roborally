@@ -16,8 +16,10 @@ class CheckpointTest {
 
     /**
      * @author s224567
-     * This test class is created to test Checkpoints, which it does in the doAction method.
-     * It Checks if a players CheckpointValue goes up by 1 if the player hit a checkpoint.
+     * This test class is created to test Checkpoints, which is done in the doAction method.
+     * It checks if a player's CheckpointValue goes up by 1 if the player hits their next checkpoint.
+     * It checks if the game phase is GAME_ENDING after the player gets their last checkpoint.
+     * It checks that a player doesn't add 1 to their CheckpointValue if they hit a checkpoint that is not their next one.
      */
 
     private GameController gameController;
