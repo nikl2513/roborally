@@ -28,9 +28,13 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * this a class that has the conveyorbelt action on it. it needs a heading and a space to tell where the conveyorbelt is.
+ * there is a getter and a setter for both heading and space, so you can change and see where the conveyorbelt is.
+ * conveyorbelt starts with a heading and space is set to null.
+ * do action is the one that gamecontroller calss everytime someone moves. if the action on the space is a conveyorbelt.
+ * then it goes in to the doaction in this class and moves the player.
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author s224549
  */
 public class ConveyorBelt extends FieldAction {
 
@@ -59,6 +63,13 @@ public class ConveyorBelt extends FieldAction {
         space = null;
     }
 
+    /**
+     * @author s224549
+     * @param gameController the gameController of the respective game
+     * @param space the space this action should be executed for
+     * it checks if the space next to the player is not null, then it goes in to the try statement and moves the player.
+     * @return
+     */
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         Player player = space.getPlayer();
@@ -69,8 +80,6 @@ public class ConveyorBelt extends FieldAction {
                 player.setSpace(space2);
             } catch (ImpossibleMoveException e) {
             }
-
-
             return true;
         }
          else {
