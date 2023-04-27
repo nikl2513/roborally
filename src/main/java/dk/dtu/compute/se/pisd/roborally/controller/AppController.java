@@ -133,13 +133,15 @@ AppController implements Observer {
 
 
     /**
-     *
+     * After having saved a game in the database, a player can now choose to load a chosen game
+     * After choosing the saved game to load from the database, it will load the saved  board, the players,
+     * and the cards.
      */
     public void loadGame() {
         List<GameInDB> list = repository.getGames();
         ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(0),list);
         dialog.setTitle("");
-        dialog.setHeaderText("Select number of players");
+        dialog.setHeaderText("Choose game to load");
         Optional<GameInDB> result = dialog.showAndWait();
         if (result.isPresent()) {
             int id = result.get().id;
@@ -176,6 +178,9 @@ AppController implements Observer {
         return false;
     }
 
+    /**
+     * Basically when you try to quit roborally it will bring up the buttons that will let you exit roborally
+     */
     public void exit() {
         if (gameController != null) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
