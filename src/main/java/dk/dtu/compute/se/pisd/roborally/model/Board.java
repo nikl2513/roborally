@@ -38,7 +38,6 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class Board extends Subject {
 
@@ -132,12 +131,13 @@ public class Board extends Subject {
             return null;
         }
     }
+
     public Space getRandomSpace() {
         Random random = new Random();
         int xx = random.nextInt(width);
         int yy = random.nextInt(height);
 
-        return spaces [xx][yy];
+        return spaces[xx][yy];
     }
 
     public int getPlayersNumber() {
@@ -225,7 +225,6 @@ public class Board extends Subject {
      * @param space   the space for which the neighbour should be computed
      * @param heading the heading of the neighbour
      * @return the space in the given direction; null if there is no (reachable) neighbour
-     *
      */
 
 
@@ -266,8 +265,8 @@ public class Board extends Subject {
         if (space.getWalls().contains(heading)) {
             return null;
         }
-        if (space1.getWalls().contains(heading2)){
-            return  null;
+        if (space1.getWalls().contains(heading2)) {
+            return null;
         }
 
         return getSpace(x, y);
@@ -294,11 +293,11 @@ public class Board extends Subject {
                     board.setCurrentPlayer(player);
                 }
             }
-            return "Winner is: " + getCurrentPlayer().getName() + "Phase: " + getPhase().name() ;
+            return "Winner is: " + getCurrentPlayer().getName() + "Phase: " + getPhase().name();
         }
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
-                ", AntalSlag = " + getMoveCounter() +", Checkpoints = " + getCurrentPlayer().getCheckpointValue() +
+                ", AntalSlag = " + getMoveCounter() + ", Checkpoints = " + getCurrentPlayer().getCheckpointValue() +
                 ", HP = " + getCurrentPlayer().getHp();
 
 
@@ -315,18 +314,19 @@ public class Board extends Subject {
 
     public void addCheckpoint(Checkpoint checkpoint) {
         if (checkpoint.Space == this && !checkpoints.contains(checkpoint))
-        checkpoints.add(checkpoint);
+            checkpoints.add(checkpoint);
         notifyChange();
     }
 
-    public void addTurnpad(Turnpad turnpad){
-        if(Turnpad.Space == this && !turnpads.contains(turnpad)){
+    public void addTurnpad(Turnpad turnpad) {
+        if (Turnpad.Space == this && !turnpads.contains(turnpad)) {
             turnpads.add(turnpad);
             notifyChange();
         }
     }
-    public void addpit(Pit pit){
-        if(Pit.Space == this && !pits.contains(pit)){
+
+    public void addpit(Pit pit) {
+        if (Pit.Space == this && !pits.contains(pit)) {
             pits.add(pit);
             notifyChange();
         }

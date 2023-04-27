@@ -32,7 +32,6 @@ import java.util.List;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class Space extends Subject {
 
@@ -57,6 +56,7 @@ public class Space extends Subject {
     public List<Heading> getWalls() {
         return walls;
     }
+
     public List<FieldAction> getActions() {
         return actions;
     }
@@ -68,6 +68,7 @@ public class Space extends Subject {
     public void setTurnpad(Turnpad turnpad) {
         this.turnpad = turnpad;
     }
+
     public Pit getPit() {
         return pit;
     }
@@ -77,18 +78,17 @@ public class Space extends Subject {
     }
 
 
-    public Checkpoint getCheckpoint(){
+    public Checkpoint getCheckpoint() {
         return checkpoint;
     }
 
     public Wall getWall() {
         return wall;
     }
-    public void movePlayer(Space space, GameController gameController, Board board){
+
+    public void movePlayer(Space space, GameController gameController, Board board) {
 
     }
-
-
 
 
     public void setCheckpoint(Checkpoint checkpoint) {
@@ -100,8 +100,8 @@ public class Space extends Subject {
         Wall oldwall = this.wall;
 
         if (wall != oldwall &&
-                ( wall == null || board == wall.board))  {
-            this.wall = wall ;
+                (wall == null || board == wall.board)) {
+            this.wall = wall;
             if (oldwall != null) {
                 // this should actually not happen
                 oldwall.setSpace(null);
@@ -129,6 +129,7 @@ public class Space extends Subject {
     public Player getPlayer() {
         return player;
     }
+
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
         if (player != oldPlayer &&

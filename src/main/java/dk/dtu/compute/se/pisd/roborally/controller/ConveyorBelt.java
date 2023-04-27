@@ -62,7 +62,7 @@ public class ConveyorBelt extends FieldAction {
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         Player player = space.getPlayer();
-        Space space2 = gameController.board.getNeighbour(space,heading);
+        Space space2 = gameController.board.getNeighbour(space, heading);
         if (space2 != null) {
             try {
                 gameController.moveToSpace(player, space2, heading);
@@ -72,8 +72,7 @@ public class ConveyorBelt extends FieldAction {
 
 
             return true;
-        }
-         else {
+        } else {
             return false;
         }
     }

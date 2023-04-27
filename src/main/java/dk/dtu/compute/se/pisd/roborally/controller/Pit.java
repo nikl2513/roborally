@@ -26,13 +26,17 @@ public class Pit extends FieldAction{
 
     private dk.dtu.compute.se.pisd.roborally.model.Space space;
 
-    public void pit(){
+    public void pit() {
         space = null;
     }
 
-    public Space getSpace(){return space;}
+    public Space getSpace() {
+        return space;
+    }
 
-    public void setSpace(Space space){this.space = space;}
+    public void setSpace(Space space) {
+        this.space = space;
+    }
 
     /**
      * @author s215698
@@ -42,16 +46,16 @@ public class Pit extends FieldAction{
         Player player = space.getPlayer();
         player.setHp(player.getHp() - 1);
         Space randomSpace = gameController.board.getRandomSpace();
-        while (randomSpace.getPlayer()!=null && randomSpace != space){
+        while (randomSpace.getPlayer() != null && randomSpace != space) {
             randomSpace = gameController.board.getRandomSpace();
         }
-            player.setSpace(randomSpace);
+        player.setSpace(randomSpace);
 
         if (player.getHp() == 0) {
             player.setHp(3);
             player.setCheckpointValue(0);
         }
-        return  true;
+        return true;
     }
 
 }

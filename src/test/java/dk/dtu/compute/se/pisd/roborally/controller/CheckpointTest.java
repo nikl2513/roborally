@@ -23,12 +23,13 @@ class CheckpointTest {
      */
 
     private GameController gameController;
+
     @BeforeEach
     void setUp() {
         Board board = LoadBoard.loadBoard(1);
         gameController = new GameController(board);
         for (int i = 0; i < 6; i++) {
-            Player player1 = new Player(board, null,"Player1 " + i);
+            Player player1 = new Player(board, null, "Player1 " + i);
             board.addPlayer(player1);
             player1.setSpace(board.getSpace(i, i));
             player1.setHeading(Heading.values()[i % Heading.values().length]);
@@ -46,23 +47,23 @@ class CheckpointTest {
     void doAction() {
         Board board = gameController.board;
         Player player1 = board.getCurrentPlayer();
-        player1.setSpace(board.getSpace(2,5));
+        player1.setSpace(board.getSpace(2, 5));
         int CheckpointValue = player1.getCheckpointValue();
 
         gameController.executeActionspace();
-        Assertions.assertEquals(CheckpointValue+1,player1.getCheckpointValue());
+        Assertions.assertEquals(CheckpointValue + 1, player1.getCheckpointValue());
 
         player1.setCheckpointValue(5);
         // We know the position of Checkpoint 6
-        player1.setSpace(board.getSpace(4,0));
+        player1.setSpace(board.getSpace(4, 0));
         gameController.executeActionspace();
-        Assertions.assertEquals(board.getPhase(), Phase.GAME_ENDING,"The game should be ending after a player reaches 6 Checkpoints");
+        Assertions.assertEquals(board.getPhase(), Phase.GAME_ENDING, "The game should be ending after a player reaches 6 Checkpoints");
 
         player1.setCheckpointValue(1);
         int NewCheckpointValue = player1.getCheckpointValue();
         //We know the position of a checkpoint that does not match player1's checkpointvalue
-        player1.setSpace(board.getSpace(0,5));
+        player1.setSpace(board.getSpace(0, 5));
         gameController.executeActionspace();
-        Assertions.assertNotEquals(player1.getCheckpointValue(),NewCheckpointValue+1);
+        Assertions.assertNotEquals(player1.getCheckpointValue(), NewCheckpointValue + 1);
     }
 }

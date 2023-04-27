@@ -33,7 +33,6 @@ import java.util.List;
  * ...
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 class Repository implements IRepository {
 
@@ -59,7 +58,7 @@ class Repository implements IRepository {
 
 	private static final String PLAYER_POSITION_Y = "positionY";
 
-	private static final String PLAYER_CHECKPOINTVALU= "checkpointvalue";
+	private static final String PLAYER_CHECKPOINTVALU = "checkpointvalue";
 
 	private static final String PLAYER_HP = "hp";
 
@@ -96,7 +95,7 @@ class Repository implements IRepository {
 				ps.setNull(2, Types.TINYINT); // game.getPlayerNumber(game.getCurrentPlayer())); is inserted after players!
 				ps.setInt(3, game.getPhase().ordinal());
 				ps.setInt(4, game.getStep());
-				ps.setInt(5,k);
+				ps.setInt(5, k);
 
 				// If you have a foreign key constraint for current players,
 				// the check would need to be temporarily disabled, since
@@ -228,7 +227,6 @@ class Repository implements IRepository {
 				//      for now, we use the default game board
 
 
-
 				game = LoadBoard.loadBoard(rs.getInt("boardname"));
 
 
@@ -308,8 +306,8 @@ class Repository implements IRepository {
 			rs.updateInt(PLAYER_POSITION_X, player.getSpace().x);
 			rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
 			rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
-			rs.updateInt(PLAYER_CHECKPOINTVALU,player.getCheckpointValue());
-			rs.updateInt(PLAYER_HP,player.getHp());
+			rs.updateInt(PLAYER_CHECKPOINTVALU, player.getCheckpointValue());
+			rs.updateInt(PLAYER_HP, player.getHp());
 			rs.insertRow();
 		}
 
@@ -367,7 +365,6 @@ class Repository implements IRepository {
 				player.setHp(hp);
 
 
-
 				// TODO  should also load players program and hand here
 
 
@@ -423,7 +420,7 @@ class Repository implements IRepository {
 			rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
 			rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
 			rs.updateInt(PLAYER_CHECKPOINTVALU, player.getCheckpointValue());
-			rs.updateInt(PLAYER_HP,player.getHp());
+			rs.updateInt(PLAYER_HP, player.getHp());
 			// TODO error handling
 			// TODO take care of case when number of players changes, etc
 			rs.updateRow();
@@ -593,18 +590,19 @@ class Repository implements IRepository {
 
 	private PreparedStatement select_Card_field_asc_stmt = null;
 
-	private PreparedStatement getSelectCardfieldASCStatement(){
-		if(select_Card_field_asc_stmt == null){
+	private PreparedStatement getSelectCardfieldASCStatement() {
+		if (select_Card_field_asc_stmt == null) {
 			Connection connection = connector.getConnection();
 			try {
 				select_Card_field_asc_stmt = connection.prepareStatement(
 						SQL_SELECT_CARD_FIELDS);
-			} catch (SQLException e){
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return select_Card_field_asc_stmt;
 	}
+
 	private static final String SQL_SELECT_GAMES =
 			"SELECT gameID, name FROM Game";
 
