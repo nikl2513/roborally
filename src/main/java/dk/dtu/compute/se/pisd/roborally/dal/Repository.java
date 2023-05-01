@@ -78,6 +78,16 @@ class Repository implements IRepository {
         this.connector = connector;
     }
 
+    /**
+     * @author s224549
+     * @param game is the board that the game has been played on.
+     * we need to use that to implement the information from the board to the databaseschema.
+     * @param k is the board that has been chosen to play on.
+     * this method creates the game in the database, with the board, amount of players and the cards the players has.
+     * this method is only used to create the game in the database.
+     * It then calls "createPlayersInDB" and "createCardfieldsInDB" to create the rest of the game in the database.
+     * @return true if the games has been created in the database
+     */
 	@Override
 	public boolean createGameInDB(Board game, int k) {
 
@@ -159,6 +169,16 @@ class Repository implements IRepository {
         return false;
     }
 
+    /**
+     * @author s224549
+     * @param game is the board that is used for the game with all the information on the players and so on.
+     * This method updates the game in the database.
+     * That means it takes the already create game in the database and updates it.
+     * So it updates both the game, the players, and the cards
+     * this method only updates the game.
+     * Then it calls 2 methods "updatePlayersInDB" and "updateCardfieldsInDB" to update the rest.
+     * @return true if the game has been updated
+     */
     @Override
     public boolean updateGameInDB(Board game) {
         assert game.getGameId() != null;
@@ -206,6 +226,12 @@ class Repository implements IRepository {
         return false;
     }
 
+    /**
+     * @author s224549
+     * @param id is the game id the player chose to play again.
+     * this method loads the game that has been chosen by the player. that means it returns a board.
+     * @return a board if the game do exist.
+     */
     @Override
     public Board loadGameFromDB(int id) {
         Board game;
@@ -267,7 +293,11 @@ class Repository implements IRepository {
         return null;
     }
 
-
+    /**
+     * @author s224549
+     * this method is used to show the games that is in the database so the player can choose between them.
+     * @return the result that is list of all the games.
+     */
     @Override
     public List<GameInDB> getGames() {
         // TODO when there many games in the DB, fetching all available games
@@ -291,6 +321,12 @@ class Repository implements IRepository {
         return result;
     }
 
+    /**
+     * @author s224549
+     * @param game is the board that is used for the game with all the information on the players and so on.
+     * @throws SQLException if something doesn't work.
+     *
+     */
     private void createPlayersInDB(Board game) throws SQLException {
         // TODO code should be more defensive
         PreparedStatement ps = getSelectPlayersStatementU();
@@ -323,7 +359,7 @@ class Repository implements IRepository {
 
         for (int i = 0; i < game.getPlayersNumber(); i++) {
             Player player = game.getPlayer(i);
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 5; j++) {
                 rs.moveToInsertRow();
                 rs.updateInt(FIELD_GAMEID, game.getGameId());
                 rs.updateInt(FIELD_PLAYERID, i);
@@ -342,7 +378,7 @@ class Repository implements IRepository {
                 }
                 rs.insertRow();
             }
-            for (int j = 0; j < 7; j++) {
+            for (int j = 0; j < 8; j++) {
                 rs.moveToInsertRow();
                 rs.updateInt(FIELD_GAMEID, game.getGameId());
                 rs.updateInt(FIELD_PLAYERID, i);

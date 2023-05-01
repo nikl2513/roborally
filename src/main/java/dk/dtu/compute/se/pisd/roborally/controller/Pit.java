@@ -41,6 +41,9 @@ public class Pit extends FieldAction{
     /**
      * @author s215698
      * @author s224567
+     * @param gameController the gameController of the respective game
+     * @param space the space this action should be executed for
+     * it removes a life from the player, and sets you a random place.
      */
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         Player player = space.getPlayer();

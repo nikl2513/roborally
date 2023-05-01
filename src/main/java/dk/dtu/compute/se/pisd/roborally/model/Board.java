@@ -36,7 +36,8 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
 
 /**
  * ...
- *
+ * this is where all the information about the game is.
+ * the size of the board, the players in the game and the obstacles on the board.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class Board extends Subject {

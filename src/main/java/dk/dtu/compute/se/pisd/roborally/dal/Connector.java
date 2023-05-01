@@ -51,6 +51,9 @@ class Connector {
 
 	private Connection connection;
 
+	/**
+	 * connects to the database with, the host, the port and the database. then it log ins with username and password.
+	 */
 	Connector() {
 		try {
 			String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
@@ -66,6 +69,9 @@ class Connector {
 		}
 	}
 
+	/**
+	 * creates the databaseschema in mysql.
+	 */
 	private void createDatabaseSchema() {
 
 		String createTablesStatement;
@@ -105,6 +111,10 @@ class Connector {
 		}
 	}
 
+	/**
+	 * a method that you can call to get the connection.
+	 * @return
+	 */
 	Connection getConnection() {
 		return connection;
 	}

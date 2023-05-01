@@ -40,12 +40,16 @@ public class Turnpad extends FieldAction {
         return direction;
     }
 
-
+    /**
+     * @author s215698
+     * @author s224552
+     * @param gameController the gameController of the respective game
+     * @param space          the space this action should be executed for
+     * turns the player depending on which way the player choose.
+     * @return
+     */
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        /**
-         * @author s215698
-         * @author s224552
-         */
+
         Player player = space.getPlayer();
         Heading heading = player.getHeading();
 
