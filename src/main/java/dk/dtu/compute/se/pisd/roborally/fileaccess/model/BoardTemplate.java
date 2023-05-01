@@ -26,9 +26,8 @@ import java.util.List;
 
 
 /**
- * ...
- *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * this a model on how a board looks like. with width, height and all the spaces in the board.
  */
 public class BoardTemplate {
 

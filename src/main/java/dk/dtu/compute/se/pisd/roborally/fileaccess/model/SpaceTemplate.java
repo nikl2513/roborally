@@ -28,9 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ...
- *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * this is a template on what a space should have. maybe a wall and maybe an action on it.
+ * And of course x and y to tell where the space is on the board.
  */
 public class SpaceTemplate {
 
