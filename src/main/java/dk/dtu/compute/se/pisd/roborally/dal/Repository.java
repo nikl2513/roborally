@@ -197,7 +197,7 @@ class Repository implements IRepository {
 
             updatePlayersInDB(game);
 			//TOODO this method needs to be implemented first
-			//updateCardFieldsInDB(game);
+			updateCardFieldsInDB(game);
 
             connection.commit();
             connection.setAutoCommit(true);
@@ -485,40 +485,79 @@ class Repository implements IRepository {
         PreparedStatement ps = getSelectCardFieldStatementU();
         ps.setInt(1, game.getGameId());
         ResultSet rs = ps.executeQuery();
+
         while (rs.next()) {
-            rs.deleteRow();
+
             int playerId = rs.getInt(FIELD_PLAYERID);
+
             Player player = game.getPlayer(playerId);
+
             int type = rs.getInt(FIELD_TYPE);
             int pos = rs.getInt(FIELD_POS);
             CommandCardField field;
             if (FIELD_TYPE_REGISTER == type) {
+
                 field = player.getProgramField(pos);
-                if (field.isVisible()) {
+
+                if (field != null && field.getCard() != null ) {
+
                     rs.updateInt(FIELD_VISIBLE, 1);
-                    Command card1 = Command.valueOf(player.getProgramField(pos).getCard().getName());
-                    if (card1 != null) {
-                        rs.updateInt(FIELD_COMMAND, card1.ordinal());
-                    } else {
+                    String cardname = field.getCard().getName();
+
+                    if(cardname != null ) {
+
+                        try {
+                            Command card1 = Command.valueOf(player.getProgramField(pos).getCard().getName());
+
+                            if (card1 != null) {
+                                rs.updateInt(FIELD_COMMAND, card1.ordinal());
+
+                            } else {
+                                rs.updateNull(FIELD_COMMAND);
+
+                            }
+                        }catch (IllegalArgumentException e){
+
+                        }
+
+                    }else{
                         rs.updateNull(FIELD_COMMAND);
                     }
+                }else {
+                    rs.updateNull(FIELD_COMMAND);
+
                 }
             } else if (FIELD_TYPE_HAND == type) {
                 field = player.getCardField(pos);
-                if (field.isVisible()) {
+                if (field != null && field.getCard() != null ) {
                     rs.updateInt(FIELD_VISIBLE, 0);
-                    Command card1 = Command.valueOf(player.getCardField(pos).getCard().getName());
-                    rs.updateInt(FIELD_COMMAND, card1.ordinal());
-                    if (card1 != null) {
-                        rs.updateInt(FIELD_COMMAND, card1.ordinal());
-                    } else {
+                    String cardname = field.getCard().getName();
+                    if (cardname != null) {
+                        try {
+                            Command card1 = Command.valueOf(cardname);
+
+                            if (card1 != null) {
+                                rs.updateInt(FIELD_COMMAND, card1.ordinal());
+                                rs.updateRow();
+                            } else {
+                                rs.updateNull(FIELD_COMMAND);
+                            }
+
+
+                        }catch (IllegalArgumentException e){
+
+                        }
+
+                    }else {
                         rs.updateNull(FIELD_COMMAND);
                     }
                 }
+
             } else {
-                field = null;
+                rs.updateNull(FIELD_TYPE_HAND);
             }
-            rs.insertRow();
+
+            rs.next();
         }
         rs.close();
     }
