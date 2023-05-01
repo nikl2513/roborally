@@ -28,7 +28,7 @@ class ConveyorBeltTest {
         Board board = LoadBoard.loadBoard(1);
         gameController = new GameController(board);
         for (int i = 0; i < 2; i++) {
-            Player player = new Player(board, null,"Player " + i);
+            Player player = new Player(board, null, "Player " + i);
             board.addPlayer(player);
             player.setSpace(board.getSpace(i, i));
             player.setHeading(Heading.values()[i % Heading.values().length]);
@@ -43,22 +43,21 @@ class ConveyorBeltTest {
     }
 
 
-
     @Test
     void doAction() {
         Board board = gameController.board;
         Player player1 = board.getCurrentPlayer();
         Player player2 = board.getPlayer(1);
         //we know there is a conveyerbelt on space x = 4 , y = 4
-        player1.setSpace(board.getSpace(4,4));
-        player2.setSpace(board.getSpace(3,4));
+        player1.setSpace(board.getSpace(4, 4));
+        player2.setSpace(board.getSpace(3, 4));
         gameController.executeActionspace();
-        Assertions.assertEquals(player1.getSpace(),board.getSpace(3,4),"The Player should move one space");
-        Assertions.assertEquals(player2.getSpace(),board.getSpace(2,4),"The Player should move one space");
-        player1.setSpace(board.getSpace(2,2));
-        player2.setSpace(board.getSpace(3,2));
+        Assertions.assertEquals(player1.getSpace(), board.getSpace(3, 4), "The Player should move one space");
+        Assertions.assertEquals(player2.getSpace(), board.getSpace(2, 4), "The Player should move one space");
+        player1.setSpace(board.getSpace(2, 2));
+        player2.setSpace(board.getSpace(3, 2));
         gameController.executeActionspace();
-        Assertions.assertEquals(player1.getSpace(),board.getSpace(2,2),"The player should not move");
-        Assertions.assertEquals(player2.getSpace(),board.getSpace(3,2),"The Player should not move");
+        Assertions.assertEquals(player1.getSpace(), board.getSpace(2, 2), "The player should not move");
+        Assertions.assertEquals(player2.getSpace(), board.getSpace(3, 2), "The Player should not move");
     }
 }
