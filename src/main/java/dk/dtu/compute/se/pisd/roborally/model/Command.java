@@ -26,14 +26,18 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * ...
- *
+ * the different kind of commandscards there is.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 
 /**
  * Add the move 2, Uturn, Moveback.
  * @author Amskov
+ */
+
+/**
+ * added the fast forward
+ * @author s224549
  */
 public enum Command {
 
