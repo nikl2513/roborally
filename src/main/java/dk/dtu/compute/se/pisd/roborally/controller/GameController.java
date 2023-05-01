@@ -24,8 +24,6 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 /**
  * ...
  *
@@ -270,7 +268,7 @@ public class GameController {
                     this.move2(player);
                     break;
                 case Uturn:
-                    this.uturn(player);
+                    this.uTurn(player);
                     break;
                 case Moveback:
                     this.turnRight(player);
@@ -375,7 +373,7 @@ public class GameController {
      * @auther Amskov
      * The robots direction turns around
      */
-    public void uturn(@NotNull Player player) {
+    public void uTurn(@NotNull Player player) {
         int i;
         for (i = 0; i < 2; ++i) {
             Heading heading = player.getHeading();

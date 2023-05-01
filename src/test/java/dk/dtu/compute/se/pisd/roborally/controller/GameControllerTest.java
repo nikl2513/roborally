@@ -189,7 +189,7 @@ class GameControllerTest {
         Board board = gameController.board;
         Player player = board.getSpace(0, 0).getPlayer();
         Heading heading0 = player.getHeading();
-        gameController.uturn(player);
+        gameController.uTurn(player);
         Assertions.assertEquals(Heading.SOUTH, heading0, "The players defualt heading is South");
         Assertions.assertEquals(Heading.NORTH, player.getHeading(), "North from a starting Heading of South");
 
