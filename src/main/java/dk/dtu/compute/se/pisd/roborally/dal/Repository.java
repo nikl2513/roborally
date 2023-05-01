@@ -325,7 +325,9 @@ class Repository implements IRepository {
      * @author s224549
      * @param game is the board that is used for the game with all the information on the players and so on.
      * @throws SQLException if something doesn't work.
-     *
+     * creates the players in the database with the information from the board.
+     * So it makes a for loop for all the players. it adds the playerid, playercolour, player position, playerheading,
+     * playercheckpointvalue and playerhp. playerhp is how much life a player has.
      */
     private void createPlayersInDB(Board game) throws SQLException {
         // TODO code should be more defensive
@@ -351,6 +353,13 @@ class Repository implements IRepository {
         rs.close();
     }
 
+    /**
+     * @author s224549
+     * @param game is the board that is used for the game with all the information on the players and so on.
+     * @throws SQLException if something doesn't work.
+     * creates the cards for each player in the database. That means, both the cards on the hand and the programming cards.
+     * but in the start there is no programming cards, so that doesn't really do that much form the start.
+     */
     private void createCardFieldsInDB(Board game) throws SQLException {
         PreparedStatement ps = getSelectCardFieldStatementU();
         ps.setInt(1, game.getGameId());
@@ -400,6 +409,13 @@ class Repository implements IRepository {
         }
     }
 
+    /**
+     * @author s224549
+     * @param game is the board that is used for the game with all the information on the players and so on.
+     * @throws SQLException if something doesn't work.
+     * this method is used to load all the players on the game that the players chose to use again.
+     * this method is never used bu itself, but is only used in the "LoadGameFromDB".
+     */
     private void loadPlayersFromDB(Board game) throws SQLException {
         PreparedStatement ps = getSelectPlayersASCStatement();
         ps.setInt(1, game.getGameId());
@@ -438,6 +454,12 @@ class Repository implements IRepository {
         rs.close();
     }
 
+    /**
+     * @author s224549
+     * @param game is the board that is used for the game with all the information on the players and so on.
+     * @throws SQLException if something doesn't work.
+     * loads the cardfields from every player that is in the game the players has chosen to use again.
+     */
     private void loadCardFieldsFromDB(Board game) throws SQLException {
         //TODO code should be more defensive
         PreparedStatement ps = getSelectCardFieldStatement();
@@ -468,6 +490,13 @@ class Repository implements IRepository {
         rs.close();
     }
 
+    /**
+     * @author s224549
+     * @param game is the board that is used for the game with all the information on the players and so on.
+     * @throws SQLException if something doesn't work.
+     * Updates the players in the database.
+     * It is used for everytime the player press save game. then it updates the players.
+     */
     private void updatePlayersInDB(Board game) throws SQLException {
         PreparedStatement ps = getSelectPlayersStatementU();
         ps.setInt(1, game.getGameId());
@@ -492,6 +521,13 @@ class Repository implements IRepository {
         // TODO error handling/consistency check: check whether all players were updated
     }
 
+    /**
+     * @author s224549
+     * @param game is the board that is used for the game with all the information on the players and so on.
+     * @throws SQLException if something doesn't work.
+     * Updates the cardfields in the database for every player in the game that the player has chosen to use.
+     * This method is only used when the player presses save game.
+     */
     private void updateCardFieldsInDB(Board game) throws SQLException {
         PreparedStatement ps = getSelectCardFieldStatementU();
         ps.setInt(1, game.getGameId());
