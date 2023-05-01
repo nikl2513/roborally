@@ -36,7 +36,8 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
 
 /**
  * ...
- *
+ * this is where all the information about the game is.
+ * the size of the board, the players in the game and the obstacles on the board.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class Board extends Subject {
@@ -91,6 +92,12 @@ public class Board extends Subject {
         notifyChange();
     }
 
+    /**
+     * @param width how many spaces there should be on the x axis.
+     * @param height how many spaces there should be on the y axis.
+     * @param boardName the name on the board.
+     * This method tells what a board should include from the start.
+     */
     public Board(int width, int height, @NotNull String boardName) {
         this.boardName = boardName;
         this.width = width;
@@ -105,6 +112,11 @@ public class Board extends Subject {
         this.stepMode = false;
     }
 
+    /**
+     * @param width how many spaces there should be on the x axis.
+     * @param height how many spaces there should be on the y axis.
+     * this method creates a board with a width, height and a name. the name is always defaulboard from the start.
+     */
     public Board(int width, int height) {
         this(width, height, "defaultboard");
     }
@@ -144,6 +156,10 @@ public class Board extends Subject {
         return players.size();
     }
 
+    /**
+     * @param player the player that is added to the board.
+     * this method adds a player to the board.
+     */
     public void addPlayer(@NotNull Player player) {
         if (player.board == this && !players.contains(player)) {
             players.add(player);
@@ -197,6 +213,9 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * @return
+     */
     public boolean isStepMode() {
         return stepMode;
     }
@@ -301,34 +320,5 @@ public class Board extends Subject {
                 ", HP = " + getCurrentPlayer().getHp();
 
 
-    }
-
-    public void addwall(@NotNull Wall wall) {
-        if (Wall.Space == this && !walls.contains(wall)) {
-            walls.add(wall);
-            notifyChange();
-        }
-
-    }
-
-
-    public void addCheckpoint(Checkpoint checkpoint) {
-        if (checkpoint.Space == this && !checkpoints.contains(checkpoint))
-            checkpoints.add(checkpoint);
-        notifyChange();
-    }
-
-    public void addTurnpad(Turnpad turnpad) {
-        if (Turnpad.Space == this && !turnpads.contains(turnpad)) {
-            turnpads.add(turnpad);
-            notifyChange();
-        }
-    }
-
-    public void addpit(Pit pit) {
-        if (Pit.Space == this && !pits.contains(pit)) {
-            pits.add(pit);
-            notifyChange();
-        }
     }
 }

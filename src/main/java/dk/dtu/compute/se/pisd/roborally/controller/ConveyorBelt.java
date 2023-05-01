@@ -64,11 +64,11 @@ public class ConveyorBelt extends FieldAction {
     }
 
     /**
-     * @author s224549
      * @param gameController the gameController of the respective game
      * @param space the space this action should be executed for
      * it checks if the space next to the player is not null, then it goes in to the try statement and moves the player.
-     * @return
+     * @return true if it can do the action
+     * @author s224549
      */
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {

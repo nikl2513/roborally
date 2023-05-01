@@ -26,7 +26,6 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * ...
- *
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class CommandCard extends Subject {

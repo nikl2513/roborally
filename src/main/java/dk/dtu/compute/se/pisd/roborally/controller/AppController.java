@@ -84,7 +84,7 @@ AppController implements Observer {
          * It then takes the answer and defines it as result1,
          * which is then used to select the correct board from the board folder that contains the JSON files.
          *
-         * @auther s224552
+         * @author s224552
          */
 
         ChoiceDialog<Integer> dialog1 = new ChoiceDialog<>(BOARD_OPTIONS.get(0), BOARD_OPTIONS);

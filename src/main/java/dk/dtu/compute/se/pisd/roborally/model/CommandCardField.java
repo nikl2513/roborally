@@ -24,8 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 /**
- * ...
- *
+ * this class is the commandcardfield that includes the player that has the card, and the card and if it is visible or not.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class CommandCardField extends Subject {
