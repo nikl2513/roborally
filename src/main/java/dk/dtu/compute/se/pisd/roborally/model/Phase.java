@@ -22,8 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * ...
- *
+ * the different kind of phases that game can be in
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public enum Phase {

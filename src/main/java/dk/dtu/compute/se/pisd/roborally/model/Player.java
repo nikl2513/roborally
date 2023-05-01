@@ -27,9 +27,20 @@ import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
- * ...
- *
+ * this class is the player class. it has everything there is to know about a player.
+ * The board it is on, the name, the color, checkpointvalue, hp, the space it is on, checpointcomplete, commandcardfield,
+ * and cards.
  * @author Ekkart Kindler, ekki@dtu.dk
+ */
+
+/**
+ * added the checkpoint
+ * @author s224567, s224576
+ */
+
+/**
+ * added hp
+ * @author s215698
  */
 public class Player extends Subject {
 

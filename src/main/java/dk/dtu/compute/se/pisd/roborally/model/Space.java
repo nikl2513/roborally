@@ -29,8 +29,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * ...
- *
+ * this is the space class. it
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class Space extends Subject {
