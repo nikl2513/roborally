@@ -6,9 +6,6 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 /**
- * @author s215698
- * @author s224567
- * @author s224552
  * The class Pit is a subclass of FieldAction.
  * It represents the Action field pit that a robot can land on.
  * Pit contains a variable of the type space which is the space associated with a given pit
@@ -20,6 +17,9 @@ import org.jetbrains.annotations.NotNull;
  * This is to ensure that we don't accidentally overwrite another players robot.
  * If the players HP variable reachs 0 the player is "Dead" which in this case means they respawn but without the checkpoints they have previously
  * aquired
+ * @author s215698
+ * @author s224567
+ * @author s224552
  */
 public class Pit extends FieldAction{
     public static Board Space;
@@ -39,11 +39,11 @@ public class Pit extends FieldAction{
     }
 
     /**
-     * @author s215698
-     * @author s224567
      * @param gameController the gameController of the respective game
      * @param space the space this action should be executed for
      * it removes a life from the player, and sets you a random place.
+     * @author s215698
+     * @author s224567
      */
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         Player player = space.getPlayer();

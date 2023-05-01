@@ -34,7 +34,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import java.io.*;
 
 /**
- * @author Ekkart Kindler, ekki@dtu.dk
+ * @author Ekkart Kindler, ekki@dtu.dk, s224552
  * this class loads the board that has been chosen by the player.
  * It loads it from a folder with different kinds of json files.
  */

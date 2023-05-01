@@ -79,7 +79,6 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param game is the board that the game has been played on.
      * we need to use that to implement the information from the board to the databaseschema.
      * @param k is the board that has been chosen to play on.
@@ -87,6 +86,7 @@ class Repository implements IRepository {
      * this method is only used to create the game in the database.
      * It then calls "createPlayersInDB" and "createCardfieldsInDB" to create the rest of the game in the database.
      * @return true if the games has been created in the database
+     * @author s224549
      */
 	@Override
 	public boolean createGameInDB(Board game, int k) {
@@ -170,7 +170,6 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param game is the board that is used for the game with all the information on the players and so on.
      * This method updates the game in the database.
      * That means it takes the already create game in the database and updates it.
@@ -178,6 +177,7 @@ class Repository implements IRepository {
      * this method only updates the game.
      * Then it calls 2 methods "updatePlayersInDB" and "updateCardfieldsInDB" to update the rest.
      * @return true if the game has been updated
+     * @author s224549
      */
     @Override
     public boolean updateGameInDB(Board game) {
@@ -227,10 +227,10 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param id is the game id the player chose to play again.
      * this method loads the game that has been chosen by the player. that means it returns a board.
      * @return a board if the game do exist.
+     * @author s224549
      */
     @Override
     public Board loadGameFromDB(int id) {
@@ -294,9 +294,9 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * this method is used to show the games that is in the database so the player can choose between them.
      * @return the result that is list of all the games.
+     * @author s224549
      */
     @Override
     public List<GameInDB> getGames() {
@@ -322,12 +322,12 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param game is the board that is used for the game with all the information on the players and so on.
      * @throws SQLException if something doesn't work.
      * creates the players in the database with the information from the board.
      * So it makes a for loop for all the players. it adds the playerid, playercolour, player position, playerheading,
      * playercheckpointvalue and playerhp. playerhp is how much life a player has.
+     * @author s224549
      */
     private void createPlayersInDB(Board game) throws SQLException {
         // TODO code should be more defensive
@@ -354,11 +354,11 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param game is the board that is used for the game with all the information on the players and so on.
      * @throws SQLException if something doesn't work.
      * creates the cards for each player in the database. That means, both the cards on the hand and the programming cards.
      * but in the start there is no programming cards, so that doesn't really do that much form the start.
+     * @author s224549
      */
     private void createCardFieldsInDB(Board game) throws SQLException {
         PreparedStatement ps = getSelectCardFieldStatementU();
@@ -410,11 +410,11 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param game is the board that is used for the game with all the information on the players and so on.
      * @throws SQLException if something doesn't work.
      * this method is used to load all the players on the game that the players chose to use again.
      * this method is never used bu itself, but is only used in the "LoadGameFromDB".
+     * @author s224549
      */
     private void loadPlayersFromDB(Board game) throws SQLException {
         PreparedStatement ps = getSelectPlayersASCStatement();
@@ -455,10 +455,10 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param game is the board that is used for the game with all the information on the players and so on.
      * @throws SQLException if something doesn't work.
      * loads the cardfields from every player that is in the game the players has chosen to use again.
+     * @author s224549
      */
     private void loadCardFieldsFromDB(Board game) throws SQLException {
         //TODO code should be more defensive
@@ -491,11 +491,11 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param game is the board that is used for the game with all the information on the players and so on.
      * @throws SQLException if something doesn't work.
      * Updates the players in the database.
      * It is used for everytime the player press save game. then it updates the players.
+     * @author s224549
      */
     private void updatePlayersInDB(Board game) throws SQLException {
         PreparedStatement ps = getSelectPlayersStatementU();
@@ -522,11 +522,11 @@ class Repository implements IRepository {
     }
 
     /**
-     * @author s224549
      * @param game is the board that is used for the game with all the information on the players and so on.
      * @throws SQLException if something doesn't work.
      * Updates the cardfields in the database for every player in the game that the player has chosen to use.
      * This method is only used when the player presses save game.
+     * @author s224549
      */
     private void updateCardFieldsInDB(Board game) throws SQLException {
         PreparedStatement ps = getSelectCardFieldStatementU();

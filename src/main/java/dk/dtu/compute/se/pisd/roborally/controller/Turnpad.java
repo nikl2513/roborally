@@ -9,8 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * @author s215698
- * @author s224552
  * The class Turnpad is a subclass of FieldAction.
  * It represents the Action field pit that a robot can land on.
  * Pit contains a variable of the type space which is the space associated with a given pit
@@ -21,6 +19,8 @@ import java.util.Objects;
  * doAction for this Class is what updates the players Heading in moving it either left or right depending on the value of direction
  * It does this by using getPlayer on the space to find the player who shares a space
  * Then the getHeading takes the players current heading and depending on if direction is 1 or 2 moves the heading 1 to the left or right accordingly
+ * @author s215698
+ * @author s224552
  */
 public class Turnpad extends FieldAction {
     private dk.dtu.compute.se.pisd.roborally.model.Space space;
@@ -41,12 +41,12 @@ public class Turnpad extends FieldAction {
     }
 
     /**
-     * @author s215698
-     * @author s224552
      * @param gameController the gameController of the respective game
      * @param space          the space this action should be executed for
      * turns the player depending on which way the player choose.
      * @return
+     * @author s215698
+     * @author s224552
      */
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
 
