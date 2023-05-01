@@ -38,8 +38,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * ...
- *
+ * this is the view of a space
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class SpaceView extends StackPane implements ViewObserver {
@@ -277,7 +276,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      * Then the addConveyerbelt() method can be called in updateview() which will add our conveyerbelt to the board.
      *
      * @param heading the heading of the Conveyerbelt
-     * @author s224552
+     * @author s224549
      */
     public void addConveyerbelt(Heading heading) {
 

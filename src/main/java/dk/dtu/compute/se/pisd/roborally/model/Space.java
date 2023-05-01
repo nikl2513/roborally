@@ -29,7 +29,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * this is the space class. it
+ * this is the space class. it has everything that space can have on it
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class Space extends Subject {
@@ -59,41 +59,6 @@ public class Space extends Subject {
     public List<FieldAction> getActions() {
         return actions;
     }
-
-    public Turnpad getTurnpad() {
-        return turnpad;
-    }
-
-    public void setTurnpad(Turnpad turnpad) {
-        this.turnpad = turnpad;
-    }
-
-    public Pit getPit() {
-        return pit;
-    }
-
-    public void setPit(Pit pit) {
-        this.pit = pit;
-    }
-
-
-    public Checkpoint getCheckpoint() {
-        return checkpoint;
-    }
-
-    public Wall getWall() {
-        return wall;
-    }
-
-    public void movePlayer(Space space, GameController gameController, Board board) {
-
-    }
-
-
-    public void setCheckpoint(Checkpoint checkpoint) {
-        this.checkpoint = checkpoint;
-    }
-
 
     public void setWall(Wall wall) {
         Wall oldwall = this.wall;

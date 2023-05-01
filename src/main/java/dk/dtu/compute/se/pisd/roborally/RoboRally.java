@@ -32,8 +32,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * ...
- *
+ * this is the start of the game. what we have to do before the games starts.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class

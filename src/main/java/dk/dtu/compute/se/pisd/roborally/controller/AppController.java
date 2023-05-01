@@ -137,6 +137,7 @@ AppController implements Observer {
      * After having saved a game in the database, a player can now choose to load a chosen game
      * After choosing the saved game to load from the database, it will load the saved  board, the players,
      * and the cards.
+     * @author s224549
      */
     public void loadGame() {
         List<GameInDB> list = repository.getGames();

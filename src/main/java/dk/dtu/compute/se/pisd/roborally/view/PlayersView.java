@@ -28,8 +28,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.scene.control.TabPane;
 
 /**
- * ...
- *
+ * this is the class that handles the view of the players.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class PlayersView extends TabPane implements ViewObserver {

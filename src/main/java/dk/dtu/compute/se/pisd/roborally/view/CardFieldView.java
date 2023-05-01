@@ -38,8 +38,7 @@ import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * this is the class that handles the view of the cards.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class CardFieldView extends GridPane implements ViewObserver {

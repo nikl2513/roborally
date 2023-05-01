@@ -27,8 +27,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 /**
- * ...
- *
+ * this is the class for the menubar. all the different options you can choose in the top.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class RoboRallyMenuBar extends MenuBar {

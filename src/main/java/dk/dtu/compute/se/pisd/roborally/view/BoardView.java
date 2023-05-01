@@ -35,8 +35,7 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * this is the class for the visual of the board.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class BoardView extends VBox implements ViewObserver {

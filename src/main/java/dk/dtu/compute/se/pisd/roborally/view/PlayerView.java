@@ -35,8 +35,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * ...
- *
+ * this is what the player can see.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class PlayerView extends Tab implements ViewObserver {
@@ -200,12 +199,6 @@ public class PlayerView extends Tab implements ViewObserver {
                 playerInteractionPanel.getChildren().clear();
 
                 if (player.board.getCurrentPlayer() == player) {
-                    // TODO Assignment V3: these buttons should be shown only when there is
-                    //      an interactive command card, and the buttons should represent
-                    //      the player's choices of the interactive command card. The
-                    //      following is just a mockup showing two options
-
-
                     /**
                      * In this part of the code it takes the 2 options and shows Buttons, with the options.
                      * It then takes the Button that is presst and gives that option to the gameController in the
