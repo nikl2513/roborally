@@ -47,15 +47,6 @@ public class GameController {
      */
 
     public void moveCurrentPlayerToSpace(@NotNull Space space) {
-
-        // TODO Assignment V1: method should be implemented by the students:
-        //   - the current player should be moved to the given space
-        //     (if it is free()
-        //   - and the current player should be set to the player
-        //     following the current player
-        //   - the counter of moves in the game should be increased by one
-        //     if and when the player is moved (the counter and the status line
-        //     message needs to be implemented at another place)
         if (space.getPlayer() == null) {
             Player currentPlayer = board.getCurrentPlayer();
             space.setPlayer(currentPlayer);
@@ -294,8 +285,6 @@ public class GameController {
         }
     }
 
-    // TODO Assignment V2
-
     /**
      * s224567
      * Moves the current players robot one space i the robots current direction
@@ -341,9 +330,6 @@ public class GameController {
         }
     }
 
-
-    // TODO Assignment V2
-
     /**
      * s224567:
      * The method moves the current robot 3 spaces forward in the robots current direction.
@@ -359,8 +345,6 @@ public class GameController {
 
     }
 
-    // TODO Assignment V2
-
     /**
      * s224576
      * The robots direction turns to the right
@@ -372,8 +356,6 @@ public class GameController {
         player.setHeading(heading.next());
 
     }
-
-    // TODO Assignment V2
 
     /**
      * s224576

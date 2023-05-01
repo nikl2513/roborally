@@ -50,7 +50,6 @@ public class LoadBoard {
         ClassLoader classLoader = LoadBoard.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(BOARDSFOLDER + "/" + boardname + "." + JSON_EXT);
         if (inputStream == null) {
-            // TODO these constants should be defined somewhere
             return new Board(8, 8);
         }
 
@@ -115,9 +114,6 @@ public class LoadBoard {
         }
 
         ClassLoader classLoader = LoadBoard.class.getClassLoader();
-        // TODO: this is not very defensive, and will result in a NullPointerException
-        //       when the folder "resources" does not exist! But, it does not need
-        //       the file "simpleCards.json" to exist!
         String filename =
                 classLoader.getResource(BOARDSFOLDER).getPath() + "/" + name + "." + JSON_EXT;
 
