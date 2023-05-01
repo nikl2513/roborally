@@ -169,35 +169,35 @@ public class SpaceView extends StackPane implements ViewObserver {
             case 2 -> {
                 Text text = createText("2");
                 Circle circle1 = new Circle(10, 10, 10);
-                circle1.setFill(Color.AQUA);
+                circle1.setFill(Color.YELLOW);
                 this.getChildren().addAll(circle1, text);
                 break;
             }
             case 3 -> {
                 Text text = createText("3");
                 Circle circle2 = new Circle(10, 10, 10);
-                circle2.setFill(Color.RED);
+                circle2.setFill(Color.YELLOW);
                 this.getChildren().addAll(circle2, text);
                 break;
             }
             case 4 -> {
                 Text text = createText("4");
                 Circle circle3 = new Circle(10, 10, 10);
-                circle3.setFill(Color.BROWN);
+                circle3.setFill(Color.YELLOW);
                 this.getChildren().addAll(circle3, text);
                 break;
             }
             case 5 -> {
                 Text text = createText("5");
                 Circle circle4 = new Circle(10, 10, 10);
-                circle4.setFill(Color.DARKGREY);
+                circle4.setFill(Color.YELLOW);
                 this.getChildren().addAll(circle4, text);
                 break;
             }
             case 6 -> {
                 Text text = createText("6");
                 Circle circle5 = new Circle(10, 10, 10);
-                circle5.setFill(Color.PURPLE);
+                circle5.setFill(Color.YELLOW);
                 this.getChildren().addAll(circle5, text);
                 break;
             }
