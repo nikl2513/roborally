@@ -143,7 +143,7 @@ AppController implements Observer {
     public void loadGame() {
         List<GameInDB> list = repository.getGames();
         Collections.reverse(list);
-        ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(list.size()-1), list);
+        ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(0), list);
         dialog.setTitle("");
         dialog.setHeaderText("Choose game to load");
         Optional<GameInDB> result = dialog.showAndWait();
