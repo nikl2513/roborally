@@ -499,65 +499,32 @@ class Repository implements IRepository {
 
                 field = player.getProgramField(pos);
 
-                if (field != null && field.getCard() != null ) {
+                if (field != null) {
 
-                    rs.updateInt(FIELD_VISIBLE, 1);
-                    String cardname = field.getCard().getName();
+                    rs.updateBoolean(FIELD_VISIBLE, field.isVisible());
+                    CommandCard card = field.getCard();
 
-                    if(cardname != null ) {
-
-                        try {
-                            Command card1 = Command.valueOf(player.getProgramField(pos).getCard().getName());
-
-                            if (card1 != null) {
-                                rs.updateInt(FIELD_COMMAND, card1.ordinal());
-
-                            } else {
-                                rs.updateNull(FIELD_COMMAND);
-
-                            }
-                        }catch (IllegalArgumentException e){
-
-                        }
-
-                    }else{
+                    if (card != null) {
+                        rs.updateInt(FIELD_COMMAND, card.command.ordinal());
+                    } else {
                         rs.updateNull(FIELD_COMMAND);
                     }
-                }else {
-                    rs.updateNull(FIELD_COMMAND);
-
                 }
             } else if (FIELD_TYPE_HAND == type) {
                 field = player.getCardField(pos);
-                if (field != null && field.getCard() != null ) {
-                    rs.updateInt(FIELD_VISIBLE, 0);
-                    String cardname = field.getCard().getName();
-                    if (cardname != null) {
-                        try {
-                            Command card1 = Command.valueOf(cardname);
+                if (field != null) {
 
-                            if (card1 != null) {
-                                rs.updateInt(FIELD_COMMAND, card1.ordinal());
-                                rs.updateRow();
-                            } else {
-                                rs.updateNull(FIELD_COMMAND);
-                            }
+                    rs.updateBoolean(FIELD_VISIBLE, field.isVisible());
+                    CommandCard card = field.getCard();
 
-
-                        }catch (IllegalArgumentException e){
-
-                        }
-
-                    }else {
+                    if (card != null) {
+                        rs.updateInt(FIELD_COMMAND, card.command.ordinal());
+                    } else {
                         rs.updateNull(FIELD_COMMAND);
                     }
                 }
-
-            } else {
-                rs.updateNull(FIELD_TYPE_HAND);
             }
-
-            rs.next();
+            rs.updateRow();
         }
         rs.close();
     }
