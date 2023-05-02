@@ -494,34 +494,25 @@ class Repository implements IRepository {
 
             int type = rs.getInt(FIELD_TYPE);
             int pos = rs.getInt(FIELD_POS);
-            CommandCardField field;
+            CommandCardField field = null;
             if (FIELD_TYPE_REGISTER == type) {
 
                 field = player.getProgramField(pos);
 
-                if (field != null) {
-
-                    rs.updateBoolean(FIELD_VISIBLE, field.isVisible());
-                    CommandCard card = field.getCard();
-
-                    if (card != null) {
-                        rs.updateInt(FIELD_COMMAND, card.command.ordinal());
-                    } else {
-                        rs.updateNull(FIELD_COMMAND);
-                    }
-                }
             } else if (FIELD_TYPE_HAND == type) {
                 field = player.getCardField(pos);
-                if (field != null) {
 
-                    rs.updateBoolean(FIELD_VISIBLE, field.isVisible());
-                    CommandCard card = field.getCard();
+            }
+            
+            if (field != null) {
 
-                    if (card != null) {
-                        rs.updateInt(FIELD_COMMAND, card.command.ordinal());
-                    } else {
-                        rs.updateNull(FIELD_COMMAND);
-                    }
+                rs.updateBoolean(FIELD_VISIBLE, field.isVisible());
+                CommandCard card = field.getCard();
+
+                if (card != null) {
+                    rs.updateInt(FIELD_COMMAND, card.command.ordinal());
+                } else {
+                    rs.updateNull(FIELD_COMMAND);
                 }
             }
             rs.updateRow();
