@@ -22,21 +22,8 @@ import org.jetbrains.annotations.NotNull;
  * @author s224552
  */
 public class Pit extends FieldAction{
-    public static Board Space;
 
     private dk.dtu.compute.se.pisd.roborally.model.Space space;
-
-    public void pit() {
-        space = null;
-    }
-
-    public Space getSpace() {
-        return space;
-    }
-
-    public void setSpace(Space space) {
-        this.space = space;
-    }
 
     /**
      * @param gameController the gameController of the respective game

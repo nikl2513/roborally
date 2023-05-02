@@ -46,22 +46,6 @@ public class ConveyorBelt extends FieldAction {
         return heading;
     }
 
-    public void setHeading(Heading heading) {
-        this.heading = heading;
-    }
-
-    public Space getSpace() {
-        return space;
-    }
-
-    public void setSpace(Space space) {
-        this.space = space;
-    }
-
-    public ConveyorBelt(Heading heading) {
-        this.heading = heading;
-        space = null;
-    }
 
     /**
      * @param gameController the gameController of the respective game

@@ -12,27 +12,14 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
  */
 public class Checkpoint extends FieldAction {
 
-    public static Board Space;
     private dk.dtu.compute.se.pisd.roborally.model.Space space;
 
     public int getCheckpointnumber() {
         return checkpointnumber;
     }
 
-    public void setCheckpointnumber(int checkpointnumber) {
-        this.checkpointnumber = checkpointnumber;
-    }
-
     public int checkpointnumber;
 
-
-    public Space getSpace() {
-        return space;
-    }
-
-    public void setSpace(Space space) {
-        this.space = space;
-    }
 
     /**
      * This method checks if the player can reach the next checkpoint by taking the player's checkpoint value and adding 1,
