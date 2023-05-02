@@ -49,7 +49,7 @@ class CheckpointTest {
         Player player1 = board.getCurrentPlayer();
         player1.setSpace(board.getSpace(2, 5));
         int CheckpointValue = player1.getCheckpointValue();
-
+        // We know the position of Checkpoint 1
         gameController.executeActionspace();
         Assertions.assertEquals(CheckpointValue + 1, player1.getCheckpointValue());
 

@@ -40,6 +40,7 @@ import javafx.scene.control.ChoiceDialog;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -141,7 +142,8 @@ AppController implements Observer {
      */
     public void loadGame() {
         List<GameInDB> list = repository.getGames();
-        ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(0), list);
+        Collections.reverse(list);
+        ChoiceDialog<GameInDB> dialog = new ChoiceDialog<>(list.get(list.size()-1), list);
         dialog.setTitle("");
         dialog.setHeaderText("Choose game to load");
         Optional<GameInDB> result = dialog.showAndWait();
