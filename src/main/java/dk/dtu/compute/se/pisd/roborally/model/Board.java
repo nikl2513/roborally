@@ -54,14 +54,6 @@ public class Board extends Subject {
 
     private final List<Player> players = new ArrayList<>();
 
-    private final List<Wall> walls = new ArrayList<>();
-
-    private final List<Checkpoint> checkpoints = new ArrayList<>();
-
-
-    private final List<Turnpad> turnpads = new ArrayList<>();
-
-    private final List<Pit> pits = new ArrayList<>();
     private Player current;
 
     private Phase phase = INITIALISATION;
@@ -72,9 +64,6 @@ public class Board extends Subject {
 
     private int moveCounter = 0;
 
-    private Checkpoint checkpoint;
-
-    private boolean checkpointBool;
 
     /**
      * Vi opretter en privat variabel som er vores counter

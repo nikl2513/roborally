@@ -39,13 +39,8 @@ public class Space extends Subject {
     public final int x;
     public final int y;
     private Player player;
-    private Wall wall;
 
-    private Pit pit;
-    private Turnpad turnpad;
-    private boolean wallbool;
-    private Checkpoint checkpoint;
-    private boolean CheckpointBool;
+
 
     private List<FieldAction> actions = new ArrayList<>();
 
@@ -60,33 +55,15 @@ public class Space extends Subject {
         return actions;
     }
 
-    public void setWall(Wall wall) {
-        Wall oldwall = this.wall;
 
-        if (wall != oldwall &&
-                (wall == null || board == wall.board)) {
-            this.wall = wall;
-            if (oldwall != null) {
-                // this should actually not happen
-                oldwall.setSpace(null);
-            }
-            if (wall != null) {
-                wall.setSpace(this);
-            }
-            notifyChange();
-        }
 
-    }
 
     public Space(Board board, int x, int y) {
         this.board = board;
         this.x = x;
         this.y = y;
         player = null;
-        wall = null;
-        wallbool = false;
-        checkpoint = null;
-        CheckpointBool = false;
+
 
     }
 
