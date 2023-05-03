@@ -413,6 +413,12 @@ public class GameController {
      * @param space
      * @param heading
      * @throws ImpossibleMoveException
+     *
+     * This class uses the param to move one player from his current space to the param space, based on the players current
+     * heading. The space given is the space the player is moving to not the players current one. The program checks for another player one the target field
+     * If one exists the method checks if there is a valid space for the targetplayer to be moved to before calling itself on the new player.
+     * This is an instance of recursion that makes it so that the process of pushing the player will repeat itself until the final player is pushed to a playerless field.
+     *
      */
     public void moveToSpace(
             @NotNull Player player,
