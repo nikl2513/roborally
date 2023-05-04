@@ -25,7 +25,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * the class for a commandcard
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public class CommandCard extends Subject {

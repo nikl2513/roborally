@@ -31,6 +31,7 @@ import java.util.List;
 /**
  * this is the space class. it has everything that space can have on it
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author s224549
  */
 public class Space extends Subject {
 
@@ -40,12 +41,9 @@ public class Space extends Subject {
     public final int y;
     private Player player;
 
-
-
     private List<FieldAction> actions = new ArrayList<>();
 
     private List<Heading> walls = new ArrayList<>();
-
 
     public List<Heading> getWalls() {
         return walls;
@@ -55,16 +53,11 @@ public class Space extends Subject {
         return actions;
     }
 
-
-
-
     public Space(Board board, int x, int y) {
         this.board = board;
         this.x = x;
         this.y = y;
         player = null;
-
-
     }
 
     public Player getPlayer() {

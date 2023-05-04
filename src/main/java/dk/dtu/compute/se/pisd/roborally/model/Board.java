@@ -35,6 +35,9 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
  * this is where all the information about the game is.
  * the size of the board, the players in the game and the obstacles on the board.
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author s224552
+ * @author s224567
+ * @author s215698
  */
 public class Board extends Subject {
 
@@ -59,7 +62,6 @@ public class Board extends Subject {
     private boolean stepMode;
 
     private int moveCounter = 0;
-
 
     /**
      * Vi opretter en privat variabel som er vores counter

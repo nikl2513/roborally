@@ -22,8 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * ...
- *
+ * the heading class
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public enum Heading {

@@ -35,7 +35,7 @@ import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
  * added the checkpoint
- * @author s224567, s224576
+ * @author s224567
  */
 
 /**
@@ -71,6 +71,12 @@ public class Player extends Subject {
     private CommandCardField[] program;
     private CommandCardField[] cards;
 
+    /**
+     *
+     * @param board
+     * @param color
+     * @param name
+     */
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
         this.name = name;

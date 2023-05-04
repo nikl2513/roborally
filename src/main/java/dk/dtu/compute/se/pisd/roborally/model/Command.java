@@ -32,7 +32,7 @@ import java.util.List;
 
 /**
  * Add the move 2, Uturn, Moveback.
- * @author Amskov
+ * @author s224552
  */
 
 /**
@@ -40,9 +40,6 @@ import java.util.List;
  * @author s224549
  */
 public enum Command {
-
-    // This is a very simplistic way of realizing different commands.
-
     FORWARD("Move 1"),
     RIGHT("Turn Right"),
     LEFT("Turn Left"),
@@ -53,17 +50,9 @@ public enum Command {
     Moveback("Move back"),
     FAST_FORWARD("Move 3"),
 
-    // XXX Assignment V3 (step 1)
     OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
 
     final public String displayName;
-
-    // XXX Assignment V3 (step 1)
-    // Command(String displayName) {
-    //     this.displayName = displayName;
-    // }
-    //
-    // replaced by the code below:
 
     final private List<Command> options;
 
