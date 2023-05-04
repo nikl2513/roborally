@@ -302,12 +302,7 @@ public class Board extends Subject {
                     board.setCurrentPlayer(player);}
             }
             return winnermessage(board);
-
-
-
-
-
-            }
+        }
        // return "Winner is: " + getCurrentPlayer().getName() + " Phase: " + getPhase().name();
 
 
