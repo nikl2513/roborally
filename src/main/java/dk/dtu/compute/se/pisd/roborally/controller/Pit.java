@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
  * @author s215698
  * @author s224567
  * @author s224552
+ * @author s224576
  */
 public class Pit extends FieldAction{
 

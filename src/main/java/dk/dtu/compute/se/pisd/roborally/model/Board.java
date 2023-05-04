@@ -42,6 +42,7 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
  * @author s224552
  * @author s224567
  * @author s215698
+ * @author s224576
  */
 public class Board extends Subject {
 

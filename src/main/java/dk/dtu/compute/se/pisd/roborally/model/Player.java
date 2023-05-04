@@ -36,6 +36,7 @@ import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 /**
  * added the checkpoint
  * @author s224567
+ * @author s224576
  */
 
 /**

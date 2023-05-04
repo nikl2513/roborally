@@ -330,6 +330,7 @@ public class GameController {
      *               player away before moving onto the space
      * @author s224552
      * @author s224567
+     * @author s224576
      */
     public void moveForward(@NotNull Player player) {
         if (player.board == board) {
