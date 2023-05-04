@@ -40,6 +40,9 @@ import java.util.Objects;
 /**
  * this is the view of a space
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author s215698
+ * @author s224552
+ * @author s224549
  */
 public class SpaceView extends StackPane implements ViewObserver {
 
@@ -54,6 +57,8 @@ public class SpaceView extends StackPane implements ViewObserver {
      * where the spaces mainly is made of black and white spaces.
      *
      * @param space
+     *
+     * @author s215698
      */
     public SpaceView(@NotNull Space space) {
         this.space = space;
@@ -111,6 +116,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      * @author s224552
      * UpdateView adds our objects to the board
      * so if we use the addCheckpoints() method to the UpdateView() it will then be added to the board
+     * @author s224552
      */
     @Override
     public void updateView(Subject subject) {
@@ -152,6 +158,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      *
      * @param Checkpointnumber the Checkpoints that are to be collected in the game.
      * @author s224552
+     * @author s224567
      */
 
     private void addCheckpoints(int Checkpointnumber) {
@@ -270,13 +277,13 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     }
 
-
     /**
      * Here we design our conveyerbelt. We give our conveyerbelts a heading, a design, and a colour.
      * Then the addConveyerbelt() method can be called in updateview() which will add our conveyerbelt to the board.
      *
      * @param heading the heading of the Conveyerbelt
      * @author s224549
+     * @author s224552
      */
     public void addConveyerbelt(Heading heading) {
 
@@ -398,9 +405,9 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     /**
      * From: https://stackoverflow.com/questions/23258605/javafx-how-can-i-best-place-a-label-centered-in-a-shape
-     *
      * @param string
      * @return A texts string.
+     * @author s224552
      */
     private Text createText(String string) {
         Text text = new Text(string);

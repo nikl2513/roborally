@@ -37,6 +37,7 @@ import java.util.List;
 /**
  * this is what the player can see.
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author s224552
  */
 public class PlayerView extends Tab implements ViewObserver {
 
@@ -44,11 +45,8 @@ public class PlayerView extends Tab implements ViewObserver {
 
     private VBox top;
 
-
-
     private Label programLabel;
     private GridPane programPane;
-
     private Label cardsLabel;
     private GridPane cardsPane;
 
@@ -75,9 +73,6 @@ public class PlayerView extends Tab implements ViewObserver {
         this.gameController = gameController;
         this.player = player;
 
-
-
-
         programLabel = new Label("Program");
 
         programPane = new GridPane();
@@ -92,11 +87,6 @@ public class PlayerView extends Tab implements ViewObserver {
             }
         }
 
-
-
-        // XXX  the following buttons should actually not be on the tabs of the individual
-        //      players, but on the PlayersView (view for all players). This should be
-        //      refactored.
 
         finishButton = new Button("Finish Programming");
         finishButton.setOnAction(e -> gameController.finishProgrammingPhase());
@@ -134,13 +124,17 @@ public class PlayerView extends Tab implements ViewObserver {
         top.getChildren().add(cardsLabel);
         top.getChildren().add(cardsPane);
 
-
         if (player.board != null) {
             player.board.attach(this);
             update(player.board);
         }
     }
 
+    /**
+     * updates the view for the player.
+     * @param subject
+     * @author s224552
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == player.board) {
@@ -166,11 +160,6 @@ public class PlayerView extends Tab implements ViewObserver {
                     }
                 }
             }
-
-
-
-
-
 
             if (player.board.getPhase() != Phase.PLAYER_INTERACTION) {
                 if (!programPane.getChildren().contains(buttonPanel)) {
