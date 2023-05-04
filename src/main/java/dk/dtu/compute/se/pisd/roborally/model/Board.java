@@ -22,15 +22,11 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
-import dk.dtu.compute.se.pisd.roborally.controller.Pit;
-import dk.dtu.compute.se.pisd.roborally.controller.Turnpad;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
 
@@ -54,7 +50,7 @@ public class Board extends Subject {
 
     private final List<Player> players = new ArrayList<>();
 
-    private Player current;
+    private Player currentPlayer;
 
     private Phase phase = INITIALISATION;
 
@@ -165,12 +161,12 @@ public class Board extends Subject {
     }
 
     public Player getCurrentPlayer() {
-        return current;
+        return currentPlayer;
     }
 
     public void setCurrentPlayer(Player player) {
-        if (player != this.current && players.contains(player)) {
-            this.current = player;
+        if (player != this.currentPlayer && players.contains(player)) {
+            this.currentPlayer = player;
             notifyChange();
         }
     }
@@ -286,7 +282,7 @@ public class Board extends Subject {
      * Vi har også tilføjet et CheckpointValue til den så man kan se hvor mange chekpoints hver spiller har.
      */
     public String getStatusMessage() {
-        Board board = current.board;
+        Board board = currentPlayer.board;
         // this is actually a view aspect, but for making assignment V1 easy for
         // the students, this method gives a string representation of the current
         // status of the game
