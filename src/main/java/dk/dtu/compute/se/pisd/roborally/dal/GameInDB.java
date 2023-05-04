@@ -22,8 +22,6 @@
 package dk.dtu.compute.se.pisd.roborally.dal;
 
 /**
- * ...
- *
  * @author Ekkart Kindler, ekki@dtu.dk
  * a class that is called GameInDB that includes an id and a name.
  */
