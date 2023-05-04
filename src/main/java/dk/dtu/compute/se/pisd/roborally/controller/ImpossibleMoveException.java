@@ -5,6 +5,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 /**
+ * an exception for move player
  * @Author s215698
  */
 public class ImpossibleMoveException extends Exception {

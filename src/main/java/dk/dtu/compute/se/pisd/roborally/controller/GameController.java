@@ -25,9 +25,13 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
- *
+ * the controller that changes things in the game.
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author s215698
+ * @author s224567
+ * @author s224552
+ * @author s224549
+ * @author s224576
  */
 public class GameController {
 
@@ -42,6 +46,11 @@ public class GameController {
      * happening on the board. This method should eventually be deleted!
      *
      * @param space the space to which the current player should move
+     * @author s224549
+     * @author s224552
+     * @author s224576
+     * @author s224567
+     * @author s215698
      */
 
     public void moveCurrentPlayerToSpace(@NotNull Space space) {
@@ -63,12 +72,10 @@ public class GameController {
                 board.setCurrentPlayer(currentPlayer);
             }
         }
-
-
     }
 
     /**
-     *
+     *starts the programmingphase
      */
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
@@ -92,14 +99,19 @@ public class GameController {
         }
     }
 
-    // XXX: V2
+    /**
+     * generates random card
+     * @return commandcard
+     */
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
         return new CommandCard(commands[random]);
     }
 
-    // XXX: V2
+    /**
+     * finishes the programmingphase
+     */
     public void finishProgrammingPhase() {
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
@@ -108,7 +120,9 @@ public class GameController {
         board.setStep(0);
     }
 
-    // XXX: V2
+    /**
+     *makes the programfield visible
+     */
     private void makeProgramFieldsVisible(int register) {
         if (register >= 0 && register < Player.NO_REGISTERS) {
             for (int i = 0; i < board.getPlayersNumber(); i++) {
@@ -119,7 +133,9 @@ public class GameController {
         }
     }
 
-    // XXX: V2
+    /**
+     * makes the programfield unvisible
+     */
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
@@ -130,32 +146,40 @@ public class GameController {
         }
     }
 
-    // XXX: V2
+    /**
+     * execute the programs
+     */
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
     }
 
-    // XXX: V2
+    /**
+     * execute a step
+     */
     public void executeStep() {
         board.setStepMode(true);
         continuePrograms();
     }
 
-    // XXX: V2
+    /**
+     * continues the program
+     */
     private void continuePrograms() {
         do {
             executeNextStep();
         } while (board.getPhase() == Phase.ACTIVATION && !board.isStepMode());
     }
-
-    // XXX: V2
-
     /**
      * executes a commandcard and goes to the next player. if the board is not in activation phase, then it won't work.
      * and there is a currentplayer from the board. the step has to be between those 5 cards. if the card is null,
      * the it won't go through. after executing command, then it will go to the next player by setting currentplayer on board,
      * to the next player
+     * @author s224549
+     * @author s215698
+     * @author s224567
+     * @author s224552
+     * @author s224576
      */
     private void executeNextStep() {
 
@@ -202,6 +226,12 @@ public class GameController {
         }
     }
 
+    /**
+     * commandcards where you have a choice between to options.
+     * @param option is the cards that is an option
+     * @author s224552
+     * @author s224549
+     */
     public void executeCommandOptionAndContinue(@NotNull Command option) {
         Player currentPlayer = board.getCurrentPlayer();
         if (board.getPhase() == Phase.PLAYER_INTERACTION && currentPlayer != null) {
@@ -244,7 +274,13 @@ public class GameController {
     }
 
 
-    // XXX: V2
+    /**
+     * execute a commandcard depending on what it is
+     * @param player is the player that executes the command
+     * @param command is the commandcard that player executes
+     * @author s224552
+     * @author s224567
+     */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
             // XXX This is a very simplistic way of dealing with some basic cards and
@@ -292,6 +328,8 @@ public class GameController {
      *               It then checks if the neighbouring space is occupied by another player both either setting the players space to
      *               the neighbouring space or if the space is occupied it will run a method called moveToSpace which pushes the other
      *               player away before moving onto the space
+     * @author s224552
+     * @author s224567
      */
     public void moveForward(@NotNull Player player) {
         if (player.board == board) {
@@ -315,6 +353,7 @@ public class GameController {
      * By examining where the players are located and which Fieldaction they are on, we then call doAction.
      *
      * @author s224552
+     * @author s224567
      */
     public void executeActionspace() {
         int i;
@@ -333,45 +372,41 @@ public class GameController {
      * The method moves the current robot 3 spaces forward in the robots current direction.
      * Before moving the robot the method checks if every space is free.
      *
-     * @param player
+     * @param player is the the player that fast forward
+     * @author s224552
      */
     public void fastForward(@NotNull Player player) {
         this.moveForward(player);
         this.moveForward(player);
         this.moveForward(player);
-
-
     }
 
     /**
-     * s224576
      * The robots direction turns to the right
      *
      * @param player is the current players robot
+     * @author s224567
      */
     public void turnRight(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.next());
-
     }
 
     /**
-     * s224576
      * The robots direction turns to the left
-     *
      * @param player is the current players robot
+     * @author s224576
      */
     public void turnLeft(@NotNull Player player) {
         Heading heading = player.getHeading();
         player.setHeading(heading.prev());
-
-
     }
 
     /**
      * @param player is the current players robot
-     * @auther Amskov
      * The robots direction turns around
+     * @author s224567
+     * @author s224552
      */
     public void uTurn(@NotNull Player player) {
         int i;
@@ -381,12 +416,22 @@ public class GameController {
         }
     }
 
-
+    /**
+     * this moves the player 2 spaces forward
+     * @param player is the player that moves
+     * @author s224552
+     */
     public void move2(@NotNull Player player) {
         this.moveForward(player);
         this.moveForward(player);
     }
 
+    /**
+     * this moves the card from one place to another.
+     * @param source is the commanrdfard that you want to move
+     * @param target is where you want to set the card
+     * @return return true if it worked
+     */
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
         CommandCard sourceCard = source.getCard();
         CommandCard targetCard = target.getCard();
@@ -413,6 +458,13 @@ public class GameController {
      * @param space
      * @param heading
      * @throws ImpossibleMoveException
+     *
+     * This class uses the param to move one player from his current space to the param space, based on the players current
+     * heading. The space given is the space the player is moving to not the players current one. The program checks for another player one the target field
+     * If one exists the method checks if there is a valid space for the targetplayer to be moved to before calling itself on the new player.
+     * This is an instance of recursion that makes it so that the process of pushing the player will repeat itself until the final player is pushed to a playerless field.
+     * @author s224549
+     * @author s215698
      */
     public void moveToSpace(
             @NotNull Player player,

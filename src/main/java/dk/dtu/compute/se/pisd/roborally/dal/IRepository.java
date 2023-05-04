@@ -26,9 +26,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import java.util.List;
 
 /**
- * ...
- *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author s224552
  */
 public interface IRepository {
 
