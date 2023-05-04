@@ -37,6 +37,9 @@ import java.io.*;
  * @author Ekkart Kindler, ekki@dtu.dk, s224552
  * this class loads the board that has been chosen by the player.
  * It loads it from a folder with different kinds of json files.
+ * @author s224576
+ * @author s224567
+ * @author s224552
  */
 public class LoadBoard {
 
