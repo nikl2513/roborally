@@ -35,8 +35,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * ...
- *
+ * the connector to the database
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 class Connector {
@@ -71,6 +70,8 @@ class Connector {
 
 	/**
 	 * creates the databaseschema in mysql.
+	 * @author s224549
+	 * @author s224567
 	 */
 	private void createDatabaseSchema() {
 
@@ -113,7 +114,7 @@ class Connector {
 
 	/**
 	 * a method that you can call to get the connection.
-	 * @return
+	 * @return the connection
 	 */
 	Connection getConnection() {
 		return connection;
