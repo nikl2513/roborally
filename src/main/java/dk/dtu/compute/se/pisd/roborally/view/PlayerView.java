@@ -44,8 +44,11 @@ public class PlayerView extends Tab implements ViewObserver {
 
     private VBox top;
 
+
+
     private Label programLabel;
     private GridPane programPane;
+
     private Label cardsLabel;
     private GridPane cardsPane;
 
@@ -72,6 +75,9 @@ public class PlayerView extends Tab implements ViewObserver {
         this.gameController = gameController;
         this.player = player;
 
+
+
+
         programLabel = new Label("Program");
 
         programPane = new GridPane();
@@ -85,6 +91,8 @@ public class PlayerView extends Tab implements ViewObserver {
                 programPane.add(programCardViews[i], i, 0);
             }
         }
+
+
 
         // XXX  the following buttons should actually not be on the tabs of the individual
         //      players, but on the PlayersView (view for all players). This should be
@@ -126,6 +134,7 @@ public class PlayerView extends Tab implements ViewObserver {
         top.getChildren().add(cardsLabel);
         top.getChildren().add(cardsPane);
 
+
         if (player.board != null) {
             player.board.attach(this);
             update(player.board);
@@ -157,6 +166,11 @@ public class PlayerView extends Tab implements ViewObserver {
                     }
                 }
             }
+
+
+
+
+
 
             if (player.board.getPhase() != Phase.PLAYER_INTERACTION) {
                 if (!programPane.getChildren().contains(buttonPanel)) {

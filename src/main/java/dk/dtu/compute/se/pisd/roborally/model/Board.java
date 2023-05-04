@@ -22,6 +22,10 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.Checkpoint;
+import dk.dtu.compute.se.pisd.roborally.controller.Pit;
+import dk.dtu.compute.se.pisd.roborally.controller.Turnpad;
+import javafx.scene.layout.GridPane;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -292,15 +296,18 @@ public class Board extends Subject {
         // XXX: V1 add the move count to the status message
         // XXX: V2 changed the status so that it shows the phase, the current player and the number of steps
         if (board.getPhase() == Phase.GAME_ENDING) {
+
             int i;
             for (i = 0; i < board.getPlayersNumber(); ++i) {
                 Player player = board.getPlayer(i);
                 if (player.getCheckpointValue() == 6) {
-                    board.setCurrentPlayer(player);
-                }
+                    board.setCurrentPlayer(player);}
             }
-            return "Winner is: " + getCurrentPlayer().getName() + "Phase: " + getPhase().name();
+            return winnermessage(board);
         }
+       // return "Winner is: " + getCurrentPlayer().getName() + " Phase: " + getPhase().name();
+
+
         return "Phase: " + getPhase().name() +
                 ", Player = " + getCurrentPlayer().getName() +
                 ", AntalSlag = " + getMoveCounter() + ", Checkpoints = " + getCurrentPlayer().getCheckpointValue() +
@@ -308,4 +315,40 @@ public class Board extends Subject {
 
 
     }
+    public String winnermessage(Board board) {
+        switch (board.getPlayersNumber()){
+            case 2:
+                return "Winner is: " + getCurrentPlayer().getName() + "       Checkpoints: "  +
+                        " " + board.getPlayer(0).getName()+ ": " + board.getPlayer(0).getCheckpointValue() +
+                        " " + board.getPlayer(1).getName()+ ": " + board.getPlayer(1).getCheckpointValue();
+            case 3:
+                return "Winner is: " + getCurrentPlayer().getName() + "       Checkpoints: "  +
+                        " " + board.getPlayer(0).getName()+ ": " + board.getPlayer(0).getCheckpointValue() +
+                        " " + board.getPlayer(1).getName()+ ": " + board.getPlayer(1).getCheckpointValue() +
+                        " " + board.getPlayer(2).getName()+ ": " + board.getPlayer(2).getCheckpointValue();
+            case 4:
+                return "Winner is: " + getCurrentPlayer().getName() + "       Checkpoints: " +
+                        " " + board.getPlayer(0).getName()+ ": " + board.getPlayer(0).getCheckpointValue() +
+                        " " + board.getPlayer(1).getName()+ ": " + board.getPlayer(1).getCheckpointValue() +
+                        " " + board.getPlayer(2).getName()+ ": " + board.getPlayer(2).getCheckpointValue() +
+                        " " + board.getPlayer(3).getName()+ ": " + board.getPlayer(3).getCheckpointValue();
+            case 5:
+                return "Winner is: " + getCurrentPlayer().getName() + "       Checkpoints: " +
+                        " " + board.getPlayer(0).getName()+ ": " + board.getPlayer(0).getCheckpointValue() +
+                        " " + board.getPlayer(1).getName()+ ": " + board.getPlayer(1).getCheckpointValue() +
+                        " " + board.getPlayer(2).getName()+ ": " + board.getPlayer(2).getCheckpointValue() +
+                        " " + board.getPlayer(3).getName()+ ": " + board.getPlayer(3).getCheckpointValue() +
+                        " " + board.getPlayer(4).getName()+ ": " + board.getPlayer(4).getCheckpointValue();
+            case 6:
+                return "Winner is: " + getCurrentPlayer().getName() + "       Checkpoints: " +
+                        " " + board.getPlayer(0).getName()+ ": " + board.getPlayer(0).getCheckpointValue() +
+                        " " + board.getPlayer(1).getName()+ ": " + board.getPlayer(1).getCheckpointValue() +
+                        " " + board.getPlayer(2).getName()+ ": " + board.getPlayer(2).getCheckpointValue() +
+                        " " + board.getPlayer(3).getName()+ ": " + board.getPlayer(3).getCheckpointValue() +
+                        " " + board.getPlayer(4).getName()+ ": " + board.getPlayer(4).getCheckpointValue() +
+                        " " + board.getPlayer(5).getName()+ ": " + board.getPlayer(5).getCheckpointValue();
+        }
+        return null;
+    }
+
 }
