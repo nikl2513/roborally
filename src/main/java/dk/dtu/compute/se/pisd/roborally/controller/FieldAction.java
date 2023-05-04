@@ -24,8 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 /**
- * ...
- *
+ * Is the super class for all the action classes.
  * @author Ekkart Kindler, ekki@dtu.dk
  */
 public abstract class FieldAction {

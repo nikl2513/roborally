@@ -473,7 +473,6 @@ class Repository implements IRepository {
 		}
 		rs.close();
     }
-
     /**
      * @param game is the board that is used for the game with all the information on the players and so on.
      * @throws SQLException if something doesn't work.

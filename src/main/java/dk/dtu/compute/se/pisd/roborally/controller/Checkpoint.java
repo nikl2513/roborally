@@ -6,9 +6,11 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 /**
- * Checkpoint class
+ * Checkpoint class, is the class for every checkpoint in the game.
  *
  * @author s224567
+ * @author s224576
+ * @author s224552
  */
 public class Checkpoint extends FieldAction {
 
@@ -33,6 +35,7 @@ public class Checkpoint extends FieldAction {
      * @return true if the action has executed
      * @author s224552
      * @author s224567
+     * @author s224576
      */
     @Override
     public boolean doAction(GameController gameController, dk.dtu.compute.se.pisd.roborally.model.Space space) {
