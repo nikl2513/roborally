@@ -140,6 +140,7 @@ AppController implements Observer {
      * and the cards.
      * @author s224549
      * @author s224552
+     * @author s224576
      */
     public void loadGame() {
         List<GameInDB> list = repository.getGames();

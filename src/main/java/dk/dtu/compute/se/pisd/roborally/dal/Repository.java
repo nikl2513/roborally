@@ -229,6 +229,7 @@ class Repository implements IRepository {
      * @return a board if the game do exist.
      * @author s224549
      * @author s224552
+     * @author s224576
      */
     @Override
     public Board loadGameFromDB(int id) {

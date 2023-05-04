@@ -32,6 +32,7 @@ public class Pit extends FieldAction{
      * @author s215698
      * @author s224567
      * @author s224552
+     * @author s224576
      */
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         Player player = space.getPlayer();

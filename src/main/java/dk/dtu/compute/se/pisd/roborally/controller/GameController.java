@@ -280,6 +280,7 @@ public class GameController {
      * @param command is the commandcard that player executes
      * @author s224552
      * @author s224567
+     * @author s224576
      */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
@@ -320,7 +321,6 @@ public class GameController {
     }
 
     /**
-     * s224567
      * Moves the current players robot one space i the robots current direction
      *
      * @param player The player which Robot is getting moved one space in the current direction
@@ -368,12 +368,13 @@ public class GameController {
     }
 
     /**
-     * s224567:
+     *
      * The method moves the current robot 3 spaces forward in the robots current direction.
      * Before moving the robot the method checks if every space is free.
      *
      * @param player is the the player that fast forward
      * @author s224552
+     * @author s224567
      */
     public void fastForward(@NotNull Player player) {
         this.moveForward(player);
