@@ -23,7 +23,6 @@ import java.util.Objects;
  * @author s224552
  */
 public class Turnpad extends FieldAction {
-    private dk.dtu.compute.se.pisd.roborally.model.Space space;
     private int direction;
     public int getDirection() {
         return direction;

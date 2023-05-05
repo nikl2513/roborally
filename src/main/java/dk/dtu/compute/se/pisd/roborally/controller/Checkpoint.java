@@ -14,8 +14,6 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
  */
 public class Checkpoint extends FieldAction {
 
-    private dk.dtu.compute.se.pisd.roborally.model.Space space;
-
     public int getCheckpointnumber() {
         return checkpointnumber;
     }

@@ -580,7 +580,6 @@ class Repository implements IRepository {
     }
 
     private static final String SQL_SELECT_CARD_FIELDS = "SELECT * FROM Cardfield WHERE gameID = ?";
-    private static final String SQL_SELECT_CARD_FIELDS2 = "AND playerID = ?";
 
     private PreparedStatement select_card_field_stmt = null;
 
@@ -618,9 +617,6 @@ class Repository implements IRepository {
 
     private static final String SQL_SELECT_PLAYERS_ASC =
             "SELECT * FROM Player WHERE gameID = ? ORDER BY playerID ASC";
-
-    private static final String SQL_SELECT_CARD_FIELDS_ASC =
-            "SELECT * FROM Cardfield WHERE gameID = ? ORDER BY playerID asc";
     private PreparedStatement select_players_asc_stmt = null;
 
     private PreparedStatement getSelectPlayersASCStatement() {
@@ -638,19 +634,6 @@ class Repository implements IRepository {
     }
 
     private PreparedStatement select_Card_field_asc_stmt = null;
-
-    private PreparedStatement getSelectCardfieldASCStatement() {
-        if (select_Card_field_asc_stmt == null) {
-            Connection connection = connector.getConnection();
-            try {
-                select_Card_field_asc_stmt = connection.prepareStatement(
-                        SQL_SELECT_CARD_FIELDS);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return select_Card_field_asc_stmt;
-    }
 
     private static final String SQL_SELECT_GAMES =
             "SELECT gameID, name FROM Game";

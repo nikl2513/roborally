@@ -24,8 +24,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public class Pit extends FieldAction{
 
-    private dk.dtu.compute.se.pisd.roborally.model.Space space;
-
     /**
      * @param gameController the gameController of the respective game
      * @param space the space this action should be executed for
