@@ -54,9 +54,6 @@ public class Player extends Subject {
 
     private Space space;
     private Heading heading = SOUTH;
-
-    private boolean checkpoint1Complete;
-
     private int checkpointValue;
     private int hp;
 
@@ -86,8 +83,6 @@ public class Player extends Subject {
         hp = 0;
 
         this.space = null;
-        checkpoint1Complete = false;
-
 
         program = new CommandCardField[NO_REGISTERS];
         for (int i = 0; i < program.length; i++) {
