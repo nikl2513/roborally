@@ -432,7 +432,7 @@ public class GameController {
      * this moves the card from one place to another.
      * @param source is the commanrdfard that you want to move
      * @param target is where you want to set the card
-     * @return return true if it worked
+     * @return return true if it workedbbb
      */
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
         CommandCard sourceCard = source.getCard();
@@ -459,11 +459,11 @@ public class GameController {
      * @author s224549
      * @author s215698
      */
+
     public void moveToSpace(
             @NotNull Player player,
             @NotNull Space space,
             @NotNull Heading heading) throws ImpossibleMoveException {
-
         Player other = space.getPlayer();
         if (other != null) {
             Space target = board.getNeighbour(space, heading);
